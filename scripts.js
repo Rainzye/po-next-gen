@@ -1152,7 +1152,7 @@ beforeChannelJoin : function(src, channel) {
         return;
     }
     if ((channel == staffchannel || channel == sachannel) && !this.canJoinStaffChannel(src)) {
-        sys.sendMessage(src, "±Safari Sorry, access to that place is restricted!");
+        sys.sendMessage(src, "±Safari: Sorry, access to that place is restricted!");
         sys.stopEvent();
         return;
     }
@@ -1550,7 +1550,7 @@ afterLogIn : function(src) {
         }
     }*/
 //     sys.sendMessage(src, "*** Do not advertise /rules ***");
-    sys.sendMessage(src, "±Official Channels: #Tournaments ~ #Hangman ~ #Trivia ~ #Mafia");
+    sys.sendMessage(src, "±Official Channels: #Tournaments | #Hangman | #Trivia | #Mafia");
 
     maxPlayersOnline = Math.max(sys.numPlayers(), maxPlayersOnline);
     if (maxPlayersOnline > sys.getVal("MaxPlayersOnline")) {
