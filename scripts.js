@@ -1550,7 +1550,7 @@ afterLogIn : function(src) {
         }
     }*/
 //     sys.sendMessage(src, "*** Do not advertise /rules ***");
-    sys.sendMessage(src, "±Official Channels: #Developement #Tournaments ~ #Hangman ~ #Trivia ~ #Mafia");
+    sys.sendMessage(src, "±Official Channels: #Tournaments ~ #Hangman ~ #Trivia ~ #Mafia");
 
     maxPlayersOnline = Math.max(sys.numPlayers(), maxPlayersOnline);
     if (maxPlayersOnline > sys.getVal("MaxPlayersOnline")) {
