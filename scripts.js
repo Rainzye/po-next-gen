@@ -830,14 +830,14 @@ unban: function(type, src, tar, commandData) {
                 banbot.sendAll(line, sachannel);
             }
         },
-        "lock": function(line, ip) {
+        "mute": function(line, ip) {
             if (ip) {
                 banbot.sendAll(line, staffchannel);
             } else {
                 banbot.sendAll(line);
             }
         },
-        "hlock" : function(line, ip) {
+        "hmute" : function(line, ip) {
             if (ip) {
                 banbot.sendAll(line, staffchannel);
                 banbot.sendAll(line, sachannel);
