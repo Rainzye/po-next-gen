@@ -13,7 +13,7 @@ var Config = {
     coinbot: "Meowth",
     countbot: "Safari",
     tourneybot: "Typhlosion",
-    rankingbot: "Porygon",
+    rankingbot: "Porygon2",
     battlebot: "Blastoise",
     commandbot: "CommtandBo",
     querybot: "QueryBot",
@@ -696,8 +696,8 @@ issueBan : function(type, src, tar, commandData, maxTime) {
         else {
             banbot = normalbot;
         }
-        var verb = {"mute": "muted", "mban": "banned from Mafia", "smute": "secretly muted", "hmute": "banned from Hangman", "safban": "banned from Safari"}[type];
-        var nomi = {"mute": "mute", "mban": "mafia ban", "smute": "secret mute", "hmute": "hangman ban", "safban": "safari ban"}[type];
+        var verb = {"lock": "locked", "mban": "banned from Mafia", "slock": "secretly locked", "hlock": "banned from Hangman", "safban": "banned from Safari"}[type];
+        var nomi = {"lock": "lock", "mban": "mafia ban", "slock": "secret lock", "hlocked": "hangman ban", "safban": "safari ban"}[type];
         var sendAll =  {
             "smute": function(line) {
                 sys.dbAuths().map(sys.id).filter(function(uid) { return uid !== undefined; }).forEach(function(uid) {
@@ -725,7 +725,7 @@ issueBan : function(type, src, tar, commandData, maxTime) {
         }[type];
 
         var expires = 0;
-        var defaultTime = {"mute": "1d", "mban": "1d", "smute": "1d", "hmute": "1d", "safban": "1d"}[type];
+        var defaultTime = {"lock": "1d", "mban": "1d", "slock": "1d", "hlock": "1d", "safban": "1d"}[type];
         var reason = "";
         var timeString = "";
         var data = commandData;
@@ -813,9 +813,9 @@ unban: function(type, src, tar, commandData) {
         else {
             banbot = normalbot;
         }
-    var verb = {"mute": "unmuted", "mban": "unbanned from Mafia", "smute": "secretly unmuted", "hmute": "unbanned from Hangman", "safban": "unbanned from Safari"}[type];
-    var nomi = {"mute": "unmute", "mban": "mafia unban", "smute": "secret unmute", "hmute": "hangman unban", "safban": "safari unban"}[type];
-    var past = {"mute": "muted", "mban": "mafia banned", "smute": "secretly muted", "hmute": "hangman banned", "safban": "safari banned"}[type];
+    var verb = {"lock": "unlocked", "mban": "unbanned from Mafia", "slock": "secretly unlocked", "hlock": "unbanned from Hangman", "safban": "unbanned from Safari"}[type];
+    var nomi = {"lock": "unlock", "mban": "mafia unban", "slock": "secret unlock", "hlock": "hangman unban", "safban": "safari unban"}[type];
+    var past = {"lock": "locked", "mban": "mafia banned", "slock": "secretly locked", "hlock": "hangman banned", "safban": "safari banned"}[type];
     var sendAll =  {
         "smute": function(line) {
             banbot.sendAll(line, staffchannel);
@@ -830,14 +830,14 @@ unban: function(type, src, tar, commandData) {
                 banbot.sendAll(line, sachannel);
             }
         },
-        "mute": function(line, ip) {
+        "lock": function(line, ip) {
             if (ip) {
                 banbot.sendAll(line, staffchannel);
             } else {
                 banbot.sendAll(line);
             }
         },
-        "hmute" : function(line, ip) {
+        "hlock" : function(line, ip) {
             if (ip) {
                 banbot.sendAll(line, staffchannel);
                 banbot.sendAll(line, sachannel);
