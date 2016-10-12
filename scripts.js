@@ -1219,7 +1219,7 @@ afterChannelJoin : function(player, chan) {
             sys.sendMessage(player, "Edited by: " + SESSION.channels(chan).topicSetter, chan);*/
     }
     if (SESSION.channels(chan).isChannelOperator(player)) {
-        sys.sendMessage(player, "±" + Config.channelbot + "*** Main Safari ***", chan);
+        sys.sendMessage(player, "±" + Config.channelbot + " *** Main Safari *** ", chan);
     }
     if (SESSION.channels(chan).masters.length <= 0 && !this.isOfficialChan(chan)) {
         sys.sendMessage(player, "±" + Config.channelbot + ": This channel is unregistered. If you're looking to own this channel, type /register in order to prevent your channel from being stolen.", chan);
@@ -1314,7 +1314,7 @@ beforeLogIn : function(src) {
     }
     var allowedIps = ["74.115.245.16","74.115.245.26"];
     if (this.isRangeBanned(ip) && allowedIps.indexOf(ip) == -1 && script.allowedRangeNames.indexOf(sys.name(src).toLowerCase()) == -1) {
-        normalbot.sendMessage(src, 'You are banned!');
+        normalbot.sendMessage(src, 'Access Denied!');
         sys.stopEvent();
         return;
     }
@@ -1550,7 +1550,7 @@ afterLogIn : function(src) {
         }
     }*/
     sys.sendMessage(src, "*** Official Safari ***");
-    sys.sendMessage(src, "±Official Channels: #Tournaments | #Hangman | #Trivia | #Mafia");
+    sys.sendMessage(src, "±Global Channels: #Tournaments | #Hangman | #Trivia | #Mafia");
 
     maxPlayersOnline = Math.max(sys.numPlayers(), maxPlayersOnline);
     if (maxPlayersOnline > sys.getVal("MaxPlayersOnline")) {
@@ -1675,7 +1675,7 @@ afterChangeTeam : function(src)
     for (var team = 0; team < sys.teamCount(src); team++) {
         if (!tier_checker.has_legal_team_for_tier(src, team, sys.tier(src, team))) {
             tier_checker.find_good_tier(src, team);
-            normalbot.sendMessage(src, "You were placed into '" + sys.tier(src, team) + "' tier.");
+            normalbot.sendMessage(src, "You are in default '" + sys.tier(src, team) + "' tier.");
         }
     }
 
