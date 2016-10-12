@@ -1560,7 +1560,6 @@ afterLogIn : function(src) {
     sys.sendMessage(src, "");
 
     callplugins("afterLogIn", src);
-
    /*if (SESSION.users(src).android) {
         sys.changeTier(src, "Challenge Cup");
         if (sys.existChannel("PO Android")) {
