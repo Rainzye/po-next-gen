@@ -15,7 +15,7 @@ var Config = {
     tourneybot: "Typhlosion",
     rankingbot: "Porygon2",
     battlebot: "Blastoise",
-    commandbot: "CommtandBo",
+    commandbot: "Charizard",
     querybot: "QueryBot",
     hangbot: "Unown",
     bfbot: "Goomy",
@@ -696,7 +696,7 @@ issueBan : function(type, src, tar, commandData, maxTime) {
         else {
             banbot = normalbot;
         }
-        var verb = {"mute": "muted", "mban": "banned from Mafia", "smute": "secretly mute", "hmute": "banned from Hangman", "safban": "banned from Safari"}[type];
+        var verb = {"mute": "unlocked", "mban": "banned from Mafia", "smute": "secretly mute", "hmute": "banned from Hangman", "safban": "banned from Safari"}[type];
         var nomi = {"mute": "mute", "mban": "mafia ban", "sunmute": "secret mute", "hmute": "hangman ban", "safban": "safari ban"}[type];
         var sendAll =  {
             "smute": function(line) {
@@ -1138,7 +1138,7 @@ beforeChannelJoin : function(src, channel) {
     if (channel === staffchannel && script.isContrib(src) && !sys.dbRegistered(sys.name(src))) {
         var contribName = utilities.getCorrectPropName(sys.name(src), script.contributors.hash);
         normalbot.sendAll(contribName + " was removed from contributors due to their alt being unregistered. [Contributions: " + script.contributors.get(contribName) + "]", staffchannel);
-        sys.sendMessage(src, "±Guard: Sorry, access to that place is restricted!");
+        sys.sendMessage(src, "±Safari Warden: Access Denied!");
         script.contributors.remove(contribName);
         sys.stopEvent();
         return;
@@ -1147,12 +1147,12 @@ beforeChannelJoin : function(src, channel) {
         return;
     }
     if (poChannel.inviteonly > sys.auth(src)) {
-        sys.sendMessage(src, "±Safari Warden: Sorry, but this channel is for higher authority!");
+        sys.sendMessage(src, "±Safari Warden: Access Denied");
         sys.stopEvent();
         return;
     }
     if ((channel == staffchannel || channel == sachannel) && !this.canJoinStaffChannel(src)) {
-        sys.sendMessage(src, "±Safari Warnden: Sorry, access to that place is restricted!");
+        sys.sendMessage(src, "±Safari Warnden: Access Denied!");
         sys.stopEvent();
         return;
     }
@@ -1183,7 +1183,7 @@ beforeChannelJoin : function(src, channel) {
         }
     }
     if (channel == watchchannel && sys.auth(src) < 1) {
-        sys.sendMessage(src, "±Safari Warden: Sorry, access to that place is restricted!");
+        sys.sendMessage(src, "±Safari Warden: Access Denied!");
         sys.stopEvent();
         return;
     }
@@ -1200,7 +1200,7 @@ beforeChannelCreated : function(chan, name, src) {
         for (var i = 0; i < script.chanNameBans.length; ++i) {
             var regexp = script.chanNameBans[i];
             if (regexp.test(name)) {
-                sys.sendMessage(src, '±Safari Warden: This kind of channel name is banned from the server. (Matching regexp: ' + regexp + ')');
+                sys.sendMessage(src, '±Safari Warden: This kind of channel name is banned from the safari. (Matching regexp: ' + regexp + ')');
                 sys.stopEvent();
             }
         }
@@ -1219,7 +1219,7 @@ afterChannelJoin : function(player, chan) {
             sys.sendMessage(player, "Edited by: " + SESSION.channels(chan).topicSetter, chan);*/
     }
     if (SESSION.channels(chan).isChannelOperator(player)) {
-        sys.sendMessage(player, "±" + Config.channelbot + " *** Main Safari *** ", chan);
+        sys.sendMessage(player, "±" + Config.channelbot + " *** Main Safari ***"); chan);
     }
     if (SESSION.channels(chan).masters.length <= 0 && !this.isOfficialChan(chan)) {
         sys.sendMessage(player, "±" + Config.channelbot + ": This channel is unregistered. If you're looking to own this channel, type /register in order to prevent your channel from being stolen.", chan);
