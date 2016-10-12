@@ -697,7 +697,7 @@ issueBan : function(type, src, tar, commandData, maxTime) {
             banbot = normalbot;
         }
         var verb = {"mute": "locked", "mban": "banned from Mafia", "smute": "secretly mute", "hmute": "banned from Hangman", "safban": "banned from Safari"}[type];
-        var nomi = {"mute": "lock", "mban": "mafia ban", "sunmute": "secret mute", "hmute": "hangman ban", "safban": "safari ban"}[type];
+        var nomi = {"mute": mute", "mban": "mafia ban", "sunmute": "secret mute", "hmute": "hangman ban", "safban": "safari ban"}[type];
         var sendAll =  {
             "smute": function(line) {
                 sys.dbAuths().map(sys.id).filter(function(uid) { return uid !== undefined; }).forEach(function(uid) {
@@ -813,9 +813,9 @@ unban: function(type, src, tar, commandData) {
         else {
             banbot = normalbot;
         }
-    var verb = {"lock": "unlocked", "mban": "unbanned from Mafia", "slock": "secretly unlocked", "hlock": "unbanned from Hangman", "safban": "unbanned from Safari"}[type];
-    var nomi = {"lock": "unlock", "mban": "mafia unban", "slock": "secret unlock", "hlock": "hangman unban", "safban": "safari unban"}[type];
-    var past = {"lock": "locked", "mban": "mafia banned", "slock": "secretly locked", "hlock": "hangman banned", "safban": "safari banned"}[type];
+    var verb = {"mute": "unlocked", "mban": "unbanned from Mafia", "smute": "secretly unlocked", "hlock": "unbanned from Hangman", "safban": "unbanned from Safari"}[type];
+    var nomi = {"mute": "unmute", "mban": "mafia unban", "smute": "secret unmute", "hmute": "hangman unban", "safban": "safari unban"}[type];
+    var past = {"mute": "locked", "mban": "mafia banned", "smute": "secretly muted", "hmute": "hangman banned", "safban": "safari banned"}[type];
     var sendAll =  {
         "smute": function(line) {
             banbot.sendAll(line, staffchannel);
