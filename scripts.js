@@ -696,8 +696,8 @@ issueBan : function(type, src, tar, commandData, maxTime) {
         else {
             banbot = normalbot;
         }
-        var verb = {"lock": "locked", "mban": "banned from Mafia", "slock": "secretly locked", "hlock": "banned from Hangman", "safban": "banned from Safari"}[type];
-        var nomi = {"lock": "lock", "mban": "mafia ban", "slock": "secret lock", "hlocked": "hangman ban", "safban": "safari ban"}[type];
+        var verb = {"mute": "locked", "mban": "banned from Mafia", "smute": "secretly mute", "hmute": "banned from Hangman", "safban": "banned from Safari"}[type];
+        var nomi = {"mute": "lock", "mban": "mafia ban", "sunmute": "secret mute", "hmute": "hangman ban", "safban": "safari ban"}[type];
         var sendAll =  {
             "smute": function(line) {
                 sys.dbAuths().map(sys.id).filter(function(uid) { return uid !== undefined; }).forEach(function(uid) {
@@ -725,7 +725,7 @@ issueBan : function(type, src, tar, commandData, maxTime) {
         }[type];
 
         var expires = 0;
-        var defaultTime = {"lock": "1d", "mban": "1d", "slock": "1d", "hlock": "1d", "safban": "1d"}[type];
+        var defaultTime = {"mute": "1h", "mban": "1h", "slock": "1h", "hmute": "1h", "safban": "1h"}[type];
         var reason = "";
         var timeString = "";
         var data = commandData;
