@@ -697,7 +697,7 @@ issueBan : function(type, src, tar, commandData, maxTime) {
             banbot = normalbot;
         }
         var verb = {"mute": "muted", "mban": "banned from Mafia", "smute": "secretly mute", "hmute": "banned from Hangman", "safban": "banned from Safari"}[type];
-        var nomi = {"mute": mute", "mban": "mafia ban", "sunmute": "secret mute", "hmute": "hangman ban", "safban": "safari ban"}[type];
+        var nomi = {"mute": "mute", "mban": "mafia ban", "sunmute": "secret mute", "hmute": "hangman ban", "safban": "safari ban"}[type];
         var sendAll =  {
             "smute": function(line) {
                 sys.dbAuths().map(sys.id).filter(function(uid) { return uid !== undefined; }).forEach(function(uid) {
