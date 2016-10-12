@@ -14,7 +14,7 @@ var Config = {
     countbot: "Safari",
     tourneybot: "Typhlosion",
     rankingbot: "Porygon2",
-    battlebot: "",
+    battlebot: "Jirachi",
     commandbot: "Charizard",
     querybot: "QueryBot",
     hangbot: "Unown",
@@ -1219,7 +1219,7 @@ afterChannelJoin : function(player, chan) {
             sys.sendMessage(player, "Edited by: " + SESSION.channels(chan).topicSetter, chan);*/
     }
     if (SESSION.channels(chan).isChannelOperator(player)) {
-        sys.sendMessage(player, "±" + Config.channelbot + " *** Main Safari ***"); chan);
+        sys.sendMessage(player, "±" + Config.channelbot + " *** Main Safari ***" + chan);
     }
     if (SESSION.channels(chan).masters.length <= 0 && !this.isOfficialChan(chan)) {
         sys.sendMessage(player, "±" + Config.channelbot + ": This channel is unregistered. If you're looking to own this channel, type /register in order to prevent your channel from being stolen.", chan);
