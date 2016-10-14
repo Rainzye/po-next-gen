@@ -1,25 +1,25 @@
 // This is the official Pokemon Online Scripts
-// These scripts will only work on 2.0.00 or newer
+// These scripts will only work on 2.0.00 or newer.
 /*jshint laxbreak:true,shadow:true,undef:true,evil:true,trailing:true,proto:true,withstmt:true*/
 // You may change these variables as long as you keep the same type
 var Config = {
     base_url: "https://raw.githubusercontent.com/Rainzye/po-next-gen/master/",
     dataDir: "scriptdata/",
-    bot: "Dragonite",
+    bot: "Dratini",
     kickbot: "Blaziken",
     capsbot: "Exploud",
-    channelbot: "Blastoise",
-    checkbot: "Safari",
+    channelbot: "Chatot",
+    checkbot: "Snorlax",
     coinbot: "Meowth",
-    countbot: "Safari",
+    countbot: "CountBot",
     tourneybot: "Typhlosion",
-    rankingbot: "Porygon2",
-    battlebot: "Jirachi",
-    commandbot: "Charizard",
+    rankingbot: "Porygon",
+    battlebot: "Blastoise",
+    commandbot: "CommandBot",
     querybot: "QueryBot",
     hangbot: "Unown",
     bfbot: "Goomy",
-    safaribot: "Safari",
+    safaribot: "Tauros",
     teamsbot: "Minun",
     // suspectvoting.js available, but not in use
     Plugins: ["mafia.js", "amoebagame.js", "tourstats.js", "trivia.js", "tours.js", "newtourstats.js", "auto_smute.js", "battlefactory.js", "hangman.js", "blackjack.js", "mafiastats.js", "mafiachecker.js", "safari.js", "youtube.js", "autoteams.js"],
@@ -696,8 +696,8 @@ issueBan : function(type, src, tar, commandData, maxTime) {
         else {
             banbot = normalbot;
         }
-        var verb = {"mute": "locked", "mban": "banned from Mafia", "smute": "secretly mute", "hmute": "banned from Hangman", "safban": "banned from Safari"}[type];
-        var nomi = {"mute": "mute", "mban": "mafia ban", "sunmute": "secret mute", "hmute": "hangman ban", "safban": "safari ban"}[type];
+        var verb = {"mute": "muted", "mban": "banned from Mafia", "smute": "secretly muted", "hmute": "banned from Hangman", "safban": "banned from Safari"}[type];
+        var nomi = {"mute": "mute", "mban": "mafia ban", "smute": "secret mute", "hmute": "hangman ban", "safban": "safari ban"}[type];
         var sendAll =  {
             "smute": function(line) {
                 sys.dbAuths().map(sys.id).filter(function(uid) { return uid !== undefined; }).forEach(function(uid) {
@@ -725,7 +725,7 @@ issueBan : function(type, src, tar, commandData, maxTime) {
         }[type];
 
         var expires = 0;
-        var defaultTime = {"mute": "1h", "mban": "1h", "slock": "1h", "hmute": "1h", "safban": "1h"}[type];
+        var defaultTime = {"mute": "1d", "mban": "1d", "smute": "1d", "hmute": "1d", "safban": "1d"}[type];
         var reason = "";
         var timeString = "";
         var data = commandData;
@@ -783,7 +783,7 @@ issueBan : function(type, src, tar, commandData, maxTime) {
                 active = true;
             }
         }
-        sendAll((active ? nonFlashing(sys.name(src)) + " changed " + commandData + "'s " + nomi + " time to " + (timeString === "" ? "Permanently!" : timeString + " from now!") : commandData + " was " + verb + " by " + nonFlashing(sys.name(src)) + (timeString === "" ? "" : " for ") + timeString + "!") + (reason.length > 0 ? " [Reason: " + reason + "]" : "") + " [Channel: "+sys.channel(channel) + "]");
+        sendAll((active ? nonFlashing(sys.name(src)) + " changed " + commandData + "'s " + nomi + " time to " + (timeString === "" ? "forever!" : timeString + " from now!") : commandData + " was " + verb + " by " + nonFlashing(sys.name(src)) + (timeString === "" ? "" : " for ") + timeString + "!") + (reason.length > 0 ? " [Reason: " + reason + "]" : "") + " [Channel: "+sys.channel(channel) + "]");
 
         sys.playerIds().forEach(function(id) {
             if (sys.loggedIn(id) && sys.ip(id) === tarip)
@@ -813,9 +813,9 @@ unban: function(type, src, tar, commandData) {
         else {
             banbot = normalbot;
         }
-    var verb = {"mute": "muted", "mban": "unbanned from Mafia", "smute": "secretly unmuted", "hmute": "unbanned from Hangman", "safban": "unbanned from Safari"}[type];
-    var nomi = {"mute": "unmuted", "mban": "mafia unban", "smute": "secret unmute", "hmute": "hangman unban", "safban": "safari unban"}[type];
-    var past = {"mute": "locked", "mban": "mafia banned", "smute": "secretly muted", "hmute": "hangman banned", "safban": "safari banned"}[type];
+    var verb = {"mute": "unmuted", "mban": "unbanned from Mafia", "smute": "secretly unmuted", "hmute": "unbanned from Hangman", "safban": "unbanned from Safari"}[type];
+    var nomi = {"mute": "unmute", "mban": "mafia unban", "smute": "secret unmute", "hmute": "hangman unban", "safban": "safari unban"}[type];
+    var past = {"mute": "muted", "mban": "mafia banned", "smute": "secretly muted", "hmute": "hangman banned", "safban": "safari banned"}[type];
     var sendAll =  {
         "smute": function(line) {
             banbot.sendAll(line, staffchannel);
@@ -1138,7 +1138,7 @@ beforeChannelJoin : function(src, channel) {
     if (channel === staffchannel && script.isContrib(src) && !sys.dbRegistered(sys.name(src))) {
         var contribName = utilities.getCorrectPropName(sys.name(src), script.contributors.hash);
         normalbot.sendAll(contribName + " was removed from contributors due to their alt being unregistered. [Contributions: " + script.contributors.get(contribName) + "]", staffchannel);
-        sys.sendMessage(src, "±Safari Warden: Access Denied!");
+        sys.sendMessage(src, "±Guard: Sorry, access to that place is restricted!");
         script.contributors.remove(contribName);
         sys.stopEvent();
         return;
@@ -1147,12 +1147,12 @@ beforeChannelJoin : function(src, channel) {
         return;
     }
     if (poChannel.inviteonly > sys.auth(src)) {
-        sys.sendMessage(src, "±Safari Warden: Access Denied");
+        sys.sendMessage(src, "±Guard: Sorry, but this channel is for higher authority!");
         sys.stopEvent();
         return;
     }
     if ((channel == staffchannel || channel == sachannel) && !this.canJoinStaffChannel(src)) {
-        sys.sendMessage(src, "±Safari Warnden: Access Denied!");
+        sys.sendMessage(src, "±Guard: Sorry, access to that place is restricted!");
         sys.stopEvent();
         return;
     }
@@ -1175,7 +1175,7 @@ beforeChannelJoin : function(src, channel) {
                     normalbot.sendMessage(src, "Your ban from " + type[x] + " expired.");
                 } else {
                     var info = poUser[bans[x]];
-                    sys.sendMessage(src, "±Safari: You are banned from " + type[x] + (info.by ? " by " + info.by : '')+". " + (info.expires > 0 ? "Ban expires in " + getTimeString(info.expires - parseInt(sys.time(), 10)) + ". " : '') + (info.reason ? "[Reason: " + info.reason + "]" : ''));
+                    sys.sendMessage(src, "±Guard: You are banned from " + type[x] + (info.by ? " by " + info.by : '')+". " + (info.expires > 0 ? "Ban expires in " + getTimeString(info.expires - parseInt(sys.time(), 10)) + ". " : '') + (info.reason ? "[Reason: " + info.reason + "]" : ''));
                     sys.stopEvent();
                     return;
                 }
@@ -1183,7 +1183,7 @@ beforeChannelJoin : function(src, channel) {
         }
     }
     if (channel == watchchannel && sys.auth(src) < 1) {
-        sys.sendMessage(src, "±Safari Warden: Access Denied!");
+        sys.sendMessage(src, "±Guard: Sorry, access to that place is restricted!");
         sys.stopEvent();
         return;
     }
@@ -1200,7 +1200,7 @@ beforeChannelCreated : function(chan, name, src) {
         for (var i = 0; i < script.chanNameBans.length; ++i) {
             var regexp = script.chanNameBans[i];
             if (regexp.test(name)) {
-                sys.sendMessage(src, '±Safari Warden: This kind of channel name is banned from the safari. (Matching regexp: ' + regexp + ')');
+                sys.sendMessage(src, 'This kind of channel name is banned from the server. (Matching regexp: ' + regexp + ')');
                 sys.stopEvent();
             }
         }
@@ -1214,12 +1214,12 @@ afterChannelCreated : function (chan, name, src) {
 
 afterChannelJoin : function(player, chan) {
     if (typeof SESSION.channels(chan).topic != 'undefined') {
-        sys.sendMessage(player, "Topic: " + SESSION.channels(chan).topic, chan);
+        sys.sendMessage(player, "Welcome Message: " + SESSION.channels(chan).topic, chan);
         /*if (SESSION.channels(chan).topicSetter)
-            sys.sendMessage(player, "Edited by: " + SESSION.channels(chan).topicSetter, chan);*/
+            sys.sendMessage(player, "Set by: " + SESSION.channels(chan).topicSetter, chan);*/
     }
     if (SESSION.channels(chan).isChannelOperator(player)) {
-        sys.sendMessage(player, "±" + Config.channelbot + " *** Main Safari ***.", chan);
+        sys.sendMessage(player, "±" + Config.channelbot + ": use /topic <topic> to change the welcome message of this channel", chan);
     }
     if (SESSION.channels(chan).masters.length <= 0 && !this.isOfficialChan(chan)) {
         sys.sendMessage(player, "±" + Config.channelbot + ": This channel is unregistered. If you're looking to own this channel, type /register in order to prevent your channel from being stolen.", chan);
@@ -1314,7 +1314,7 @@ beforeLogIn : function(src) {
     }
     var allowedIps = ["74.115.245.16","74.115.245.26"];
     if (this.isRangeBanned(ip) && allowedIps.indexOf(ip) == -1 && script.allowedRangeNames.indexOf(sys.name(src).toLowerCase()) == -1) {
-        normalbot.sendMessage(src, 'Access Denied!');
+        normalbot.sendMessage(src, 'You are banned!');
         sys.stopEvent();
         return;
     }
@@ -1497,7 +1497,7 @@ cookieBanned: function(src) {
             name = cookie.substr(cookie.indexOf(" ")+1);
         }
         kickbot.sendAll(nonFlashing(sys.name(src)) + " was banned by cookie" + (name ? " [Original Name: " + nonFlashing(name) + "]." : "."), watchchannel);
-        normalbot.sendMessage(src, "You are currently banned from the safari.");
+        normalbot.sendMessage(src, "You are currently banned from the server. If you believe this to be an error, post here: http://pokemon-online.eu/forums/disciplinary-committee.43/");
         sys.kick(src);
         return true;
     } else if (cookie === "muted" || cookie.substr(0, 5) === "muted") {
@@ -1523,7 +1523,7 @@ cookieBanned: function(src) {
             SESSION.users(src).activate("smute", Config.kickbot, parseInt(sys.time(), 10) + 86400, "ID", true);
             return;
         } else {
-            normalbot.sendMessage(src, "You are currently banned from the safari.");
+            normalbot.sendMessage(src, "You are currently banned from the server. If you believe this to be an error, post here: http://pokemon-online.eu/forums/disciplinary-committee.43/");
             sys.kick(src);
             return true;
         }
@@ -1549,17 +1549,18 @@ afterLogIn : function(src) {
             return;
         }
     }*/
-    sys.sendMessage(src, "*** Official Safari ***");
-    sys.sendMessage(src, "±Global Channels: #Tournaments | #Hangman | #Trivia | #Mafia");
+    sys.sendMessage(src, "*** Type in /rules to see the rules and /commands to see the commands! ***");
+    sys.sendMessage(src, "±Official Side Channels: #Tournaments | #Safari | #Hangman | #Trivia | #Mafia");
 
     maxPlayersOnline = Math.max(sys.numPlayers(), maxPlayersOnline);
     if (maxPlayersOnline > sys.getVal("MaxPlayersOnline")) {
         sys.saveVal("MaxPlayersOnline", maxPlayersOnline);
     }
-    countbot.sendMessage(src, (typeof(this.startUpTime()) == "string" ?  "Uptime: " + this.startUpTime() + ".  " : "")  + "Max Players Online: " + sys.getVal("MaxPlayersOnline") + ".");
+    countbot.sendMessage(src, (typeof(this.startUpTime()) == "string" ?  "Server Uptime: " + this.startUpTime() + ".  " : "")  + "Max Players Online: " + sys.getVal("MaxPlayersOnline") + ".");
     sys.sendMessage(src, "");
 
     callplugins("afterLogIn", src);
+
    /*if (SESSION.users(src).android) {
         sys.changeTier(src, "Challenge Cup");
         if (sys.existChannel("PO Android")) {
@@ -1675,7 +1676,7 @@ afterChangeTeam : function(src)
     for (var team = 0; team < sys.teamCount(src); team++) {
         if (!tier_checker.has_legal_team_for_tier(src, team, sys.tier(src, team))) {
             tier_checker.find_good_tier(src, team);
-            normalbot.sendMessage(src, "You are in default '" + sys.tier(src, team) + "' tier.");
+            normalbot.sendMessage(src, "You were placed into '" + sys.tier(src, team) + "' tier.");
         }
     }
 
@@ -1887,7 +1888,7 @@ beforeChatMessage: function(src, message, chan) {
 
     if (SESSION.users(src).expired("mute")) {
         SESSION.users(src).un("mute");
-        normalbot.sendMessage(src, "your lock has expired.", channel);
+        normalbot.sendMessage(src, "your mute has expired.", channel);
     }
 
     var isBlocked = true, command, commandData;
@@ -1912,7 +1913,7 @@ beforeChatMessage: function(src, message, chan) {
 
     if (sys.auth(src) < 3 && SESSION.users(src).mute.active && isBlocked) {
         var muteinfo = SESSION.users(src).mute;
-        normalbot.sendMessage(src, "You are locked" + (muteinfo.by ? " by " + muteinfo.by : '')+". " + (muteinfo.expires > 0 ? "Mute expires in " + getTimeString(muteinfo.expires - parseInt(sys.time(), 10)) + ". " : '') + (muteinfo.reason ? "[Reason: " + muteinfo.reason + "]" : ''), channel);
+        normalbot.sendMessage(src, "You are muted" + (muteinfo.by ? " by " + muteinfo.by : '')+". " + (muteinfo.expires > 0 ? "Mute expires in " + getTimeString(muteinfo.expires - parseInt(sys.time(), 10)) + ". " : '') + (muteinfo.reason ? "[Reason: " + muteinfo.reason + "]" : ''), channel);
         sys.stopEvent();
         return;
     }
@@ -1927,9 +1928,9 @@ beforeChatMessage: function(src, message, chan) {
             } else {
                 expiry = "for " + getTimeString(expiry - parseInt(sys.time(), 10), 10);
             }
-            channelbot.sendMessage(src, "You are locked in this channel " + expiry + " by " + auth + "." + (reason === "N/A" ? "" : " [Reason: " + reason + "]"), channel);
+            channelbot.sendMessage(src, "You are muted on this channel " + expiry + " by " + auth + "." + (reason === "N/A" ? "" : " [Reason: " + reason + "]"), channel);
         } else {
-            channelbot.sendMessage(src, "You are locked in this channel.", channel);
+            channelbot.sendMessage(src, "You are muted on this channel.", channel);
         }
         sys.stopEvent();
         return;
@@ -2035,7 +2036,7 @@ beforeChatMessage: function(src, message, chan) {
 
     // Minutes of Silence
     if (SESSION.channels(channel).muteall && !SESSION.channels(channel).isChannelOperator(src) && sys.auth(src) === 0) {
-        normalbot.sendMessage(src, "The chat is on Lockdown!", channel);
+        normalbot.sendMessage(src, "Respect the minutes of silence!", channel);
         sys.stopEvent();
         return;
     }
@@ -2153,7 +2154,7 @@ beforeChatMessage: function(src, message, chan) {
         }
     }
 
-    // Auth tags 
+        // Auth tags 
     if (sys.auth(src) == "3") {
         sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b><font color='red'>·°• Owner •°·</font> " + sys.name(src) + "</b></span> » " + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
@@ -2171,8 +2172,7 @@ beforeChatMessage: function(src, message, chan) {
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);
         return;
-    }   
-    
+    } 
 }, /* end of beforeChatMessage */
 
 
