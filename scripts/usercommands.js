@@ -11,11 +11,11 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
     var ar;
     if (command === "commands" || command === "command") {
         if (commandData === undefined) {
-            sys.sendMessage(src, "*** Commands ***", channel);
+            sys.sendMessage(src, "~~~ Safari Commands ~~~", channel);
             for (x = 0; x < this.help.length; ++x) {
                 sys.sendMessage(src, this.help[x], channel);
             }
-            sys.sendMessage(src, "*** Other Commands ***", channel);
+            sys.sendMessage(src, "~~~ Safari Other Commands ~~~", channel);
             sys.sendMessage(src, "/commands channel: To know of channel commands", channel);
             if (sys.auth(src) > 0 || SESSION.users(src).tempMod) {
                 sys.sendMessage(src, "/commands mod: To know of moderator commands", channel);
@@ -42,8 +42,8 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         }
 
         commandData = commandData.toLowerCase();
-        if ( (commandData === "mod" && sys.auth(src) > 0 || SESSION.users(src).tempMod) ||
-             (commandData === "admin" && sys.auth(src) > 1 || SESSION.users(src).tempAdmin) ||
+        if ( (commandData === "moderator" && sys.auth(src) > 0 || SESSION.users(src).tempMod) ||
+             (commandData === "administrator" && sys.auth(src) > 1 || SESSION.users(src).tempAdmin) ||
              (commandData === "owner" && (sys.auth(src) > 2  || isSuperAdmin(src))) ||
              (commandData === "channel") ) {
             sys.sendMessage(src, "", channel);
@@ -201,12 +201,12 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             return;
         }
         sys.sendMessage(src, "", channel);
-        sys.sendMessage(src, "*** Pokemon Online League ***", channel);
+        sys.sendMessage(src, "*** Safari League ***", channel);
         sys.sendMessage(src, "", channel);
         ar = script.league;
         for (x = 0; x < ar.length; ++x) {
             if (ar[x].length > 0) {
-                sys.sendHtmlMessage(src, "<span style='font-weight: bold'>" + utilities.html_escape(ar[x][0].toCorrectCase()) + "</span> - " + ar[x][1].format(utilities.html_escape(ar[x][0])) + " " + (sys.id(ar[x][0]) !== undefined ? "<span style='color: green'>(online)</span>" : "<span style='color: red'>(offline)</span>"), channel);
+                sys.sendHtmlMessage(src, "<span style='font-weight: bold'>" + utilities.html_escape(ar[x][0].toCorrectCase()) + "</span> - " + ar[x][1].format(utilities.html_escape(ar[x][0])) + " " + (sys.id(ar[x][0]) !== undefined ? "<span style='color: red'>(online)</span>" : "<span style='color: red'>(Offline)</span>"), channel);
             }
         }
         sys.sendMessage(src, "", channel);
@@ -268,7 +268,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             return;
         }
         sys.sendMessage(src, "", channel);
-        sys.sendMessage(src, "*** Pokémon Online Server Rules ***", channel);
+        sys.sendMessage(src, "*** Safari Server Rules ***", channel);
         sys.sendMessage(src, "", channel); 
         for (var num in script.rules) {
             for (var e in script.rules[num][language]) {
@@ -291,8 +291,9 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             countbot.sendMessage(src, "There are  " + count + " " + commandData + " players online", channel);
             return;
         }
+        sys.sendHtmlMessage(src, "<span style='font-weight: bold'>" + utilities.html_escape(ar[x][0].toCorrectCase()) + "</span> - " + ar[x][1].format(utilities.html_escape(ar[x][0])) + " " + (sys.id(ar[x][0]) !== undefined ? "<span style='color: red'>(online)</span>" : "<span style='color: red'>(Offline)</span>"), channel);
         if (commandData === "top" || commandData === "max") {
-            countbot.sendMessage(src, "Max number of players online was " + sys.getVal("MaxPlayersOnline") + ".", channel);
+            countbot.sendMessage(src, "Players online was " + sys.getVal("MaxPlayersOnline") + ".", channel);
             return;
         }
         countbot.sendMessage(src, "There are " + sys.numPlayers() + " players online.", channel);
