@@ -12,8 +12,8 @@ var Config = {
     checkbot: "Snorlax",
     coinbot: "Meowth",
     countbot: "CountBot",
-    tourneybot: "Typhlosion",
-    rankingbot: "Porygon",
+    tourneybot: "Typhlosgion",
+    rankingbot: "Porygon2",
     battlebot: "Blastoise",
     commandbot: "CommandBot",
     querybot: "QueryBot",
@@ -1550,7 +1550,7 @@ afterLogIn : function(src) {
             return;
         }
     }*/
-    sys.sendMessage(src, "*** How to play: /start squirtle /start charmander or /start bulbasaur You may skip the tutorial. Type /skiptutorial confirm Use /buy to see are shop. ***");
+    sys.sendMessage(src, "*** How to play: /start squirtle /start charmander or /start bulbasaur You may skip the tutorial. Type /skiptutorial confirm Use /buy to see are shop. ***" );
     sys.sendMessage(src, "±Channels: #Tournaments | #Hangman | #Trivia | #Mafia");
 
     maxPlayersOnline = Math.max(sys.numPlayers(), maxPlayersOnline);
@@ -1812,7 +1812,7 @@ beforeChatMessage: function(src, message, chan) {
         throttleMsg = true;
     }
     if (throttleMsg) {
-        normalbot.sendMessage(src, "Safari Warden: Your message is too long, please make it shorter :3", channel);
+        normalbot.sendMessage(src, "Safari Warden: Your message is too long, please make it shorter. ", channel);
         sys.stopEvent();
         return;
     }
