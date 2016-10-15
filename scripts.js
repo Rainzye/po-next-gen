@@ -24,7 +24,7 @@ var Config = {
     // suspectvoting.js available, but not in use
     Plugins: ["mafia.js", "amoebagame.js", "tourstats.js", "trivia.js", "tours.js", "newtourstats.js", "auto_smute.js", "battlefactory.js", "hangman.js", "blackjack.js", "mafiastats.js", "mafiachecker.js", "safari.js", "youtube.js", "autoteams.js"],
     Mafia: {
-        bot: "Murkrow",
+        bot: "Crobat",
         norepeat: 5,
         stats_file: "scriptdata/mafia_stats.json",
         max_name_length: 16,
@@ -696,7 +696,7 @@ issueBan : function(type, src, tar, commandData, maxTime) {
         else {
             banbot = normalbot;
         }
-        var verb = {"mute": "muted", "mban": "banned from Mafia", "smute": "secretly muted", "hmute": "banned from Hangman", "safban": "banned from Safari"}[type];
+        var verb = {"mute": "locked", "mban": "banned from Mafia", "smute": "secretly muted", "hmute": "banned from Hangman", "safban": "banned from Safari"}[type];
         var nomi = {"mute": "mute", "mban": "mafia ban", "smute": "secret mute", "hmute": "hangman ban", "safban": "safari ban"}[type];
         var sendAll =  {
             "smute": function(line) {
@@ -813,7 +813,7 @@ unban: function(type, src, tar, commandData) {
         else {
             banbot = normalbot;
         }
-    var verb = {"mute": "unmuted", "mban": "unbanned from Mafia", "smute": "secretly unmuted", "hmute": "unbanned from Hangman", "safban": "unbanned from Safari"}[type];
+    var verb = {"mute": "unlocked", "mban": "unbanned from Mafia", "smute": "secretly unmuted", "hmute": "unbanned from Hangman", "safban": "unbanned from Safari"}[type];
     var nomi = {"mute": "unmute", "mban": "mafia unban", "smute": "secret unmute", "hmute": "hangman unban", "safban": "safari unban"}[type];
     var past = {"mute": "muted", "mban": "mafia banned", "smute": "secretly muted", "hmute": "hangman banned", "safban": "safari banned"}[type];
     var sendAll =  {
@@ -1138,7 +1138,7 @@ beforeChannelJoin : function(src, channel) {
     if (channel === staffchannel && script.isContrib(src) && !sys.dbRegistered(sys.name(src))) {
         var contribName = utilities.getCorrectPropName(sys.name(src), script.contributors.hash);
         normalbot.sendAll(contribName + " was removed from contributors due to their alt being unregistered. [Contributions: " + script.contributors.get(contribName) + "]", staffchannel);
-        sys.sendMessage(src, "±Guard: Sorry, access to that place is restricted!");
+        sys.sendMessage(src, "±Channel: Access Denied!");
         script.contributors.remove(contribName);
         sys.stopEvent();
         return;
@@ -1147,12 +1147,12 @@ beforeChannelJoin : function(src, channel) {
         return;
     }
     if (poChannel.inviteonly > sys.auth(src)) {
-        sys.sendMessage(src, "±Guard: Sorry, but this channel is for higher authority!");
+        sys.sendMessage(src, "±Channel: Access Denied!");
         sys.stopEvent();
         return;
     }
     if ((channel == staffchannel || channel == sachannel) && !this.canJoinStaffChannel(src)) {
-        sys.sendMessage(src, "±Guard: Sorry, access to that place is restricted!");
+        sys.sendMessage(src, "±Channel: Access Denied!");
         sys.stopEvent();
         return;
     }
@@ -1175,7 +1175,7 @@ beforeChannelJoin : function(src, channel) {
                     normalbot.sendMessage(src, "Your ban from " + type[x] + " expired.");
                 } else {
                     var info = poUser[bans[x]];
-                    sys.sendMessage(src, "±Guard: You are banned from " + type[x] + (info.by ? " by " + info.by : '')+". " + (info.expires > 0 ? "Ban expires in " + getTimeString(info.expires - parseInt(sys.time(), 10)) + ". " : '') + (info.reason ? "[Reason: " + info.reason + "]" : ''));
+                    sys.sendMessage(src, "±Channel: You are banned from " + type[x] + (info.by ? " by " + info.by : '')+". " + (info.expires > 0 ? "Ban expires in " + getTimeString(info.expires - parseInt(sys.time(), 10)) + ". " : '') + (info.reason ? "[Reason: " + info.reason + "]" : ''));
                     sys.stopEvent();
                     return;
                 }
@@ -1183,7 +1183,7 @@ beforeChannelJoin : function(src, channel) {
         }
     }
     if (channel == watchchannel && sys.auth(src) < 1) {
-        sys.sendMessage(src, "±Guard: Sorry, access to that place is restricted!");
+        sys.sendMessage(src, "±Channel: Access Denied!");
         sys.stopEvent();
         return;
     }
@@ -1200,7 +1200,7 @@ beforeChannelCreated : function(chan, name, src) {
         for (var i = 0; i < script.chanNameBans.length; ++i) {
             var regexp = script.chanNameBans[i];
             if (regexp.test(name)) {
-                sys.sendMessage(src, 'This kind of channel name is banned from the server. (Matching regexp: ' + regexp + ')');
+                sys.sendMessage(src, 'This name is banned from the safari. (Matching regexp: ' + regexp + ')');
                 sys.stopEvent();
             }
         }
@@ -1214,9 +1214,9 @@ afterChannelCreated : function (chan, name, src) {
 
 afterChannelJoin : function(player, chan) {
     if (typeof SESSION.channels(chan).topic != 'undefined') {
-        sys.sendMessage(player, "Welcome Message: " + SESSION.channels(chan).topic, chan);
+        sys.sendMessage(player, "Main Message: " + SESSION.channels(chan).topic, chan);
         /*if (SESSION.channels(chan).topicSetter)
-            sys.sendMessage(player, "Set by: " + SESSION.channels(chan).topicSetter, chan);*/
+            sys.sendMessage(player, "Edited by: " + SESSION.channels(chan).topicSetter, chan);*/
     }
     if (SESSION.channels(chan).isChannelOperator(player)) {
         sys.sendMessage(player, "±" + Config.channelbot + ": use /topic <topic> to change the welcome message of this channel", chan);
@@ -1497,7 +1497,7 @@ cookieBanned: function(src) {
             name = cookie.substr(cookie.indexOf(" ")+1);
         }
         kickbot.sendAll(nonFlashing(sys.name(src)) + " was banned by cookie" + (name ? " [Original Name: " + nonFlashing(name) + "]." : "."), watchchannel);
-        normalbot.sendMessage(src, "You are currently banned from the server. If you believe this to be an error, post here: http://pokemon-online.eu/forums/disciplinary-committee.43/");
+        normalbot.sendMessage(src, "You are currently banned from the safari");
         sys.kick(src);
         return true;
     } else if (cookie === "muted" || cookie.substr(0, 5) === "muted") {
@@ -1523,7 +1523,7 @@ cookieBanned: function(src) {
             SESSION.users(src).activate("smute", Config.kickbot, parseInt(sys.time(), 10) + 86400, "ID", true);
             return;
         } else {
-            normalbot.sendMessage(src, "You are currently banned from the server. If you believe this to be an error, post here: http://pokemon-online.eu/forums/disciplinary-committee.43/");
+            normalbot.sendMessage(src, "You are currently banned from the safari.");
             sys.kick(src);
             return true;
         }
@@ -1549,7 +1549,7 @@ afterLogIn : function(src) {
             return;
         }
     }*/
-    sys.sendMessage(src, "*** A ***");
+    sys.sendMessage(src, "*** Pokémon Online (Beta) Credits: Fuzzysqurl/Ricekirby/Steve/Coyotte508 ***");
     sys.sendMessage(src, "±Official Side Channels: #Tournaments | #Hangman | #Trivia | #Mafia");
 
     maxPlayersOnline = Math.max(sys.numPlayers(), maxPlayersOnline);
@@ -1811,7 +1811,7 @@ beforeChatMessage: function(src, message, chan) {
         throttleMsg = true;
     }
     if (throttleMsg) {
-        normalbot.sendMessage(src, "Hi! Your message is too long, please make it shorter :3", channel);
+        normalbot.sendMessage(src, "Hi! Your message is too long, please make it shorter :)", channel);
         sys.stopEvent();
         return;
     }
