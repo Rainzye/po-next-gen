@@ -1549,7 +1549,7 @@ afterLogIn : function(src) {
             return;
         }
     }*/
-    sys.sendMessage(src, "*** Pokémon Online (Beta) Credits: Fuzzysqurl/Ricekirby/Steve/Coyotte508 ***");
+    sys.sendMessage(src, "*** PO (Beta) Credits: Steve/Fuzzysqul/Coyotte508 ***");
     sys.sendMessage(src, "±Official Side Channels: #Tournaments | #Hangman | #Trivia | #Mafia");
 
     maxPlayersOnline = Math.max(sys.numPlayers(), maxPlayersOnline);
@@ -1676,7 +1676,7 @@ afterChangeTeam : function(src)
     for (var team = 0; team < sys.teamCount(src); team++) {
         if (!tier_checker.has_legal_team_for_tier(src, team, sys.tier(src, team))) {
             tier_checker.find_good_tier(src, team);
-            normalbot.sendMessage(src, "You were placed into '" + sys.tier(src, team) + "' tier.");
+            normalbot.sendMessage(src, "You are in safari's default '" + sys.tier(src, team) + "' tier.");
         }
     }
 
@@ -1811,7 +1811,7 @@ beforeChatMessage: function(src, message, chan) {
         throttleMsg = true;
     }
     if (throttleMsg) {
-        normalbot.sendMessage(src, "Hi! Your message is too long, please make it shorter :)", channel);
+        normalbot.sendMessage(src, "You are temporarily locked. You may talk in 5 seconds.", channel);
         sys.stopEvent();
         return;
     }
@@ -1838,7 +1838,7 @@ beforeChatMessage: function(src, message, chan) {
         if (poUser.talk === undefined || poUser.talk + message.length * MillisPerChar < now) {
             poUser.talk = now;
         } else {
-            bot.sendMessage(src, "Please wait a moment before talking again.", channel);
+            bot.sendMessage(src, "You are temporarily locked. You may talk in 5 seconds", channel);
             sys.stopEvent();
             return;
         }
@@ -1888,7 +1888,7 @@ beforeChatMessage: function(src, message, chan) {
 
     if (SESSION.users(src).expired("mute")) {
         SESSION.users(src).un("mute");
-        normalbot.sendMessage(src, "your mute has expired.", channel);
+        normalbot.sendMessage(src, "your lock has expired.", channel);
     }
 
     var isBlocked = true, command, commandData;
@@ -1913,7 +1913,7 @@ beforeChatMessage: function(src, message, chan) {
 
     if (sys.auth(src) < 3 && SESSION.users(src).mute.active && isBlocked) {
         var muteinfo = SESSION.users(src).mute;
-        normalbot.sendMessage(src, "You are muted" + (muteinfo.by ? " by " + muteinfo.by : '')+". " + (muteinfo.expires > 0 ? "Mute expires in " + getTimeString(muteinfo.expires - parseInt(sys.time(), 10)) + ". " : '') + (muteinfo.reason ? "[Reason: " + muteinfo.reason + "]" : ''), channel);
+        normalbot.sendMessage(src, "You are locked" + (muteinfo.by ? " by " + muteinfo.by : '')+". " + (muteinfo.expires > 0 ? "Lock expires in " + getTimeString(muteinfo.expires - parseInt(sys.time(), 10)) + ". " : '') + (muteinfo.reason ? "[Reason: " + muteinfo.reason + "]" : ''), channel);
         sys.stopEvent();
         return;
     }
@@ -1928,9 +1928,9 @@ beforeChatMessage: function(src, message, chan) {
             } else {
                 expiry = "for " + getTimeString(expiry - parseInt(sys.time(), 10), 10);
             }
-            channelbot.sendMessage(src, "You are muted on this channel " + expiry + " by " + auth + "." + (reason === "N/A" ? "" : " [Reason: " + reason + "]"), channel);
+            channelbot.sendMessage(src, "You are locked in this channel " + expiry + " by " + auth + "." + (reason === "N/A" ? "" : " [Reason: " + reason + "]"), channel);
         } else {
-            channelbot.sendMessage(src, "You are muted on this channel.", channel);
+            channelbot.sendMessage(src, "You are locked in this channel.", channel);
         }
         sys.stopEvent();
         return;
@@ -1979,7 +1979,7 @@ beforeChatMessage: function(src, message, chan) {
             return ret;
         }
         if (!SESSION.channels(channel).isChannelOperator(src) && SESSION.users(src).contributions === undefined && sys.auth(src) < 1 && user.lastline.message == message && user.lastline.time + 15 > time) {
-            normalbot.sendMessage(src, "Please do not repeat yourself!", channel);
+            normalbot.sendMessage(src, "You are temporarily locked. You may talk in 5 seconds", channel);
             ret = true;
         }
         user.lastline.time = time;
@@ -2036,7 +2036,7 @@ beforeChatMessage: function(src, message, chan) {
 
     // Minutes of Silence
     if (SESSION.channels(channel).muteall && !SESSION.channels(channel).isChannelOperator(src) && sys.auth(src) === 0) {
-        normalbot.sendMessage(src, "Respect the minutes of silence!", channel);
+        normalbot.sendMessage(src, "Safari is locked!", channel);
         sys.stopEvent();
         return;
     }
@@ -2156,19 +2156,19 @@ beforeChatMessage: function(src, message, chan) {
 
     // Auth tags 
     if (sys.auth(src) == "3") {
-        sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b><font color='red'>·°• Owner •°·</font> " + sys.name(src) + "</b></span> » " + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+        sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b><font color='black'>(Owne)</font> " + sys.name(src) + "</b></span> » " + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);
     } else if (sys.auth(src) == "2") {
-        sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b><font color='red'>·°• Admin •°·</font> " + sys.name(src) + "</b></span> » " + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+        sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b><font color='black'>(Administrator)</font> " + sys.name(src) + "</b></span> » " + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);
     } else if (sys.auth(src) == "1") {
-        sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b><font color='red'>·°• Mod •°·</font> " + sys.name(src) + "</b></span> » " + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+        sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b><font color='black'>(Moderator)</font> " + sys.name(src) + "</b></span> » " + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);
     } else if (sys.auth(src) == "0") {
-        sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b><font color='blue'>·°• Safari •°·</font> " + sys.name(src) + "</b></span> » " + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+        sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b><font color='blue'>(Safari)</font> " + sys.name(src) + "</b></span> » " + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);
         return;
@@ -2236,7 +2236,7 @@ afterChatMessage : function(src, message, chan)
             }
         }
         else if (user.caps >= Math.floor(maxCaps / 2)) {
-            capsbot.sendMessage(src, "Warning: You may be muted for excessive usage of CAPS LOCK!", channel);
+            capsbot.sendMessage(src, "Warning: You may be locked for excessive usage of CAPS LOCK!", channel);
         }
     } else if (user.caps > 0) {
         user.caps -= 1;
@@ -2294,7 +2294,7 @@ afterChatMessage : function(src, message, chan)
             }
         }
         else if (user.floodcount >= Math.floor(linecount / 2)) {
-            kickbot.sendMessage(src, "Warning: You may be muted for flooding the chat!", channel);
+            kickbot.sendMessage(src, "Warning: You may be locked for flooding the chat!", channel);
         }
     }
     SESSION.channels(channel).beforeMessage(src, message);
@@ -2410,7 +2410,7 @@ beforeChangeTier : function(src, team, oldtier, newtier) {
     }
     if (!tier_checker.has_legal_team_for_tier(src, team, newtier)) {
        sys.stopEvent();
-       normalbot.sendMessage(src, "Sorry, you can not change into that tier.");
+       normalbot.sendMessage(src, "Safari Warden: you can not change into that tier.");
        tier_checker.find_good_tier(src, team);
     }
 },
