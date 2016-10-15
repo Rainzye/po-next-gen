@@ -1220,7 +1220,7 @@ afterChannelJoin : function(player, chan) {
             sys.sendMessage(player, "Edited by: " + SESSION.channels(chan).topicSetter, chan);*/
     }
     if (SESSION.channels(chan).isChannelOperator(player)) {
-        sys.sendMessage(player, "±" + Config.channelbot + ":Additional Help: /help & /guide.", chan);
+        sys.sendMessage(player, "±" + Config.channelbot + ": Additional Help: /help & /guide.", chan);
     }
     if (SESSION.channels(chan).masters.length <= 0 && !this.isOfficialChan(chan)) {
         sys.sendMessage(player, "±" + Config.channelbot + ": This channel is unregistered. If you're looking to own this channel, type /register in order to prevent your channel from being stolen.", chan);
@@ -1498,7 +1498,7 @@ cookieBanned: function(src) {
             name = cookie.substr(cookie.indexOf(" ")+1);
         }
         kickbot.sendAll(nonFlashing(sys.name(src)) + " was banned by cookie" + (name ? " [Original Name: " + nonFlashing(name) + "]." : "."), watchchannel);
-        normalbot.sendMessage(src, "You are currently banned from the safari.");
+        normalbot.sendMessage(src, "You are currently banned from safari.");
         sys.kick(src);
         return true;
     } else if (cookie === "muted" || cookie.substr(0, 5) === "muted") {
@@ -1550,7 +1550,7 @@ afterLogIn : function(src) {
             return;
         }
     }*/
-    sys.sendMessage(src, "*** How to play: /start squirtle /start charmander or /start bulbasaur You may skip the tutorial. Type /skiptutorial confirm Use /buy to see are shop. ***" );
+    sys.sendMessage(src, " *** How to play: /start squirtle /start charmander or /start bulbasaur You may skip the tutorial. Type /skiptutorial confirm Use /buy to see are shop. ***");
     sys.sendMessage(src, "±Channels: #Tournaments | #Hangman | #Trivia | #Mafia");
 
     maxPlayersOnline = Math.max(sys.numPlayers(), maxPlayersOnline);
@@ -1677,7 +1677,7 @@ afterChangeTeam : function(src)
     for (var team = 0; team < sys.teamCount(src); team++) {
         if (!tier_checker.has_legal_team_for_tier(src, team, sys.tier(src, team))) {
             tier_checker.find_good_tier(src, team);
-            normalbot.sendMessage(src, "You were placed into '" + sys.tier(src, team) + "' tier.");
+            normalbot.sendMessage(src, "You are in safari's default '" + sys.tier(src, team) + "' tier.");
         }
     }
 
