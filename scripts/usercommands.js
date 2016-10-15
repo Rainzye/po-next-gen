@@ -1,4 +1,4 @@
-/*global battlebot, bot, callplugins, channelbot, coinbot, countbot, exports, getplugins, isNonNegative, isSuperAdmin, normalbot, pokedex, querybot, rankingbot, require, script, sendChanHtmlAll, sys, tier_checker, utilities, CAPSLOCKDAYALLOW, Config, SESSION*/
+J/*global battlebot, bot, callplugins, channelbot, coinbot, countbot, exports, getplugins, isNonNegative, isSuperAdmin, normalbot, pokedex, querybot, rankingbot, require, script, sendChanHtmlAll, sys, tier_checker, utilities, CAPSLOCKDAYALLOW, Config, SESSION*/
 /*jshint strict: false, shadow: true, evil: true, laxcomma: true*/
 /*jslint sloppy: true, vars: true, evil: true, plusplus: true*/
 exports.handleCommand = function (src, command, commandData, tar, channel) {
@@ -291,12 +291,12 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             countbot.sendMessage(src, "There are  " + count + " " + commandData + " players online", channel);
             return;
         }
-        sys.sendHtmlMessage(src, "<span style='font-weight: bold'>" + utilities.html_escape(ar[x][0].toCorrectCase()) + "</span> - " + ar[x][1].format(utilities.html_escape(ar[x][0])) + " " + (sys.id(ar[x][0]) !== undefined ? "<span style='color: red'>(online)</span>" : "<span style='color: red'>(Offline)</span>"), channel);
+        sys.sendHtmlMessage(src, "<span style='font-weight: bold'>" + utilities.html_escape(ar[x][0].toCorrectCase()) + "</span> - " + ar[x][1].format(utilities.html_escape(ar[x][0])) + " " + (sys.id(ar[x][0]) !== undefined ? "<span style='color: red'>(online)</span>" : "<span style='color: red'>(Offline)</span>"), channel);sys.sendHtmlMessage(src, "<span style='font-weight: bold'>" + utilities.html_escape(ar[x][0].toCorrectCase()) + "</span> - " + ar[x][1].format(utilities.html_escape(ar[x][0])) + " " + (sys.id(ar[x][0]) !== undefined ? "<span style='color: red'>(online)</span>" : "<span style='color: red'>(Offline)</span>"), channel);
         if (commandData === "top" || commandData === "max") {
-            countbot.sendMessage(src, "Players online was " + sys.getVal("MaxPlayersOnline") + ".", channel);
+            countbot.sendMessage(src, "Users online was " + sys.getVal("MaxPlayersOnline") + ".", channel);
             return;
         }
-        countbot.sendMessage(src, "There are " + sys.numPlayers() + " players online.", channel);
+        countbot.sendMessage(src, "There are " + sys.numPlayers() + " Usees online.", channel);
         return;
     }
     if (command === "ranking") {
@@ -348,7 +348,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         return;
     }
     if (command === "auth") {
-        var doNotShow = ["[ld]jirachier", "blinky"];
+        var doNotShow = ["Developer", "/"];
         var filterByAuth = function (level) {
             return function (name) {
                 return sys.dbAuth(name) === level;
@@ -370,17 +370,17 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         }
         switch (commandData) {
         case "owners":
-            sys.sendMessage(src, "*** Owners ***", channel);
+            sys.sendMessage(src, "*** Safari Owners ***", channel);
             authListArray.filter(filterByAuth(3)).forEach(printOnlineOffline);
             break;
         case "admins":
         case "administrators":
-            sys.sendMessage(src, "*** Administrators ***", channel);
+            sys.sendMessage(src, "*** Safari Administrators ***", channel);
             authListArray.filter(filterByAuth(2)).forEach(printOnlineOffline);
             break;
         case "mods":
         case "moderators":
-            sys.sendMessage(src, "*** Moderators ***", channel);
+            sys.sendMessage(src, "*** Safari Moderators ***", channel);
             authListArray.filter(filterByAuth(1)).forEach(printOnlineOffline);
             break;
         case "~":
@@ -391,13 +391,13 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             sys.sendMessage(src, "+auth: " + JSON.stringify(ret), channel);
             return;
         default:
-            sys.sendMessage(src, "*** Owners ***", channel);
+            sys.sendMessage(src, "*** Safari Owners ***", channel);
             authListArray.filter(filterByAuth(3)).forEach(printOnlineOffline);
             sys.sendMessage(src, '', channel);
-            sys.sendMessage(src, "*** Administrators ***", channel);
+            sys.sendMessage(src, "*** Safari Administrators ***", channel);
             authListArray.filter(filterByAuth(2)).forEach(printOnlineOffline);
             sys.sendMessage(src, '', channel);
-            sys.sendMessage(src, "*** Moderators ***", channel);
+            sys.sendMessage(src, "*** Safari Moderators ***", channel);
             authListArray.filter(filterByAuth(1)).forEach(printOnlineOffline);
         }
         sys.sendMessage(src, '', channel);
@@ -451,7 +451,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             countbot.sendMessage(src, "Somehow the server uptime is messed up...", channel);
             return;
         }
-        countbot.sendMessage(src, "Server uptime is " + script.startUpTime(), channel);
+        countbot.sendMessage(src, "Online time is " + script.startUpTime(), channel);
         return;
     }
     if (command === "topchannels" || command === "topchannel") {
@@ -529,7 +529,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         }
         if (commandData === "off") {
             delete SESSION.users(src).tiers;
-            normalbot.sendMessage(src, "You have turned tour alerts off!", channel);
+            normalbot.sendMessage(src, "You have turned tournaments alerts off!", channel);
             script.saveKey("touralertson", src, "false");
             return;
         }
@@ -542,7 +542,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             }
             SESSION.users(src).tiers = [];
             script.saveKey("touralerts", src, SESSION.users(src).tiers.join("*"));
-            normalbot.sendMessage(src, "All tour alerts cleared.", channel);
+            normalbot.sendMessage(src, "All tournament alerts cleared.", channel);
             return;
         }
         if (typeof (SESSION.users(src).tiers) === "undefined" || SESSION.users(src).tiers.length === 0) {
@@ -620,7 +620,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
     }
     if (command === "seen") {
         if (commandData === undefined) {
-            querybot.sendMessage(src, "Please provide a username.", channel);
+            querybot.sendMessage(src, "Please provide a chosen name.", channel);
             return;
         }
         var lastLogin = sys.dbLastOn(commandData);
@@ -629,7 +629,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             return;
         }
         if (sys.id(commandData) !== undefined) {
-            querybot.sendMessage(src, commandData + " is currently online!", channel);
+            querybot.sendMessage(src, commandData + " is online!", channel);
             return;
         }
         var index = lastLogin.indexOf("T"), date, time;
