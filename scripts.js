@@ -1,4 +1,4 @@
-// This is the official Pokemon Online Scripts
+// This is the official Safari Scripts for Pokemon Online
 // These scripts will only work on 2.0.00 or newer
 /*jshint laxbreak:true,shadow:true,undef:true,evil:true,trailing:true,proto:true,withstmt:true*/
 // You may change these variables as long as you keep the same type
@@ -1549,8 +1549,8 @@ afterLogIn : function(src) {
             return;
         }
     }*/
-    sys.sendMessage(src, "*** PO (Beta) Credits: Steve/Fuzzysqul/Coyotte508 ***");
-    sys.sendMessage(src, "±Official Side Channels: #Tournaments | #Hangman | #Trivia | #Mafia");
+    sys.sendMessage(src, "*** Credits: Steve/Fuzzysqul/Coyotte508 ***");
+    sys.sendMessage(src, "±Extra Channels: #Tournaments | #Hangman | #Trivia | #Mafia");
 
     maxPlayersOnline = Math.max(sys.numPlayers(), maxPlayersOnline);
     if (maxPlayersOnline > sys.getVal("MaxPlayersOnline")) {
