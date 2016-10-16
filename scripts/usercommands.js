@@ -11,11 +11,11 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
     var ar;
     if (command === "commands" || command === "command") {
         if (commandData === undefined) {
-            sys.sendMessage(src, "*** Commands ***", channel);
+            sys.sendMessage(src, "*** Safari Commands ***", channel);
             for (x = 0; x < this.help.length; ++x) {
                 sys.sendMessage(src, this.help[x], channel);
             }
-            sys.sendMessage(src, "*** Other Commands ***", channel);
+            sys.sendMessage(src, "*** Safari Other Commands ***", channel);
             sys.sendMessage(src, "/commands channel: To know of channel commands", channel);
             if (sys.auth(src) > 0 || SESSION.users(src).tempMod) {
                 sys.sendMessage(src, "/commands mod: To know of moderator commands", channel);
@@ -185,7 +185,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
     }
     if (command === "contributors") {
         sys.sendMessage(src, "", channel);
-        sys.sendMessage(src, "*** CONTRIBUTORS ***", channel);
+        sys.sendMessage(src, "*** Safari contributors ***", channel);
         sys.sendMessage(src, "", channel);
         var x;
         for (x in script.contributors.hash) {
@@ -201,7 +201,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             return;
         }
         sys.sendMessage(src, "", channel);
-        sys.sendMessage(src, "*** Pokemon Online League ***", channel);
+        sys.sendMessage(src, "*** Safari League ***", channel);
         sys.sendMessage(src, "", channel);
         ar = script.league;
         for (x = 0; x < ar.length; ++x) {
@@ -268,7 +268,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             return;
         }
         sys.sendMessage(src, "", channel);
-        sys.sendMessage(src, "*** Pokémon Online Server Rules ***", channel);
+        sys.sendMessage(src, "*** Safari Server Rules ***", channel);
         sys.sendMessage(src, "", channel); 
         for (var num in script.rules) {
             for (var e in script.rules[num][language]) {
@@ -339,7 +339,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             return;
         }
         if (rank === undefined) {
-            rankingbot.sendMessage(src, "They are not ranked in " + tier + " yet!", channel);
+            rankingbot.sendMessage(src, "This player isn't ranked in " + tier + " yet!", channel);
         } else {
             var wins = sys.ratedWins(name, tier);
             rankingbot.sendMessage(src, name + "'s rank in " + tier + " is " + rank + "/" + sys.totalPlayersByTier(tier) + " [" + sys.ratedBattles(name, tier) + " battles, " + wins + " win" + (wins !== 1 ? "s" : "") + "]!", channel);
@@ -347,7 +347,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         return;
     }
     if (command === "auth") {
-        var doNotShow = ["[ld]jirachier", "blinky"];
+        var doNotShow = ["Developer", "ryan"];
         var filterByAuth = function (level) {
             return function (name) {
                 return sys.dbAuth(name) === level;
@@ -369,17 +369,17 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         }
         switch (commandData) {
         case "owners":
-            sys.sendMessage(src, "*** Owners ***", channel);
+            sys.sendMessage(src, "~~~ (Safari Owners) ~~~", channel);
             authListArray.filter(filterByAuth(3)).forEach(printOnlineOffline);
             break;
         case "admins":
         case "administrators":
-            sys.sendMessage(src, "*** Administrators ***", channel);
+            sys.sendMessage(src, "~~~ (Safari Administrators) ~~~", channel);
             authListArray.filter(filterByAuth(2)).forEach(printOnlineOffline);
             break;
         case "mods":
         case "moderators":
-            sys.sendMessage(src, "*** Moderators ***", channel);
+            sys.sendMessage(src, "~~~ (Safari Moderators) ~~~", channel);
             authListArray.filter(filterByAuth(1)).forEach(printOnlineOffline);
             break;
         case "~":
@@ -390,13 +390,13 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             sys.sendMessage(src, "+auth: " + JSON.stringify(ret), channel);
             return;
         default:
-            sys.sendMessage(src, "*** Owners ***", channel);
+            sys.sendMessage(src, "~~~ ( Safari Owners) ~~~", channel);
             authListArray.filter(filterByAuth(3)).forEach(printOnlineOffline);
             sys.sendMessage(src, '', channel);
-            sys.sendMessage(src, "*** Administrators ***", channel);
+            sys.sendMessage(src, "~~~ (Safari Aministrators) ~~~", channel);
             authListArray.filter(filterByAuth(2)).forEach(printOnlineOffline);
             sys.sendMessage(src, '', channel);
-            sys.sendMessage(src, "*** Moderators ***", channel);
+            sys.sendMessage(src, "~~~ (Safari Moderators) ~~~", channel);
             authListArray.filter(filterByAuth(1)).forEach(printOnlineOffline);
         }
         sys.sendMessage(src, '', channel);
