@@ -1,4 +1,4 @@
-O/*global battlebot, bot, callplugins, channelbot, coinbot, countbot, exports, getplugins, isNonNegative, isSuperAdmin, normalbot, pokedex, querybot, rankingbot, require, script, sendChanHtmlAll, sys, tier_checker, utilities, CAPSLOCKDAYALLOW, Config, SESSION*/
+/*global battlebot, bot, callplugins, channelbot, coinbot, countbot, exports, getplugins, isNonNegative, isSuperAdmin, normalbot, pokedex, querybot, rankingbot, require, script, sendChanHtmlAll, sys, tier_checker, utilities, CAPSLOCKDAYALLOW, Config, SESSION*/
 /*jshint strict: false, shadow: true, evil: true, laxcomma: true*/
 /*jslint sloppy: true, vars: true, evil: true, plusplus: true*/
 exports.handleCommand = function (src, command, commandData, tar, channel) {
