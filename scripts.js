@@ -8,7 +8,7 @@ var Config = {
     bot: "Dragonite",
     kickbot: "Blaziken",
     capsbot: "Exploud",
-    channelbot: ">",
+    channelbot: "Topic",
     checkbot: "Safari",
     coinbot: "Meowth",
     countbot: "Safari",
