@@ -1,4 +1,4 @@
-J/*global battlebot, bot, callplugins, channelbot, coinbot, countbot, exports, getplugins, isNonNegative, isSuperAdmin, normalbot, pokedex, querybot, rankingbot, require, script, sendChanHtmlAll, sys, tier_checker, utilities, CAPSLOCKDAYALLOW, Config, SESSION*/
+/*global battlebot, bot, callplugins, channelbot, coinbot, countbot, exports, getplugins, isNonNegative, isSuperAdmin, normalbot, pokedex, querybot, rankingbot, require, script, sendChanHtmlAll, sys, tier_checker, utilities, CAPSLOCKDAYALLOW, Config, SESSION*/
 /*jshint strict: false, shadow: true, evil: true, laxcomma: true*/
 /*jslint sloppy: true, vars: true, evil: true, plusplus: true*/
 exports.handleCommand = function (src, command, commandData, tar, channel) {
@@ -11,11 +11,11 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
     var ar;
     if (command === "commands" || command === "command") {
         if (commandData === undefined) {
-            sys.sendMessage(src, "~~~ Safari Commands ~~~", channel);
+            sys.sendMessage(src, "*** Commands ***", channel);
             for (x = 0; x < this.help.length; ++x) {
                 sys.sendMessage(src, this.help[x], channel);
             }
-            sys.sendMessage(src, "~~~ Safari Other Commands ~~~", channel);
+            sys.sendMessage(src, "*** Other Commands ***", channel);
             sys.sendMessage(src, "/commands channel: To know of channel commands", channel);
             if (sys.auth(src) > 0 || SESSION.users(src).tempMod) {
                 sys.sendMessage(src, "/commands mod: To know of moderator commands", channel);
@@ -42,8 +42,8 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         }
 
         commandData = commandData.toLowerCase();
-        if ( (commandData === "moderator" && sys.auth(src) > 0 || SESSION.users(src).tempMod) ||
-             (commandData === "administrator" && sys.auth(src) > 1 || SESSION.users(src).tempAdmin) ||
+        if ( (commandData === "mod" && sys.auth(src) > 0 || SESSION.users(src).tempMod) ||
+             (commandData === "admin" && sys.auth(src) > 1 || SESSION.users(src).tempAdmin) ||
              (commandData === "owner" && (sys.auth(src) > 2  || isSuperAdmin(src))) ||
              (commandData === "channel") ) {
             sys.sendMessage(src, "", channel);
@@ -201,12 +201,12 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             return;
         }
         sys.sendMessage(src, "", channel);
-        sys.sendMessage(src, "*** Safari League ***", channel);
+        sys.sendMessage(src, "*** Pokemon Online League ***", channel);
         sys.sendMessage(src, "", channel);
         ar = script.league;
         for (x = 0; x < ar.length; ++x) {
             if (ar[x].length > 0) {
-                sys.sendHtmlMessage(src, "<span style='font-weight: bold'>" + utilities.html_escape(ar[x][0].toCorrectCase()) + "</span> - " + ar[x][1].format(utilities.html_escape(ar[x][0])) + " " + (sys.id(ar[x][0]) !== undefined ? "<span style='color: red'>(online)</span>" : "<span style='color: red'>(Offline)</span>"), channel);
+                sys.sendHtmlMessage(src, "<span style='font-weight: bold'>" + utilities.html_escape(ar[x][0].toCorrectCase()) + "</span> - " + ar[x][1].format(utilities.html_escape(ar[x][0])) + " " + (sys.id(ar[x][0]) !== undefined ? "<span style='color: green'>(online)</span>" : "<span style='color: red'>(offline)</span>"), channel);
             }
         }
         sys.sendMessage(src, "", channel);
@@ -268,7 +268,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             return;
         }
         sys.sendMessage(src, "", channel);
-        sys.sendMessage(src, "*** Safari Server Rules ***", channel);
+        sys.sendMessage(src, "*** Pokémon Online Server Rules ***", channel);
         sys.sendMessage(src, "", channel); 
         for (var num in script.rules) {
             for (var e in script.rules[num][language]) {
@@ -291,12 +291,11 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             countbot.sendMessage(src, "There are  " + count + " " + commandData + " players online", channel);
             return;
         }
-        sys.sendHtmlMessage(src, "<span style='font-weight: bold'>" + utilities.html_escape(ar[x][0].toCorrectCase()) + "</span> - " + ar[x][1].format(utilities.html_escape(ar[x][0])) + " " + (sys.id(ar[x][0]) !== undefined ? "<span style='color: red'>(online)</span>" : "<span style='color: red'>(Offline)</span>"), channel);sys.sendHtmlMessage(src, "<span style='font-weight: bold'>" + utilities.html_escape(ar[x][0].toCorrectCase()) + "</span> - " + ar[x][1].format(utilities.html_escape(ar[x][0])) + " " + (sys.id(ar[x][0]) !== undefined ? "<span style='color: red'>(online)</span>" : "<span style='color: red'>(Offline)</span>"), channel);
         if (commandData === "top" || commandData === "max") {
-            countbot.sendMessage(src, "Users online was " + sys.getVal("MaxPlayersOnline") + ".", channel);
+            countbot.sendMessage(src, "Max number of players online was " + sys.getVal("MaxPlayersOnline") + ".", channel);
             return;
         }
-        countbot.sendMessage(src, "There are " + sys.numPlayers() + " Usees online.", channel);
+        countbot.sendMessage(src, "There are " + sys.numPlayers() + " players online.", channel);
         return;
     }
     if (command === "ranking") {
@@ -348,7 +347,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         return;
     }
     if (command === "auth") {
-        var doNotShow = ["Developer", "/"];
+        var doNotShow = ["[ld]jirachier", "blinky"];
         var filterByAuth = function (level) {
             return function (name) {
                 return sys.dbAuth(name) === level;
@@ -370,17 +369,17 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         }
         switch (commandData) {
         case "owners":
-            sys.sendMessage(src, "*** Safari Owners ***", channel);
+            sys.sendMessage(src, "*** Owners ***", channel);
             authListArray.filter(filterByAuth(3)).forEach(printOnlineOffline);
             break;
         case "admins":
         case "administrators":
-            sys.sendMessage(src, "*** Safari Administrators ***", channel);
+            sys.sendMessage(src, "*** Administrators ***", channel);
             authListArray.filter(filterByAuth(2)).forEach(printOnlineOffline);
             break;
         case "mods":
         case "moderators":
-            sys.sendMessage(src, "*** Safari Moderators ***", channel);
+            sys.sendMessage(src, "*** Moderators ***", channel);
             authListArray.filter(filterByAuth(1)).forEach(printOnlineOffline);
             break;
         case "~":
@@ -391,13 +390,13 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             sys.sendMessage(src, "+auth: " + JSON.stringify(ret), channel);
             return;
         default:
-            sys.sendMessage(src, "*** Safari Owners ***", channel);
+            sys.sendMessage(src, "*** Owners ***", channel);
             authListArray.filter(filterByAuth(3)).forEach(printOnlineOffline);
             sys.sendMessage(src, '', channel);
-            sys.sendMessage(src, "*** Safari Administrators ***", channel);
+            sys.sendMessage(src, "*** Administrators ***", channel);
             authListArray.filter(filterByAuth(2)).forEach(printOnlineOffline);
             sys.sendMessage(src, '', channel);
-            sys.sendMessage(src, "*** Safari Moderators ***", channel);
+            sys.sendMessage(src, "*** Moderators ***", channel);
             authListArray.filter(filterByAuth(1)).forEach(printOnlineOffline);
         }
         sys.sendMessage(src, '', channel);
@@ -451,7 +450,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             countbot.sendMessage(src, "Somehow the server uptime is messed up...", channel);
             return;
         }
-        countbot.sendMessage(src, "Online time is " + script.startUpTime(), channel);
+        countbot.sendMessage(src, "Server uptime is " + script.startUpTime(), channel);
         return;
     }
     if (command === "topchannels" || command === "topchannel") {
@@ -529,7 +528,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         }
         if (commandData === "off") {
             delete SESSION.users(src).tiers;
-            normalbot.sendMessage(src, "You have turned tournaments alerts off!", channel);
+            normalbot.sendMessage(src, "You have turned tour alerts off!", channel);
             script.saveKey("touralertson", src, "false");
             return;
         }
@@ -542,7 +541,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             }
             SESSION.users(src).tiers = [];
             script.saveKey("touralerts", src, SESSION.users(src).tiers.join("*"));
-            normalbot.sendMessage(src, "All tournament alerts cleared.", channel);
+            normalbot.sendMessage(src, "All tour alerts cleared.", channel);
             return;
         }
         if (typeof (SESSION.users(src).tiers) === "undefined" || SESSION.users(src).tiers.length === 0) {
@@ -620,7 +619,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
     }
     if (command === "seen") {
         if (commandData === undefined) {
-            querybot.sendMessage(src, "Please provide a chosen name.", channel);
+            querybot.sendMessage(src, "Please provide a username.", channel);
             return;
         }
         var lastLogin = sys.dbLastOn(commandData);
@@ -629,7 +628,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             return;
         }
         if (sys.id(commandData) !== undefined) {
-            querybot.sendMessage(src, commandData + " is online!", channel);
+            querybot.sendMessage(src, commandData + " is currently online!", channel);
             return;
         }
         var index = lastLogin.indexOf("T"), date, time;
