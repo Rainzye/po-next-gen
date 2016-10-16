@@ -1,4 +1,4 @@
-/*global battlebot, bot, callplugins, channelbot, coinbot, countbot, exports, getplugins, isNonNegative, isSuperAdmin, normalbot, pokedex, querybot, rankingbot, require, script, sendChanHtmlAll, sys, tier_checker, utilities, CAPSLOCKDAYALLOW, Config, SESSION*/
+O/*global battlebot, bot, callplugins, channelbot, coinbot, countbot, exports, getplugins, isNonNegative, isSuperAdmin, normalbot, pokedex, querybot, rankingbot, require, script, sendChanHtmlAll, sys, tier_checker, utilities, CAPSLOCKDAYALLOW, Config, SESSION*/
 /*jshint strict: false, shadow: true, evil: true, laxcomma: true*/
 /*jslint sloppy: true, vars: true, evil: true, plusplus: true*/
 exports.handleCommand = function (src, command, commandData, tar, channel) {
@@ -365,21 +365,21 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         };
         var authListArray = sys.dbAuths().sort();
         if (commandData !== "~") {
-            sys.sendHtmlMessage(src, "", channel);
+            sys.sendHtmlAllMessage(src, "", channel);
         }
         switch (commandData) {
         case "owners":
-            sys.sendHtmlMessage(src, "*** Safari Owners ***", channel);
+            sys.sendHtmlAllMessage(src, "*** Safari Owners ***", channel);
             authListArray.filter(filterByAuth(3)).forEach(printOnlineOffline);
             break;
         case "admins":
         case "administrators":
-            sys.sendHtmlMessage(src, "*** Safari Administrators ***", channel);
+            sys.sendHtmlAllMessage(src, "*** Safari Administrators ***", channel);
             authListArray.filter(filterByAuth(2)).forEach(printOnlineOffline);
             break;
         case "mods":
         case "moderators":
-            sys.sendHtmlMessage(src, "*** Safari Moderators ***", channel);
+            sys.sendHtmlAllMessage(src, "*** Safari Moderators ***", channel);
             authListArray.filter(filterByAuth(1)).forEach(printOnlineOffline);
             break;
         case "~":
@@ -387,19 +387,19 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             ret.owners = authListArray.filter(filterByAuth(3));
             ret.administrators = authListArray.filter(filterByAuth(2));
             ret.moderators = authListArray.filter(filterByAuth(1));
-            sys.sendHtmlMessage(src, "+auth: " + JSON.stringify(ret), channel);
+            sys.sendHtmlAllMessage(src, "+auth: " + JSON.stringify(ret), channel);
             return;
         default:
-            sys.sendHtmlMessage(src, "*** Safari Owners ***", channel);
+            sys.sendHtmlAllMessage(src, "*** Safari Owners ***", channel);
             authListArray.filter(filterByAuth(3)).forEach(printOnlineOffline);
-            sys.sendHtmlMessage(src, '', channel);
-            sys.sendHtmlMessage(src, "*** Safari Aministrators ***", channel);
+            sys.sendHtmlAllMessage(src, '', channel);
+            sys.sendHtmlAllMessage(src, "*** Safari Aministrators ***", channel);
             authListArray.filter(filterByAuth(2)).forEach(printOnlineOffline);
-            sys.sendHtmlMessage(src, '', channel);
-            sys.sendHtmlessage(src, "*** Safari Moderators ***", channel);
+            sys.sendHtmlAllMessage(src, '', channel);
+            sys.sendHtmlAllMessage(src, "*** Safari Moderators ***", channel);
             authListArray.filter(filterByAuth(1)).forEach(printOnlineOffline);
         }
-        sys.sendHtmlMessage(src, '', channel);
+        sys.sendHtmlAllMessage(src, '', channel);
         return;
     }
     if (command === "sametier") {
