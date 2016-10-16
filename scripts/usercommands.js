@@ -365,21 +365,21 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         };
         var authListArray = sys.dbAuths().sort();
         if (commandData !== "~") {
-            sys.sendHtmlAllMessage(src, "", channel);
+            sys.sendMessage(src, "", channel);
         }
         switch (commandData) {
         case "owners":
-            sys.sendHtmlAllMessage(src, "*** Safari Owners ***", channel);
+            sys.sendMessage(src, "*** Safari Owners ***", channel);
             authListArray.filter(filterByAuth(3)).forEach(printOnlineOffline);
             break;
         case "admins":
         case "administrators":
-            sys.sendHtmlAllMessage(src, "*** Safari Administrators ***", channel);
+            sys.sendMessage(src, "*** Safari Administrators ***", channel);
             authListArray.filter(filterByAuth(2)).forEach(printOnlineOffline);
             break;
         case "mods":
         case "moderators":
-            sys.sendHtmlAllMessage(src, "*** Safari Moderators ***", channel);
+            sys.sendMessage(src, "*** Safari Moderators ***", channel);
             authListArray.filter(filterByAuth(1)).forEach(printOnlineOffline);
             break;
         case "~":
@@ -387,19 +387,19 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             ret.owners = authListArray.filter(filterByAuth(3));
             ret.administrators = authListArray.filter(filterByAuth(2));
             ret.moderators = authListArray.filter(filterByAuth(1));
-            sys.sendHtmlAllMessage(src, "+auth: " + JSON.stringify(ret), channel);
+            sys.sendMessage(src, "+auth: " + JSON.stringify(ret), channel);
             return;
         default:
-            sys.sendHtmlAllMessage(src, "*** Safari Owners ***", channel);
+            sys.sendMessage(src, "*** Safari Owners ***", channel);
             authListArray.filter(filterByAuth(3)).forEach(printOnlineOffline);
-            sys.sendHtmlAllMessage(src, '', channel);
-            sys.sendHtmlAllMessage(src, "*** Safari Aministrators ***", channel);
+            sys.sendMessage(src, '', channel);
+            sys.sendMessage(src, "*** Safari Aministrators ***", channel);
             authListArray.filter(filterByAuth(2)).forEach(printOnlineOffline);
-            sys.sendHtmlAllMessage(src, '', channel);
-            sys.sendHtmlAllMessage(src, "*** Safari Moderators ***", channel);
+            sys.sendMessage(src, '', channel);
+            sys.sendMessage(src, "*** Safari Moderators ***", channel);
             authListArray.filter(filterByAuth(1)).forEach(printOnlineOffline);
         }
-        sys.sendHtmlAllMessage(src, '', channel);
+        sys.sendMessage(src, '', channel);
         return;
     }
     if (command === "sametier") {
