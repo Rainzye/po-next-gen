@@ -1,4 +1,4 @@
-membert laxbreak: true, shadow: true, undef: true, evil: true, trailing: true, proto: true, withstmt: true*/
+/*jshint laxbreak: true, shadow: true, undef: true, evil: true, trailing: true, proto: true, withstmt: true*/
 /*global exports, require, SESSION, sys, script, channelbot, Config, normalbot, sendChanHtmlAll, utilities, staffchannel, sachannel, watchchannel, revchan, getSeconds*/
 exports.handleCommand = function (src, command, commandData, tar, channel) {
     var html_escape = require("utilities.js").html_escape;
@@ -60,8 +60,8 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         }
         channelbot.sendHtmlMessage(src, "The channel members of " + sys.channel(channel) + " are:", channel);
         channelbot.sendHtmlMessage(src, "Owners: " + ownersArr.join(", "), channel);
-        channelbot.sendHtmlMessage(src, "Administrators: " + adminsArr.join(", "), channel);
-        channelbot.sendHtmlMessage(src, "Moderators: " + modsArr.join(", "), channel);
+        channelbot.sendHtmlMessage(src, "Admins: " + adminsArr.join(", "), channel);
+        channelbot.sendHtmlMessage(src, "Mods: " + modsArr.join(", "), channel);
         if (SESSION.channels(channel).inviteonly >= 1 || SESSION.channels(channel).members.length >= 1) {
             channelbot.sendHtmlMessage(src, "Members: " + membersArr.join(", "), channel);
         }
@@ -69,11 +69,11 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
     }
     if (command === "register") {
         if (!sys.dbRegistered(sys.name(src))) {
-            channelbot.sendMessage(src, "You need to register. Before taking ownership of this channel.", channel);
+            channelbot.sendMessage(src, "You need to register on the server before registering a channel to yourself for security reasons!", channel);
             return;
         }
         if (sys.auth(src) < 1 && script.isOfficialChan(channel)) {
-            channelbot.sendMessage(src, "Access Denied!", channel);
+            channelbot.sendMessage(src, "You don't have sufficient authority to register this channel!", channel);
             return;
         }
         if (poChannel.masters.length === 0) {
@@ -99,7 +99,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
                         }
                     } else {
                         poChannel.register(sys.name(src));
-                        channelbot.sendMessage(src, "You have successfully taken ownership. Take a look of /commands channel", channel);
+                        channelbot.sendMessage(src, "You registered this channel successfully. Take a look of /commands channel", channel);
                         channelbot.sendAll(sys.name(src) + " has registered the channel.", channel);
                         return;
                     }
@@ -112,7 +112,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             channelbot.sendMessage(src, "Only a channel admin can register.", channel);
             return;
         }
-        channelbot.sendMessage(src, "This channel is registered. Try /cjoin 'name' to check if another your unregistered.", channel);
+        channelbot.sendMessage(src, "This channel is already registered.", channel);
         return;
     }
     if (command === "crules" || command === "channelrules") {
@@ -155,7 +155,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             return;
         }
         if (!sys.dbRegistered(newName)) {
-            channelbot.sendMessage(src, "You're account isn't registered so you can't give it channel authority!", channel);
+            channelbot.sendMessage(src, "That account isn't registered so you can't give it channel authority!", channel);
             return;
         }
         if (sys.ip(sys.id(newName)) !== sys.ip(src)) {
@@ -202,7 +202,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             channelbot.sendAll(sys.name(src) + " transferred their Channel Membership to " + newName + "!", channel);
             return;
         }
-        channelbot.sendMessage(src, "Access Denied!", channel);
+        channelbot.sendMessage(src, "You don't have sufficient channel auth to pass that position.", channel);
         return;
     }
 
@@ -300,7 +300,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         return "no command";
     }
 
-    if (["ck", "chankick", "lt49774", "lovetap"].contains(command)) {
+    if (["ck", "chankick", "lt", "lovetap"].contains(command)) {
         if (tar === undefined || !sys.isInChannel(tar, channel)) {
             normalbot.sendMessage(src, "Choose a valid target to kick", channel);
             return;
@@ -309,9 +309,9 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             normalbot.sendMessage(src, "Your target is not in the channel.", channel);
             return;
         }
-        if (command === "lt49774" || command === "lovetap") {
+        if (command === "lt" || command === "lovetap") {
             var colour = script.getColor(src);
-            sendChanHtmlAll("<font color='" + colour + "'><timestamp/> *** <b>" + utilities.html_escape(sys.name(src)) + "</b> Cya " + commandData + ".</font>", channel);
+            sendChanHtmlAll("<font color='" + colour + "'><timestamp/> *** <b>" + utilities.html_escape(sys.name(src)) + "</b> love taps " + commandData + ".</font>", channel);
         } else {
             normalbot.sendAll(sys.name(src) + " kicked " + commandData + " from the channel!", channel);
         }
