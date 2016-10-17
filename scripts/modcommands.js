@@ -823,10 +823,21 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         sys.appendToFile("scriptdata/showteamlog.txt", "{0} viewed the team of {1} -- ({2})\n".format(sys.name(src), sys.name(tar), new Date().toUTCString()));
         return;
     }
+    
+    if (command === "warn") {
+        if (!tar) {
+            normalbot.sendMessage(src, "No such user.", channel);
+            return;
+        }
+        
+        normalbot.sendAll("User " + sys.name(tar) + " was warned by " + sys.name(src) + " for breaking rules!");
+        return;
+    }
     return "no command";
 };
 exports.help =
     [
+        "/warn: Warns someone for breaking rules.",
         "/k: Kicks someone. /sk for silent.",
         "/mute: Mutes someone. Format is /mute name:reason:time. Time is optional and defaults to 1 day.",
         "/unmute: Unmutes someone.",
