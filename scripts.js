@@ -647,7 +647,7 @@ init : function() {
 
     script.battlesStopped = false;
 
-    maxPlayersOnline = 0;
+    maxPlayersOnline = 54;
 
     lineCount = 0;
 
@@ -1476,7 +1476,7 @@ startUpTime: function() {
         var hours = parseInt((diff % (60*60*24)) / (60*60), 10);
         var minutes = parseInt((diff % (60*60)) / 60, 10);
         var seconds = (diff % 60);
-        return days+"Days "+hours+"Hours "+minutes+"Minutes "+seconds+"Seconds";
+        return days+" Days "+hours+" Hours "+minutes+" Minutes "+seconds+" Seconds";
     } else {
         return 0;
     }
