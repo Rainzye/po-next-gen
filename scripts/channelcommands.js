@@ -58,22 +58,22 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
                 membersArr.push(html_escape(SESSION.channels(channel).members[x]));
             }
         }
-        channelbot.sendHtmlMessage(src, "The channel members of " + sys.channel(channel) + " are:", channel);
+        channelbot.sendHtmlMessage(src, "Safari channel members of " + sys.channel(channel) + " are:", channel);
         channelbot.sendHtmlMessage(src, "Owners: " + ownersArr.join(", "), channel);
-        channelbot.sendHtmlMessage(src, "Admins: " + adminsArr.join(", "), channel);
-        channelbot.sendHtmlMessage(src, "Mods: " + modsArr.join(", "), channel);
+        channelbot.sendHtmlMessage(src, "Administrator: " + adminsArr.join(", "), channel);
+        channelbot.sendHtmlMessage(src, "Moderator: " + modsArr.join(", "), channel);
         if (SESSION.channels(channel).inviteonly >= 1 || SESSION.channels(channel).members.length >= 1) {
-            channelbot.sendHtmlMessage(src, "Members: " + membersArr.join(", "), channel);
+            channelbot.sendHtmlMessage(src, "Gold Members: " + membersArr.join(", "), channel);
         }
         return;
     }
     if (command === "register") {
         if (!sys.dbRegistered(sys.name(src))) {
-            channelbot.sendMessage(src, "You need to register on the server before registering a channel to yourself for security reasons!", channel);
+            channelbot.sendMessage(src, "You need to register on safari before registering a channel to yourself for security reasons!", channel);
             return;
         }
         if (sys.auth(src) < 1 && script.isOfficialChan(channel)) {
-            channelbot.sendMessage(src, "You don't have sufficient authority to register this channel!", channel);
+            channelbot.sendMessage(src, "Access Denied", channel);
             return;
         }
         if (poChannel.masters.length === 0) {
