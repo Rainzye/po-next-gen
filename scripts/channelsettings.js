@@ -4,6 +4,8 @@
  * ***************************************
  */ Scripts plugin for (Safari) game server!
 
+var CHANNELSETTINGS_CHANNEL = "Safari";
+
 const RANKS = Config.groupsranking;
 const DISABLED = 'disabled="" style="font-weight:bold;"';
 
