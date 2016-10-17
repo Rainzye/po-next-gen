@@ -414,7 +414,7 @@ serverStartUp : function() {
 },
 
 init : function() {
-    script.superAdmins = ["Mahnmut"];
+    script.superAdmins = ["ryan"];
     script.rules = {
         "1": {
             "english": [
@@ -1219,7 +1219,7 @@ afterChannelJoin : function(player, chan) {
             sys.sendMessage(player, "Edited by: " + SESSION.channels(chan).topicSetter, chan);*/
     }
     if (SESSION.channels(chan).isChannelOperator(player)) {
-        sys.sendMessage(player, "±" + Config.channelbot + ": Safari ", chan);
+        sys.sendMessage(player, "±" + Config.channelbot + ": We are (online) 24/7 - 365 days a year: have fun! ", chan);
     }
     if (SESSION.channels(chan).masters.length <= 0 && !this.isOfficialChan(chan)) {
         sys.sendMessage(player, "±" + Config.channelbot + ": This channel is unregistered. If you're looking to own this channel, type /register in order to prevent your channel from being stolen.", chan);
@@ -1259,7 +1259,7 @@ beforePlayerKick:function(src, dest){
 
 afterNewMessage : function (message) {
     if (message == "Script Check: OK") {
-        sys.sendAll("±ScriptCheck: Scripts were updated!", sys.channelId("Indigo Plateau"));
+        sys.sendAll("±ScriptCheck: Scripts was successfully updated!", sys.channelId("Indigo Plateau"));
         if (typeof(scriptChecks)=='undefined')
             scriptChecks = 0;
         scriptChecks += 1;
@@ -1393,7 +1393,7 @@ nameIsInappropriate: function(src)
     for (var i = 0; i < nameBans.length; ++i) {
         var regexp = nameBans[i];
         if (regexp.test(lname)) {
-            reply('This kind of name is banned from the server. (Matching regexp: ' + regexp + ')');
+            reply('This kind of name is banned from the safari. (Matching Denied: ' + regexp + ')');
             return true;
         }
     }
@@ -1401,19 +1401,19 @@ nameIsInappropriate: function(src)
     var cyrillic = /\u0455|\u04ae|\u04c0|\u04cf|\u050c|\u051a|\u051b|\u051c|\u051d|\u0405|\u0408|\u0430|\u0410|\u0412|\u0435|\u0415|\u041c|\u041d|\u043e|\u041e|\u0440|\u0420|\u0441|\u0421|\u0422|\u0443|\u0445|\u0425|\u0456|\u0406/;
     if (cyrillic.test(name)) {
         reply('You are using Cyrillic letters similar to Latin letters in your name.');
-        return true;
+        return false;
     }
     var greek = /[\u0370-\u03ff]/;
     if (greek.test(name)) {
         reply('You are using Greek letters similar to Latin letters in your name.');
-        return true;
+        return false;
     }
 
     // \u0020 = space
     var space = /[\u0009-\u000D]|\u0085|\u00A0|\u1680|\u180E|[\u2000-\u200A]|\u2028|\u2029|\u2029|\u202F|\u205F|\u3000|\u3164|\uFEFF|\uFFA0|\u2009|\u2008/;
     if (space.test(name)) {
         reply('You are using whitespace letters in your name.');
-        return true;
+        return false;
     }
 
     // \u002D = -
@@ -1421,19 +1421,19 @@ nameIsInappropriate: function(src)
 
     if (dash.test(name)) {
         reply('You are using dash letters in your name.');
-        return true;
+        return false;
     }
 
     // special marks
     if (/[\ufff0-\uffff]/.test(name)) {
         reply('You are using SPECIAL characters in your name.');
-        return true;
+        return false;
     }
 
     // COMBINING OVERLINE
     if (/\u0305|\u0336/.test(name)) {
         reply('You are using COMBINING OVERLINE character in your name.');
-        return true;
+        return false;
     }
     if (/\u0CBF|\u1D0F/gi.test(name)) {
         return true;
@@ -1476,7 +1476,7 @@ startUpTime: function() {
         var hours = parseInt((diff % (60*60*24)) / (60*60), 10);
         var minutes = parseInt((diff % (60*60)) / 60, 10);
         var seconds = (diff % 60);
-        return days+"d "+hours+"h "+minutes+"m "+seconds+"s";
+        return days+"Days "+hours+"Hours "+minutes+"Minutes "+seconds+"Seconds";
     } else {
         return 0;
     }
@@ -1497,7 +1497,7 @@ cookieBanned: function(src) {
             name = cookie.substr(cookie.indexOf(" ")+1);
         }
         kickbot.sendAll(nonFlashing(sys.name(src)) + " was banned by cookie" + (name ? " [Original Name: " + nonFlashing(name) + "]." : "."), watchchannel);
-        normalbot.sendMessage(src, "You are currently banned from the safari");
+        normalbot.sendMessage(src, "You are currently banned from safari");
         sys.kick(src);
         return true;
     } else if (cookie === "muted" || cookie.substr(0, 5) === "muted") {
@@ -1556,7 +1556,7 @@ afterLogIn : function(src) {
     if (maxPlayersOnline > sys.getVal("MaxPlayersOnline")) {
         sys.saveVal("MaxPlayersOnline", maxPlayersOnline);
     }
-    countbot.sendMessage(src, (typeof(this.startUpTime()) == "string" ?  "Online Uptime: " + this.startUpTime() + ".  " : "")  + "Max Players Online: " + sys.getVal("MaxPlayersOnline") + ".");
+    countbot.sendMessage(src, (typeof(this.startUpTime()) == "string" ?  "Uptime: " + this.startUpTime() + ".  " : "")  + "Most users online was: " + sys.getVal("MaxPlayersOnline") + ".");
     sys.sendMessage(src, "");
 
     callplugins("afterLogIn", src);
@@ -2070,7 +2070,7 @@ beforeChatMessage: function(src, message, chan) {
         sys.stopEvent();
         return;
     }
-    var capsday = false;
+    var capsday = true;
     if (typeof CAPSLOCKDAYALLOW != 'undefined') {
         capsday = CAPSLOCKDAYALLOW;
     }
@@ -2156,19 +2156,19 @@ beforeChatMessage: function(src, message, chan) {
 
     // Auth tags 
     if (sys.auth(src) == "3") {
-        sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b><font color='blue'>(√)</font> " + sys.name(src) + "</b></span> » " + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+        sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b><font color='blue'>(~)</font> " + sys.name(src) + "</b></span> Message:" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);
     } else if (sys.auth(src) == "2") {
-        sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b><font color='blue'>(Online)</font> " + sys.name(src) + "</b></span> » " + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+        sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b><font color='blue'>(&)</font> " + sys.name(src) + "</b></span> Message:" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);
     } else if (sys.auth(src) == "1") {
-        sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b><font color='blue'>(Online)</font> " + sys.name(src) + "</b></span> » " + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+        sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b><font color='blue'>(@)</font> " + sys.name(src) + "</b></span> Message:" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);
     } else if (sys.auth(src) == "0") {
-        sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b><font color='blue'>(Online)</font> " + sys.name(src) + "</b></span> » " + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+        sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b><font color='blue'>(Trainer Name)</font> " + sys.name(src) + "</b></span> Message:" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);
         return;
@@ -2289,7 +2289,7 @@ afterChatMessage : function(src, message, chan)
                 return;
             }
             else {
-                poChannel.mute(Config.kickbot, sys.name(src), {'time': 3600, 'reason': "Flooding"});
+                poChannel.mute(Config.kickbot, sys.name(src), {'time': 3600, 'reason': "/rules"});
                 sys.kick(src, channel);
             }
         }
