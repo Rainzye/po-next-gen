@@ -1969,11 +1969,11 @@ beforeChatMessage: function(src, message, chan) {
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);		
     } else if (sys.auth(src) == 3) {
-	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#002db3><img src='pokemon:num=3&gen=3' height="20" width="20"></font> " + sys.name(src) + ": </b></span><font size=3 font color=black>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#002db3><img src='pokemon:num=3&gen=3' height='20' width='20'></font> " + sys.name(src) + ": </b></span><font size=3 font color=black>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
 	    sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
     } else if (sys.auth(src) == 4) { //Hiddenauth should be hidden
-	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500><img src='pokemon:num=55&gen=3' height="20" width="20"></font> " + sys.name(src) + ": </b></span><font size=3 font color=purple>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500><img src="pokemon:num=55&gen=3" height="20" width="20"></font> " + sys.name(src) + ": </b></span><font size=3 font color=purple>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
     } else if (!sys.dbRegistered(sys.name(src))) {		
