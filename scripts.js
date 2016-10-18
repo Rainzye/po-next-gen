@@ -8,7 +8,7 @@ var Config = {
     bot: "Safari",
     kickbot: "Safari",
     capsbot: "Safari",
-    channelbot: "Safari",
+    channelbot: "Test",
     checkbot: "Safari",
     coinbot: "Safari",
     countbot: "Safari",
