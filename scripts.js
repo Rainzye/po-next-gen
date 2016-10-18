@@ -1292,7 +1292,7 @@ startUpTime: function() {
         var hours = parseInt((diff % (60*60*24)) / (60*60), 10);
         var minutes = parseInt((diff % (60*60)) / 60, 10);
         var seconds = (diff % 60);
-        return days+"days "+hours+" hours "+minutes+" minutes "+seconds+" seconds ";
+        return days+" days "+hours+" hours "+minutes+" minutes "+seconds+" seconds ";
     } else {
         return 0;
     }
@@ -1360,23 +1360,23 @@ afterLogIn : function(src) {
     }
     countbot.sendMessage(src, (typeof(this.startUpTime()) == "string" ?  "Uptime: " + this.startUpTime() + ".  " : "")  + "Players online at once was: " + sys.getVal("MaxPlayersOnline") + ".");
     sys.sendHtmlMessage(src, "");
-    sys.sendHtmlMessage(src, "<span style='color: " + sys.getColor(src) + "'></p></tr><font size=4 font color=#00007f><hr><center><i></i><br/><img src='pokemon:num=384&gen=2' height=10></center><hr><br><font color=blue>", 0);
+    sys.sendHtmlMessage(src, "<span style='color: " + sys.getColor(src) + "'></p></tr><font size=4 font color=#399bcd><hr><center><i></i><br/><img src='pokemon:num=1&gen=6' height=50></center><hr><br><font color=blue>", 0);
     if (sys.name(src) == "TerminalHydreigon") {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#cc0000>(🌐)</font> " + sys.name(src) + "</span><font size=3 font color=black>", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd>(🌐)</font> " + sys.name(src) + "</span><font size=3 font color=black>", 0);
     } else if (sys.auth(src) == 1) {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#00b300>(🌐)</font> " + sys.name(src) + "</span><font size=3 font color=red>", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd>(🌐)</font> " + sys.name(src) + "</span><font size=3 font color=red>", 0);
     } else if (sys.auth(src) == 2) {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#cc0000>(🌐)</font> " + sys.name(src) + "</span><font size=3 font color=black>", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd>(🌐)</font> " + sys.name(src) + "</span><font size=3 font color=black>", 0);
     } else if (sys.auth(src) == 3) {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#002db3>(🌐)</font> " + sys.name(src) + "</span><font size=3 font color=black>", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd>(🌐)</font> " + sys.name(src) + "</span><font size=3 font color=black>", 0);
     } else if (sys.auth(src) == 4) {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>(🌐)</font> " + sys.name(src) + "</span><font size=3 font color=black>", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd>(🌐)</font> " + sys.name(src) + "</span><font size=3 font color=black>", 0);
     } else if (!sys.dbRegistered(sys.name(src))) {		
-     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>(🌐)</font> " + sys.name(src) + "</span><font size=3 font color=blue>", 0);
+     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd>(🌐)</font> " + sys.name(src) + "</span><font size=3 font color=blue>", 0);
     }  else {
-        sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>(🌐)</font> " + sys.name(src) + "</span><font size=3 font color=blue>", 0);
+        sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd>(🌐)</font> " + sys.name(src) + "</span><font size=3 font color=blue>", 0);
     } 
-    sys.sendMessage(src, "Test");
+    sys.sendMessage(src, "Welcome to Safari: Make sure to register. /start /help");
 
     callplugins("afterLogIn", src);
 
