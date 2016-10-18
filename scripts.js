@@ -22,7 +22,7 @@ var Config = {
     safaribot: "Safari",
     teamsbot: "Minun",
     // suspectvoting.js available, but not in use
-    Plugins: ["mafia.js", "amoebagame.js", "tourstats.js", "trivia.js", "tours.js", "newtourstats.js", "auto_smute.js", "battlefactory.js", "hangman.js", "blackjack.js", "mafiastats.js", "mafiachecker.js", "safari.js", "youtube.js", "autoteams.js"],
+    Plugins: ["mafia.js", "amoebagame.js", "tourstats.js", "trivia.js", "tours.js", "newtourstats.js", "auto_smute.js", "battlefactory.js", "hangman.js", "blackjack.js", "mafiastats.js", "mafiachecker.js", "safari.js", "youtube.js", "autoteams.js", "channel settings.js"],
     Mafia: {
         bot: "Crobat",
         norepeat: 5,
@@ -352,6 +352,7 @@ hangbot = new Bot(Config.hangbot);
 bfbot = new Bot(Config.bfbot);
 safaribot = new Bot(Config.safaribot);
 teamsbot = new Bot(Config.teamsbot);
+channelsettingsbot = new Bot(Config.channelsettingsbot);
 
 /* Start script-object
  *
