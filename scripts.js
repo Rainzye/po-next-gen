@@ -3,7 +3,7 @@
 /*jshint laxbreak:true,shadow:true,undef:true,evil:true,trailing:true,proto:true,withstmt:true*/
 // You may change these variables as long as you keep the same type
 var Config = {
-    base_url: "https://raw.githubusercontent.com/Rainzye/po-next-gen/master/scripts.js",
+    base_url: "https://raw.githubusercontent.com/Server-Scripts/po-server-goodies/master/scripts.js",
     dataDir: "scriptdata/",
     bot: "Bot",
     kickbot: "Kickbot",
@@ -725,7 +725,7 @@ unban: function(type, src, tar, commandData) {
         else {
             banbot = normalbot;
         }
-    var verb = {"mute": "unlocked", "mban": "unbanned from Mafia", "smute": "secretly unmuted", "hmute": "unbanned from Hangman", "safban": "unbanned from Safari"}[type];
+    var verb = {"mute": "unmuted", "mban": "unbanned from Mafia", "smute": "secretly unmuted", "hmute": "unbanned from Hangman", "safban": "unbanned from Safari"}[type];
     var nomi = {"mute": "mute", "mban": "mafia ban", "smute": "secret mute", "hmute": "hangman ban", "safban": "safari ban"}[type];
     var past = {"mute": "muted", "mban": "mafia banned", "smute": "secretly muted", "hmute": "hangman banned", "safban": "safari banned"}[type];
     var sendAll =  {
@@ -1094,12 +1094,12 @@ afterChannelCreated : function (chan, name, src) {
 
 afterChannelJoin : function(player, chan) {
     if (typeof SESSION.channels(chan).topic != 'undefined') {
-        sys.sendMessage(player, "Safari Topic: " + SESSION.channels(chan).topic, chan);
+        sys.sendMessage(player, "Welcome Message: " + SESSION.channels(chan).topic, chan);
         /*if (SESSION.channels(chan).topicSetter)
-            sys.sendMessage(player, "Edited by: " + SESSION.channels(chan).topicSetter, chan);*/
+            sys.sendMessage(player, "Set by: " + SESSION.channels(chan).topicSetter, chan);*/
     }
     if (SESSION.channels(chan).isChannelOperator(player)) {
-        sys.sendMessage(player, "±" + Config.channelbot + ": We are (online) 24/7 365 days a year.", chan);
+        sys.sendMessage(player, "±" + Config.channelbot + ": use /topic <topic> to change the welcome message of this channel", chan);
     }
     if (SESSION.channels(chan).masters.length <= 0 && !this.isOfficialChan(chan)) {
         sys.sendMessage(player, "±" + Config.channelbot + ": This channel is unregistered. If you're looking to own this channel, type /register in order to prevent your channel from being stolen.", chan);
@@ -1135,15 +1135,18 @@ afterNewMessage : function (message) {
             scriptChecks = 0;
         scriptChecks += 1;
         this.init();
-    //}
-       //Track overactives - though the server now tracks and bans too. Here are template regexps though.
-       //var ip_overactive = new RegExp("^IP ([0-9]{1,3}\\.){3}[0-9]{1,3} is being overactive\\.$");
-       //br player_overactive = new RegExp("^Player [^:]{1,20} \\(IP ([0-9]{1,3}\\.){3}[0-9]{1,3}\\) is being overactive\\.$");
-      if(ip_overactive.test(message) || player_overactive.test(message))
+    }
+    // Track overactives - though the server now tracks and bans too. Here are template regexps though.
+    // var ip_overactive = new RegExp("^IP ([0-9]{1,3}\\.){3}[0-9]{1,3} is being overactive\\.$");
+    // var player_overactive = new RegExp("^Player [^:]{1,20} \\(IP ([0-9]{1,3}\\.){3}[0-9]{1,3}\\) is being overactive\\.$");
+    // if(ip_overactive.test(message) || player_overactive.test(message))
 }, /* end of afterNewMessage */
 
 
 isRangeBanned : function(ip) {
+    for (var subip in script.rangebans.hash) {
+        if (subip.length > 0 && ip.substr(0, subip.length) == subip) {
+             return true;
     for (var subip in script.rangebans.hash) {
         if (subip.length > 0 && ip.substr(0, subip.length) == subip) {
              return true;
@@ -1160,7 +1163,6 @@ isIpBanned: function(ip) {
     }
     return false;
 },
-
 isTempBanned : function(ip) {
     var aliases = sys.aliases(ip);
     for (var x = 0; x < aliases.length; x++) {
