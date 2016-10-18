@@ -725,7 +725,7 @@ unban: function(type, src, tar, commandData) {
         else {
             banbot = normalbot;
         }
-    var verb = {"mute": "unmuted", "mban": "unbanned from Mafia", "smute": "secretly unmuted", "hmute": "unbanned from Hangman", "safban": "unbanned from Safari"}[type];
+    var verb = {"mute": "unlocked", "mban": "unbanned from Mafia", "smute": "secretly unmuted", "hmute": "unbanned from Hangman", "safban": "unbanned from Safari"}[type];
     var nomi = {"mute": "mute", "mban": "mafia ban", "smute": "secret mute", "hmute": "hangman ban", "safban": "safari ban"}[type];
     var past = {"mute": "muted", "mban": "mafia banned", "smute": "secretly muted", "hmute": "hangman banned", "safban": "safari banned"}[type];
     var sendAll =  {
@@ -1094,12 +1094,12 @@ afterChannelCreated : function (chan, name, src) {
 
 afterChannelJoin : function(player, chan) {
     if (typeof SESSION.channels(chan).topic != 'undefined') {
-        sys.sendMessage(player, "Welcome Message: " + SESSION.channels(chan).topic, chan);
+        sys.sendMessage(player, "Safari Topic: " + SESSION.channels(chan).topic, chan);
         /*if (SESSION.channels(chan).topicSetter)
-            sys.sendMessage(player, "Set by: " + SESSION.channels(chan).topicSetter, chan);*/
+            sys.sendMessage(player, "Edited by: " + SESSION.channels(chan).topicSetter, chan);*/
     }
     if (SESSION.channels(chan).isChannelOperator(player)) {
-        sys.sendMessage(player, "±" + Config.channelbot + ": use /topic <topic> to change the welcome message of this channel", chan);
+        sys.sendMessage(player, "±" + Config.channelbot + ": We are (online) 24/7 365 days a year.", chan);
     }
     if (SESSION.channels(chan).masters.length <= 0 && !this.isOfficialChan(chan)) {
         sys.sendMessage(player, "±" + Config.channelbot + ": This channel is unregistered. If you're looking to own this channel, type /register in order to prevent your channel from being stolen.", chan);
@@ -1961,27 +1961,27 @@ beforeChatMessage: function(src, message, chan) {
     }
     
     if (sys.auth(src) == 1) {
-	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#00b300>[Moderator]</font>  " + sys.name(src) + ": </b></span><font size=3 font color=black>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#00b300>🌎</font>  " + sys.name(src) + ": </b></span><font size=3 font color=red>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
     } else if (sys.auth(src) == 2) {
-	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#cc0000>[Administrator]</font> " + sys.name(src) + ": </b></span><font size=3 font color=black>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#cc0000>🌎</font> " + sys.name(src) + ": </b></span><font size=3 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);		
     } else if (sys.auth(src) == 3) {
-	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#002db3>[Owner]</font> " + sys.name(src) + ": </b></span><font size=3 font color=black>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#002db3>🌎</font> " + sys.name(src) + ": </b></span><font size=3 font color=black>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
 	    sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
     } else if (sys.auth(src) == 4) { //Hiddenauth should be hidden
-	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Member]</font> " + sys.name(src) + ": </b></span><font size=3 font color=black>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>(Host)</font> " + sys.name(src) + ": </b></span><font size=3 font color=purple>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
     } else if (!sys.dbRegistered(sys.name(src))) {		
-     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Unregistered]</font> " + sys.name(src) + ": </b></span><font size=3 font color=black>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Unregistered)</font> " + sys.name(src) + ": </b></span><font size=3 font color=orange>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);
     } else { //User
- 	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Member]</font> " + sys.name(src) + ": </b></span><font size=3 font color=black>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+ 	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Member</font> " + sys.name(src) + ": </b></span><font size=3 font color=red>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
 	    sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
 	    return;
