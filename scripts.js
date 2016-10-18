@@ -8,7 +8,7 @@ var Config = {
     bot: "Dragonite",
     kickbot: "Blaziken",
     capsbot: "Exploud",
-    channelbot: "Topic",
+    channelbot: "Auth Topic",
     checkbot: "Safari",
     coinbot: "Meowth",
     countbot: "Safari",
@@ -352,7 +352,6 @@ hangbot = new Bot(Config.hangbot);
 bfbot = new Bot(Config.bfbot);
 safaribot = new Bot(Config.safaribot);
 teamsbot = new Bot(Config.teamsbot);
-channelsettingsbot = new Bot(Config.channelsettingsbot);
 
 /* Start script-object
  *
