@@ -1,9 +1,6 @@
-/*  Official icially forked from PS: Modified.
- *  Pokemon online channel settings plugin.
- *  Creator Xotically.
- * ***************************************
- */ Scripts plugin for (Safari) game server!
-
+/*global exports, normalbot, SESSION, sachannel, staffchannel, sys*/
+/*jshint shadow: true*/
+/*jslint sloppy: true*/
 exports.handleCommand = function (src, command, commandData, tar, channel) {
     /*
     if (command === "memorydump") {
@@ -131,7 +128,8 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             sys.unban(commandData); //needed as at the moment bans don't overwrite tempbans
         }
         normalbot.sendAll("Target: " + commandData + ", IP: " + ip.replace("::ffff:", ""), staffchannel);
-        sendChanHtmlAll("<b><font color=red>" + commandData + " was banned by " + nonFlashing(sys.name(src)) + "!</font></b>",-1);
+        sendChanHtmlAll("<b><font color=red>" + commandData + " was banned by " + nonFlashing(sys.name(src)) + "!</font></b>",-1);        
+        callplugins("onBan", src, commandData);
         sys.ban(commandData);
         script.kickAll(ip);
         sys.appendToFile("bans.txt", sys.name(src) + " banned " + commandData + "\n");
@@ -244,10 +242,10 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         }
         return;
     }
-    if (command === "warn") {
+    if (command === "namewarn") {
         if (commandData === undefined) {
             normalbot.sendMessage(src, "Sorry, can't set warning for empty names.", channel);
-            return true;
+            return;
         }
         var regex;
         try {
@@ -261,16 +259,15 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             serialized.nameWarns.push(nameWarns[i].source);
         }
         sys.writeToFile(Config.dataDir+"nameWarns.json", JSON.stringify(serialized));
-        normalbot.sendHtmlAllMessage(src, "You have been warned: " + regex.toString(), channel);
-        warn = true;
-        return false;
+        normalbot.sendMessage(src, "You set a warning for: " + regex.toString(), channel);
+        return;
     }
     if (command === "nameunwarn") {
         var unwarn = false;
         nameWarns = nameWarns.filter(function(name) {
             if (name.toString() == commandData) {
                 var toDelete = nameWarns.indexOf(name.toString());
-                normalbot.sendHtmlAllMessage(src, "You removed a warning for: " + name.toString(), channel);
+                normalbot.sendMessage(src, "You removed a warning for: " + name.toString(), channel);
                 unwarn = true;
                 return false;
             }
@@ -511,7 +508,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             normalbot.sendAll("Target: " + name + ", IP: " + ip.replace("::ffff:", "") + ", OS: " + os + ", Version: " + version, staffchannel);
             normalbot.sendAll(nonFlashing(banner) + " applied the following " +  (command === "ultramute" ? "mutes" : "bans") + ": " + bansApplied.join(", "), staffchannel);
             if (command === "ultraban") {
-                sendChanHtmlAll("<b><font color=blue>" + name + " was banned by " + nonFlashing(banner) + "!</font></b>", -1);
+                sendChanHtmlAll("<b><font color=red>" + name + " was banned by " + nonFlashing(banner) + "!</font></b>", -1);
             }
         } else {
             normalbot.sendMessage(src, "You used " + command + "! But nothing happened!", channel);
