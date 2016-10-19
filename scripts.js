@@ -1375,8 +1375,10 @@ afterLogIn : function(src) {
      	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd></font> " + sys.name(src) + "</span><font size=3 font color=red>", 0);
     }  else {
         sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd></font> " + sys.name(src) + "</span><font size=3 font color=red>", 0);
-    } 
-    sys.sendMessage(src, "</span><font size=3 font color=red> How to play. /start bulbasaur /start charmander or /start squirtle We highly (Recommend) you finish. /tutorial if you wish to skip it. You can do /skiptutorial confirm for additional /help like contest times type /info other /guides /rules You should try catch A wild pokemon using /catch check out are shop /buy example. /buy bait:1 good luck.");
+    }
+    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd>Hi. I'm testing just ignore this</font> " + sys.name(src) + "</span><font size=3 font color=red>", 0);
+    }
+    sys.sendMessage(src, "How to play. /start bulbasaur /start charmander or /start squirtle We highly (Recommend) you finish. /tutorial if you wish to skip it. You can do /skiptutorial confirm for additional /help like contest times type /info other /guides /rules You should try catch A wild pokemon using /catch check out are shop /buy example. /buy bait:1 good luck.");
 
     callplugins("afterLogIn", src);
 
