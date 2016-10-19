@@ -5,22 +5,22 @@
 var Config = {
     base_url: "https://raw.githubusercontent.com/Rainzye/po-next-gen/master/scripts.js",
     dataDir: "scriptdata/",
-    bot: "Bot",
-    kickbot: "Kickbot",
-    capsbot: "Capsbot",
-    channelbot: "Charizard",
-    checkbot: "Pikachu",
-    coinbot: "Coinbot",
-    countbot: "CountBot",
-    tourneybot: "Tourbot",
-    rankingbot: "Rankbot",
-    battlebot: "Battlebot",
-    commandbot: "CommandBot",
-    querybot: "QueryBot",
-    hangbot: "Hangmanbot",
-    bfbot: "BF-bot",
-    safaribot: "Tauros",
-    youtubebot: "Rotom",
+    bot: ">",
+    kickbot: ">",
+    capsbot: >",
+    channelbot: ">",
+    checkbot: ">",
+    coinbot: ">",
+    countbot: ">",
+    tourneybot: ">",
+    rankingbot: ">",
+    battlebot: ">",
+    commandbot: ">",
+    querybot: ">,
+    hangbot: ">",
+    bfbot: ">",
+    safaribot: ">",
+    youtubebot: ">",
     // suspectvoting.js available, but not in use
     Plugins: ["mafia.js", "amoebagame.js", "tourstats.js", "trivia.js", "tours.js", "newtourstats.js", "auto_smute.js", "battlefactory.js", "hangman.js", "blackjack.js", "mafiastats.js", "mafiachecker.js", "safari.js", "youtube.js"],
     Mafia: {
@@ -1362,21 +1362,21 @@ afterLogIn : function(src) {
     sys.sendHtmlMessage(src, "");
     sys.sendHtmlMessage(src, "<span style='color: " + sys.getColor(src) + "'></p></tr><font size=4 font color=#399bcd><hr><center><i></i><br/><img src='pokemon:num=1&gen=6' height=50></center><hr><br><font color=blue>", 0);
     if (sys.name(src) == "TerminalHydreigon") {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd>(🌐)</font> " + sys.name(src) + "</span><font size=3 font color=black>", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd></font> " + sys.name(src) + "</span><font size=3 font color=black>", 0);
     } else if (sys.auth(src) == 1) {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd>(🌐)</font> " + sys.name(src) + "</span><font size=3 font color=red>", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd></font> " + sys.name(src) + "</span><font size=3 font color=red>", 0);
     } else if (sys.auth(src) == 2) {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd>(🌐)</font> " + sys.name(src) + "</span><font size=3 font color=black>", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd></font> " + sys.name(src) + "</span><font size=3 font color=red>", 0);
     } else if (sys.auth(src) == 3) {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd>(🌐)</font> " + sys.name(src) + "</span><font size=3 font color=black>", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd></font> " + sys.name(src) + "</span><font size=3 font color=red>", 0);
     } else if (sys.auth(src) == 4) {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd>(🌐)</font> " + sys.name(src) + "</span><font size=3 font color=black>", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd></font> " + sys.name(src) + "</span><font size=3 font color=red>", 0);
     } else if (!sys.dbRegistered(sys.name(src))) {		
-     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd>(🌐)</font> " + sys.name(src) + "</span><font size=3 font color=blue>", 0);
+     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd></font> " + sys.name(src) + "</span><font size=3 font color=red>", 0);
     }  else {
-        sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd>(🌐)</font> " + sys.name(src) + "</span><font size=3 font color=blue>", 0);
+        sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd></font> " + sys.name(src) + "</span><font size=3 font color=red>", 0);
     } 
-    sys.sendMessage(src, "Welcome to Safari. How to play: /start bulbasaur /start charmander or /start squirtle We highly (Recommend) you finish. /tutorial if you wish to skip it. You can do /skiptutorial confirm for additional /help like contest times type /info other /guides /rules You should try catch A wild pokemon using /catch check out are shop /buy example. /buy bait:1 good luck ");
+    sys.sendMessage(src, "How to play:  </span><font size=3 font color=blue>/start bulbasaur /start charmander or /start squirtle We highly (Recommend) you finish. /tutorial if you wish to skip it. You can do /skiptutorial confirm for additional /help like contest times type /info other /guides /rules You should try catch A wild pokemon using /catch check out are shop /buy example. /buy bait:1 good luck ");
 
     callplugins("afterLogIn", src);
 
