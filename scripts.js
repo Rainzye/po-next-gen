@@ -5,13 +5,13 @@
 var Config = {
     base_url: "https://raw.githubusercontent.com/Server-Scripts/po-server-goodies/master/scripts.js",
     dataDir: "scriptdata/",
-    bot: "Bot",
+    bot: "Kanti",
     kickbot: "Kickbot",
     capsbot: "Capsbot",
-    channelbot: "Charizard",
+    channelbot: "Sun&Moon",
     checkbot: "Pikachu",
     coinbot: "Meowth",
-    countbot: "/help",
+    countbot: "Johto",
     tourneybot: "Tourbot",
     rankingbot: "Rankbot",
     battlebot: "Battlebot",
@@ -473,7 +473,7 @@ init : function() {
     else sys.webCall(Config.base_url + PROXY_FILE, addProxybans);
 
     rules = [ "",
-    "*** Server Rules ***",
+    "*** Safari Rules ***",
     "",
     "1. This server is English:",
     "- 'Profound unsophisticated rule breakers. Will be punished. Although we may just lock saves.",
@@ -1362,21 +1362,21 @@ afterLogIn : function(src) {
     sys.sendHtmlMessage(src, "<font size=3 font color=blue> (PA) | /start bulbasaur |/start charmander</span> or /start squirtle We recommend. You finish /tutorial however you may wish to /skiptutorial confirm for additional guidelines about contests type /info you can view are shop to buy pokemon balls. Using /buy like /buy bait:1 anyway. Here's extra help commands /commands safari /help safari rules /commands to see the commands good luck have fun");
     sys.sendHtmlMessage(src, "<span style='color: " + sys.getColor(src) + "'></p></tr><font size=4 font color=#00007f><hr><center><i></i><br/></center><hr><br><font color=blue>", 0);
     if (sys.name(src) == "Haunter") {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>Host</font> " + sys.name(src) + "</span><font size=3 font color=blue>", 0);
+    	sys.sendHtmAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>Host</font> " + sys.name(src) + "</span><font size=3 font color=blue>", 0);
     } else if (sys.auth(src) == 1) {
     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>(@)</font>" + sys.name(src) + "", 0);
     } else if (sys.auth(src) == 2) {
     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>(&)</font> " + sys.name(src) + "</span><font size=3 font color=blue> Joined", 0);
     } else if (sys.auth(src) == 3) {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>(√)</font> " + sys.name(src) + "</span><font size=3 font color=blue> joined", 0);
+    	sys.sendHtmlMessage("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>(√)</font> " + sys.name(src) + "</span><font size=3 font color=blue> joined", 0);
     } else if (sys.auth(src) == 4) {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>[Member]</font> " + sys.name(src) + "</span><font size=3 font color=blue> Joined", 0);
+    	sys.sendHtmlMessage("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>[Member]</font> " + sys.name(src) + "</span><font size=3 font color=blue> Joined", 0);
     } else if (!sys.dbRegistered(sys.name(src))) {		
-     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>A wild </font> " + sys.name(src) + "</span><font size=3 font color=black> Appeared! (BST: 100)", 0);
+     	sys.sendHtmlMessage("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>A wild </font> " + sys.name(src) + "</span><font size=3 font color=black> Appeared! (BST: 100)", 0);
     }  else {
-        sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>A wild </font> " + sys.name(src) + "</span><font size=3 font color=black> Appeared! (BST:100)", 0);
+        sys.sendHtmlMessage("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>A wild </font> " + sys.name(src) + "</span><font size=3 font color=black> Appeared! (BST:100)", 0);
     } 
-    sys.sendHtmlAll("<font size=3 font color=blue>Create your own channel. Type /cjoin name");
+    syssendHtmlMessage("<font size=2 font color=blue>Create your own channel. Type /cjoin name");
 
     callplugins("afterLogIn", src);
 
@@ -1845,7 +1845,7 @@ beforeChatMessage: function(src, message, chan) {
 
     // Minutes of Silence
     if (SESSION.channels(channel).muteall && !SESSION.channels(channel).isChannelOperator(src) && sys.auth(src) === 0) {
-        normalbot.sendMessage(src, "Respect the minutes of silence!", channel);
+        normalbot.sendMessage(src, "The Safari channel is locked", channel);
         sys.stopEvent();
         return;
     }
@@ -2325,7 +2325,7 @@ beforeBattleMatchup : function(src,dest,clauses,rated)
 },
 
 battleConnectionLost : function() {
-    battlebot.sendAll("Connection to Battle Server lost!", staffchannel);
+    battlebot.sendHtmlAll("The battle server has stopped responding. We are fixing this issue please be patient.", staffchannel);
 },
 
 hasAuthElements: function (array) {
