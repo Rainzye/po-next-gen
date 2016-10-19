@@ -476,7 +476,7 @@ init : function() {
     "*** Server Rules ***",
     "",
     "1. This server is English:",
-    "- 'Speak English and dont be a cancerous faggot' ~ [CA] Square Foot",
+    "- 'Profound unsophisticated rule breakers. Will be punished. Although we may just lock saves.",
     "2. No advertising, excessive messages or caps, inappropriate/obscene links, or text art:",
     "- Do not post links unless they are to notable sites (Youtube, Smogon, Serebii, etc). We are not interested in your start-up community. Do not monopolize the chat with large amounts of messages, or short ones in rapid succession. Do not advertise non-official channels without prior approval. Posting ASCII art is punishable with a ban, as is posting anything with any type of pornography. Posting social media (Twitter/Facebook/kik) accounts is also punishable.",
     "3. Use Find Battle, or join tournaments instead of asking in the main chat:",
@@ -1376,7 +1376,7 @@ afterLogIn : function(src) {
     }  else {
         sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd></font> " + sys.name(src) + "</span><font size=3 font color=red>", 0);
     } 
-    sys.sendMessage(src, "How to play. /start bulbasaur /start charmander or /start squirtle We highly (Recommend) you finish. /tutorial if you wish to skip it. You can do /skiptutorial confirm for additional /help like contest times type /info other /guides /rules You should try catch A wild pokemon using /catch check out are shop /buy example. /buy bait:1 good luck.");
+    sys.sendMessage(src, "</span><font size=3 font color=red> How to play. /start bulbasaur /start charmander or /start squirtle We highly (Recommend) you finish. /tutorial if you wish to skip it. You can do /skiptutorial confirm for additional /help like contest times type /info other /guides /rules You should try catch A wild pokemon using /catch check out are shop /buy example. /buy bait:1 good luck.");
 
     callplugins("afterLogIn", src);
 
@@ -1410,14 +1410,6 @@ afterLogIn : function(src) {
         normalbot.sendMessage(src, "New android version back on Play Store! See: http://pokemon-online.eu/threads/po-android-play-store-revival.29571/");
     }*/
 }, /* end of afterLogin */
-
-beforePlayerRegister : function(src) {
-    if (sys.name(src).match(/\bplayer[0-9]/i)) {
-        sys.stopEvent();
-        normalbot.sendMessage(src, "You cannot register guest names!");
-        return;
-      }
-      /*
 
 beforePlayerRegister : function(src) {
     if (sys.name(src).match(/\bguest[0-9]/i)) {
