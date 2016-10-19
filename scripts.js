@@ -1351,8 +1351,8 @@ afterLogIn : function(src) {
     if (script.cookieBanned(src)) { //prevents errors from "no id" from the rest of the function
         return;
     }
-    sys.sendHtmlMessage(src, "*** <font size=3 font color=blue> All Languages Allowed! ***");
-    sys.sendMessage(src, "±Official Channels: #Tournaments | #Hangman | #Trivia | #Mafia");
+    sys.sendHtmlMessage(src, "<font size=3 font color=red>[*** All Languages Allowed! ***]");
+    sys.sendHtmlMessage(src, "<font size=3 font color=red>±Official Channels: #Tournaments | #Hangman | #Trivia | <font size=3 font color=purple> #Mafia");
 
     maxPlayersOnline = Math.max(sys.numPlayers(), maxPlayersOnline);
     if (maxPlayersOnline > sys.getVal("MaxPlayersOnline")) {
