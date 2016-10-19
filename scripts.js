@@ -1376,7 +1376,7 @@ afterLogIn : function(src) {
     }  else {
         sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Member]</font> " + sys.name(src) + "</span>Empty<font size=3 font color=blue> Joined the channel! height=10><img src='pokemon:num=383&gen=6' height=10>", 0);
     } 
-    sys.sendHtmlAll("Test: Hi", 0);
+    sys.sendHtmlAll(" 🌍 HOW TO PLAY: (PA) /start 🌿bulbasaur 🍁/start charmander or 💧/start squirtle We recommend. You finish /tutorial however you may wish to /skiptutorial confirm for additional guidelines about contests type /info you can view are shop to buy pokemon balls. Using /buy like /buy bait:1 anyway. Here's extra help commands /commands safari /help safari rules /commands to see the commands good luck have fun we're online 24/7 🌍 ", 0);
 
     callplugins("afterLogIn", src);
 
