@@ -10,8 +10,8 @@ var Config = {
     capsbot: "Capsbot",
     channelbot: "Charizard",
     checkbot: "Pikachu",
-    coinbot: "Safari's",
-    countbot: "CountBot",
+    coinbot: "Meowth",
+    countbot: "/help",
     tourneybot: "Tourbot",
     rankingbot: "Rankbot",
     battlebot: "Battlebot",
@@ -1358,8 +1358,8 @@ afterLogIn : function(src) {
     if (maxPlayersOnline > sys.getVal("MaxPlayersOnline")) {
         sys.saveVal("MaxPlayersOnline", maxPlayersOnline);
     }
-    countbot.sendMessage(src, (typeof(this.startUpTime()) == "string" ?  "Uptime: " + this.startUpTime() + ".  " : "")  + "Players Online At Once Was: " + sys.getVal("MaxPlayersOnline") + ".");
-    sys.sendHtmlMessage(src, "<font size=3 font color=blue> (PA) 🌿 /start bulbasaur /start charmander</span> or 💧/start squirtle We recommend. You finish /tutorial however you may wish to /skiptutorial confirm for additional guidelines about contests type /info you can view are shop to buy pokemon balls. Using /buy like /buy bait:1 anyway. Here's extra help commands /commands safari /help safari rules /commands to see the commands good luck have fun");
+    countbot.sendMessage(src, (typeof(this.startUpTime()) == "string" ?  "<font size=3 font color=red> Uptime: " + this.startUpTime() + ".  " : "")  + "Players Online At Once Was: " + sys.getVal("MaxPlayersOnline") + ".");
+    sys.sendHtmlMessage(src, "<font size=3 font color=blue> (PA)/start bulbasaur /start charmander</span> or /start squirtle We recommend. You finish /tutorial however you may wish to /skiptutorial confirm for additional guidelines about contests type /info you can view are shop to buy pokemon balls. Using /buy like /buy bait:1 anyway. Here's extra help commands /commands safari /help safari rules /commands to see the commands good luck have fun");
     sys.sendHtmlMessage(src, "<span style='color: " + sys.getColor(src) + "'></p></tr><font size=4 font color=#00007f><hr><center><i></i><br/></center><hr><br><font color=blue>", 0);
     if (sys.name(src) == "TerminalHydreigon") {
     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#cc0000>[Administrator]</font> " + sys.name(src) + "</span><font size=3 font color=red> Joined", 0);
