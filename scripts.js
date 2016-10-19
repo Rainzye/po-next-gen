@@ -1374,9 +1374,9 @@ afterLogIn : function(src) {
     } else if (!sys.dbRegistered(sys.name(src))) {		
      	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Unregistered]</font> " + sys.name(src) + "</span>Test2<font size=3 font color=blue> Joined the channel! height=10><img src='pokemon:num=373&gen=6' height=10> ", 0);
     }  else {
-        sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Member]</font> " + sys.name(src) + "</span>Test1<font size=3 font color=blue> Joined the channel! height=10><img src='pokemon:num=383&gen=6' height=10>", 0);
+        sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Member]</font> " + sys.name(src) + "</span>Empty<font size=3 font color=blue> Joined the channel! height=10><img src='pokemon:num=383&gen=6' height=10>", 0);
     } 
-    sys.sendMessage(src, "");
+    sys.sendMessage(src, "<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>How to play:</font> " + sys.name(src) + "</span>Empty<font size=3 font color=red> Test height=8>");
 
     callplugins("afterLogIn", src);
 
