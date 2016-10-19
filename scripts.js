@@ -1387,7 +1387,7 @@ afterLogIn : function(src) {
             sys.putInChannel(src, androidChan);
             sys.kick(src, 0);
             sys.sendMessage(src, "*********", androidChan);
-            sys.sendMessage(src, "Message: Hello " + sys.name(src) + "! You seem to be using Pokemon Online for Android. With it you are able to battle with random pokemon. If you want to battle with your own made team, please surf to http://pokemon-online.eu/download with your computer and download the desktop application to your desktop. With it you can export full teams to your Android device! If you using the version with ads from Android Market, download adfree version from http://code.google.com/p/pokemon-online-android/downloads/list", androidChan);
+            sys.sendMessage(src, "Message: Hello " + sys.name(src) + "! You seem to be using Pokemon Online for Android. With it you are able to battle with random pokemon. If you want to battle with your own made team, please surf to http://pokemon-online.eu/download with your computer and download the desktop application to your desktop. With it you can export full teams to your Android device! If your using the version with ads from Android Market, download adfree version from http://code.google.com/p/pokemon-online-android/downloads/list", androidChan);
             sys.sendMessage(src, "*********", androidChan);
         }
     }*/
@@ -1410,6 +1410,14 @@ afterLogIn : function(src) {
         normalbot.sendMessage(src, "New android version back on Play Store! See: http://pokemon-online.eu/threads/po-android-play-store-revival.29571/");
     }*/
 }, /* end of afterLogin */
+
+beforePlayerRegister : function(src) {
+    if (sys.name(src).match(/\bplayer[0-9]/i)) {
+        sys.stopEvent();
+        normalbot.sendMessage(src, "You cannot register guest names!");
+        return;
+      }
+      /*
 
 beforePlayerRegister : function(src) {
     if (sys.name(src).match(/\bguest[0-9]/i)) {
