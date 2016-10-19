@@ -1372,9 +1372,9 @@ afterLogIn : function(src) {
     } else if (sys.auth(src) == 4) {
     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Member]</font> " + sys.name(src) + "</span><font size=3 font color=black> Joined the channel! height=10><img src='pokemon:num=488&gen=6' height=10>", 0);
     } else if (!sys.dbRegistered(sys.name(src))) {		
-     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Unregistered]</font> " + sys.name(src) + "</span><font size=3 font color=blue> Joined the channel! height=10><img src='pokemon:num=373&gen=6' height=10> ", 0);
+     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Unregistered]</font> " + sys.name(src) + "</span>Test2<font size=3 font color=blue> Joined the channel! height=10><img src='pokemon:num=373&gen=6' height=10> ", 0);
     }  else {
-        sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Member]</font> " + sys.name(src) + "</span><font size=3 font color=blue> Joined the channel! height=10><img src='pokemon:num=383&gen=6' height=10>", 0);
+        sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Member]</font> " + sys.name(src) + "</span>Test1<font size=3 font color=blue> Joined the channel! height=10><img src='pokemon:num=383&gen=6' height=10>", 0);
     } 
     sys.sendMessage(src, "");
 
@@ -1961,27 +1961,27 @@ beforeChatMessage: function(src, message, chan) {
     }
     
     if (sys.auth(src) == 1) { //mod
-	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#00b300>(🌐)</font>  " + sys.name(src) + ": </b></span><font size=3 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#00b300>🌐</font>  " + sys.name(src) + ": </b></span><font size=3 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
     } else if (sys.auth(src) == 2) { //Admnin
-	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#cc0000>(🌐)</font> " + sys.name(src) + ": </b></span><font size=3 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#cc0000>🌐</font> " + sys.name(src) + ": </b></span><font size=3 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);		
     } else if (sys.auth(src) == 3) { //owner
-	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#002db3>(🌐)</font> " + sys.name(src) + ": </b></span><font size=3 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#002db3>🌐</font> " + sys.name(src) + ": </b></span><font size=3 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
 	    sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
     } else if (sys.auth(src) == 4) { //Hiddenauth
-	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>(🌐)</font> " + sys.name(src) + ": </b></span><font size=3 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>🌐</font> " + sys.name(src) + ": </b></span><font size=3 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
     } else if (!sys.dbRegistered(sys.name(src))) {		
-     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>(🌐)</font> " + sys.name(src) + ": </b></span><font size=3 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>🌐</font> " + sys.name(src) + ": </b></span><font size=3 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);
     } else { //User
- 	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>(🌐)</font> " + sys.name(src) + ": </b></span><font size=3 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+ 	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>🌐</font> " + sys.name(src) + ": </b></span><font size=3 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
 	    sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
 	    return;
