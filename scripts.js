@@ -1372,11 +1372,11 @@ afterLogIn : function(src) {
     } else if (sys.auth(src) == 4) {
     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Member]</font> " + sys.name(src) + "</span><font size=3 font color=red> Joined", 0);
     } else if (!sys.dbRegistered(sys.name(src))) {		
-     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Registered]</font> " + sys.name(src) + "</span><font size=3 font color=red> Joined", 0);
+     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Unrgistered]</font> " + sys.name(src) + "</span><font size=3 font color=red> Joined", 0);
     }  else {
-        sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>(Unregistered)</font> " + sys.name(src) + "</span><font size=3 font color=red> Joined", 0);
+        sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>(Registered)</font> " + sys.name(src) + "</span><font size=3 font color=red> Joined", 0);
     } 
-    sys.sendMessage(src, "Welcome to the safari zone: /rules ");
+    sys.sendHtmlAll("<font size=3 font color=red>Create your own channel. Type /cjoin name");
 
     callplugins("afterLogIn", src);
 
