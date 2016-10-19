@@ -1376,7 +1376,7 @@ afterLogIn : function(src) {
     }  else {
         sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Member]</font> " + sys.name(src) + "</span>Empty<font size=3 font color=blue> Joined the channel! height=10><img src='pokemon:num=383&gen=6' height=10>", 0);
     } 
-    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>How to play:</font> " + sys.name(src) + "</span>Empty<font size=3 font color=red> Test height=8>", 0);
+    sys.sendHtmlAll("Test: Hi", 0);
 
     callplugins("afterLogIn", src);
 
