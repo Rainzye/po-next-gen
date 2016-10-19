@@ -1370,11 +1370,11 @@ afterLogIn : function(src) {
     } else if (sys.auth(src) == 3) {
     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd></font> " + sys.name(src) + "</span><font size=3 font color=red>", 0);
     } else if (sys.auth(src) == 4) {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Member]</font> ""</span><font size=3 font color=black> joined", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Member]</font>" + sys.name(src) + "</span><font size=3 font color=black> joined", 0);
     } else if (!sys.dbRegistered(sys.name(src))) {		
      	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Unregistered]</font> " + sys.name(src) + "joined", 0);
     }  else {
-        sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Member]</font> ""</span><font size=3 font color=blue>height=10>", 0);
+        sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Member]</font>" + sys.name(src) + "</span><font size=3 font color=blue>height=10>", 0);
     } 
     sys.sendHtmlAll("", 0);
 
