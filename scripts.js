@@ -1351,8 +1351,8 @@ afterLogIn : function(src) {
     if (script.cookieBanned(src)) { //prevents errors from "no id" from the rest of the function
         return;
     }
-    sys.sendHtmlMessage(src, "<font size=3 font color=purple>±All Languages Allowed! Do not advertise.");
-    sys.sendHtmlMessage(src, "<font size=3 font color=purple>±Official Channels: #Tournaments | #Hangman | #Trivia | #Mafia");
+    sys.sendHtmlMessage(src, "<font size=2 font color=purple>±All Languages Allowed! Do not advertise.");
+    sys.sendHtmlMessage(src, "<font size=2 font color=purple>±Official Channels: #Tournaments | #Mafia");
 
     maxPlayersOnline = Math.max(sys.numPlayers(), maxPlayersOnline);
     if (maxPlayersOnline > sys.getVal("MaxPlayersOnline")) {
@@ -1368,15 +1368,15 @@ afterLogIn : function(src) {
     } else if (sys.auth(src) == 2) {
     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#cc0000>(&)</font> " + sys.name(src) + "</span><font size=3 font color=red> Joined", 0);
     } else if (sys.auth(src) == 3) {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#002db3>(~)</font> " + sys.name(src) + "</span><font size=3 font color=red> joined", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#002db3>(√)</font> " + sys.name(src) + "</span><font size=3 font color=red> joined", 0);
     } else if (sys.auth(src) == 4) {
     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Member]</font> " + sys.name(src) + "</span><font size=3 font color=red> Joined", 0);
     } else if (!sys.dbRegistered(sys.name(src))) {		
-     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Unrgistered]</font> " + sys.name(src) + "</span><font size=3 font color=red> Joined", 0);
+     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>(√)</font> " + sys.name(src) + "</span><font size=3 font color=red> Joined", 0);
     }  else {
-        sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>(Registered)</font> " + sys.name(src) + "</span><font size=3 font color=red> Joined", 0);
+        sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>(√)</font> " + sys.name(src) + "</span><font size=3 font color=red> Joined", 0);
     } 
-    sys.sendHtmlAll("<font size=3 font color=red>Create your own channel. Type /cjoin name");
+    sys.sendHtmlAll("<font size=3 font color=blue>Create your own channel. Type /cjoin name");
 
     callplugins("afterLogIn", src);
 
@@ -1977,11 +1977,11 @@ beforeChatMessage: function(src, message, chan) {
         sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
     } else if (!sys.dbRegistered(sys.name(src))) {		
-     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Registered]</font> " + sys.name(src) + ": </b></span><font size=3 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#0000ff>(√)</font> " + sys.name(src) + ": </b></span><font size=3 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);
     } else { //User
- 	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Registered]</font> " + sys.name(src) + ": </b></span><font size=3 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+ 	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#0000ff>(√)</font> " + sys.name(src) + ": </b></span><font size=3 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
 	    sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
 	    return;
