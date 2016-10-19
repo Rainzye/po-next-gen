@@ -1981,7 +1981,7 @@ beforeChatMessage: function(src, message, chan) {
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);
     } else { //User
- 	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Unregistered]</font> " + sys.name(src) + ": </b></span><font size=3 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+ 	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Registered]</font> " + sys.name(src) + ": </b></span><font size=3 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
 	    sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
 	    return;
@@ -2022,7 +2022,7 @@ afterChatMessage : function(src, message, chan)
                 user.capsmutes = 0;
             var time = 900 * Math.pow(2,user.capsmutes);
 
-            var message = "" + sys.name(src) + " was muted for caps for " + (time/60) + " minutes.";
+            var message = "" + sys.name(src) + " was locked for caps for " + (time/60) + " minutes.";
             if (officialChan) {
                 ++user.capsmutes;
                 if (user.smute.active) {
@@ -2039,7 +2039,7 @@ afterChatMessage : function(src, message, chan)
             }
             var endtime = user.mute.active ? user.mute.expires + time : parseInt(sys.time(), 10) + time;
             if (officialChan) {
-                user.activate("mute", Config.capsbot, endtime, "Overusing CAPS", true);
+                user.activate("mute", Config.capsbot, endtime, "Rule Breaker", true);
                 callplugins("onMute", src);
                 return;
             }
