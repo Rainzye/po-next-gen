@@ -1360,8 +1360,7 @@ afterLogIn : function(src) {
     }
     countbot.sendHtmlMessage(src, (typeof(this.startUpTime()) == "string" ?  "Uptime: " + this.startUpTime() + ".  " : "")  + "Players online at once was: " + sys.getVal("MaxPlayersOnline") + ".");
     sys.sendHtmlMessage(src, "<font size=3 font color=blue> (PA) | /start bulbasaur |/start charmander</span> or /start squirtle We recommend. You finish /tutorial however you may wish to /skiptutorial confirm for additional guidelines about contests type /info you can view are shop to buy pokemon balls. Using /buy like /buy bait:1 anyway. Here's extra help commands /commands safari /help safari rules /commands to see the commands good luck have fun");
-What is this lol > 
-    sys.sendHtmlAll(src, "<span style='color: " + sys.getColor(src) + "'></p></tr><font size=4 font color=#00007f><hr><center><i></i><br/></center><hr><br><font color=blue>", 0);
+sys.sendHtmlAll(src, "<span style='color: " + sys.getColor(src) + "'></p></tr><font size=4 font color=#00007f><hr><center><i></i><br/></center><hr><br><font color=blue>", 0);
     if (sys.name(src) == "Haunter") {
     	sys.sendHtmAllMessage("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>Host</font> " + sys.name(src) + "</span><font size=3 font color=blue>", 0);
     } else if (sys.auth(src) == 1) {
