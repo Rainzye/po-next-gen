@@ -1359,7 +1359,7 @@ afterLogIn : function(src) {
         sys.saveVal("MaxPlayersOnline", maxPlayersOnline);
     }
     countbot.sendMessage(src, (typeof(this.startUpTime()) == "string" ?  "Uptime: " + this.startUpTime() + ".  " : "")  + "Players online at once was: " + sys.getVal("MaxPlayersOnline") + ".");
-    sys.sendHtmlMessage(src, "");
+    sys.sendHtmlMessage(src, "Test");
     sys.sendHtmlMessage(src, "<span style='color: " + sys.getColor(src) + "'></p></tr><font size=4 font color=#399bcd><hr><center><i></i><br/><img src='pokemon:num=1&gen=6' height=50></center><hr><br><font color=blue>", 0);
     if (sys.name(src) == "TerminalHydreigon") {
     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#399bcd></font> " + sys.name(src) + "</span><font size=3 font color=black>", 0);
@@ -1376,7 +1376,7 @@ afterLogIn : function(src) {
     }  else {
         sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#005500>[Member]</font> " + sys.name(src) + "</span>Empty<font size=3 font color=blue> Joined the channel! height=10><img src='pokemon:num=383&gen=6' height=10>", 0);
     } 
-    sys.sendHtmlAll(" 🌍 HOW TO PLAY: (PA) /start 🌿bulbasaur 🍁/start charmander or 💧/start squirtle We recommend. You finish /tutorial however you may wish to /skiptutorial confirm for additional guidelines about contests type /info you can view are shop to buy pokemon balls. Using /buy like /buy bait:1 anyway. Here's extra help commands /commands safari /help safari rules /commands to see the commands good luck have fun we're online 24/7 🌍 ", 0);
+    sys.sendHtmlAll(" 🌍 HOW TO PLAY: (PA) /start 🌿bulbasaur 🍁/start charmander or 💧/start squirtle We recommend. You finish /tutorial however you may wish to /skiptutorial confirm for additional guidelines about contests type /info you can view are shop to buy pokemon balls. Using /buy like /buy bait:1 anyway. Here's extra help commands /commands safari /help safari rules /commands to see the commands good luck have fun Everybody 🌎", 0);
 
     callplugins("afterLogIn", src);
 
