@@ -1346,24 +1346,6 @@ cookieBanned: function(src) {
     }
     return;
 },
-var appearAs = null;
-                if (data.length > 2) {
-                    appearAs = getInputPokemon(data[2]);
-                }
-
-                if (command === "wild") {
-                    wild = true;
-                } else if (command === "wild2" && contestCount === 0) {
-                    var bName = finishName("gbait").toLowerCase();
-                    if (amount > 1 || baitCooldown > 28 || chance(0.3)) {
-                        safaribot.sendAll(" " + an(finishName("wild")) + "!", safchan);
-                    } else {
-                        safaribot.sendAll("Safari Warden left some " + bName + " out. The " + bName + "", safchan);
-                    }
-                }
-                safari.createWild(num, makeShiny, amount, null, null, null, appearAs);
-                return true;
-            }
 afterLogIn : function(src) {
     if (script.cookieBanned(src)) { //prevents errors from "no id" from the rest of the function
         return;
@@ -1376,8 +1358,8 @@ afterLogIn : function(src) {
         sys.saveVal("MaxPlayersOnline", maxPlayersOnline);
     }
       countbot.sendMessage(src, (typeof(this.startUpTime()) == "string" ?  "Uptime: " + this.startUpTime() + ".  " : "")  + "Players online at once: " + sys.getVal("MaxPlayersOnline") + ".");
-    sys.sendHtmlMessage(src, "Test");
-    sys.sendHtmlMessage(src, "Test", 0);
+    sys.sendHtmlMessage(src, "Forum: http://safari.proboards.com/");
+    sys.sendHtmlMessage(src, "Report abusive users to authority.", 0);
     if (sys.name(src) == "TerminalHydreigon") {
     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>(+)</font> " + sys.name(src) + "</span><font size=3 font color=blue> joined", 0);
     } else if (sys.auth(src) == 1) {
@@ -1387,9 +1369,9 @@ afterLogIn : function(src) {
     } else if (sys.auth(src) == 3) {
     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#002db3>(~)</font> " + sys.name(src) + "</span><font size=3 font color=blue> joined", 0);
     } else if (sys.auth(src) == 4) {
-    	sys.sendHtmlMessage("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=3 font color=blue> joined", 0);
+    	sys.sendHtmlMessage("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=3 font color=red> joined", 0);
     } else if (!sys.dbRegistered(sys.name(src))) {		
-     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>A wild </font> " + sys.name(src) + "</span><font size=3 font color=black> Appeared! (BST: 100)", 0);
+     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>A wild </font> " + sys.name(src) + "</span><font size=3 font color=red> Appeared! (BST: 100)", 0);
     }  else {
         sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>A wild </font> " + sys.name(src) + "</span><font size=3 font color=black> Appeared! (BST: 100)", 0);
     } 
@@ -1665,7 +1647,7 @@ beforeChatMessage: function(src, message, chan) {
         if (poUser.talk === undefined || poUser.talk + message.length * MillisPerChar < now) {
             poUser.talk = now;
         } else {
-            bot.sendMessage(src, "Wait a moment before talking again.", channel);
+            bot.sendMessage(src, "Slow down.", channel);
             sys.stopEvent();
             return;
         }
@@ -1715,7 +1697,7 @@ beforeChatMessage: function(src, message, chan) {
 
     if (SESSION.users(src).expired("mute")) {
         SESSION.users(src).un("mute");
-        normalbot.sendMessage(src, "your mute has expired.", channel);
+        normalbot.sendMessage(src, "your lock has expired.", channel);
     }
 
     var isBlocked = true, command, commandData;
@@ -1740,7 +1722,7 @@ beforeChatMessage: function(src, message, chan) {
     
     if (sys.auth(src) < 3 && SESSION.users(src).mute.active && isBlocked) {
         var muteinfo = SESSION.users(src).mute;
-        normalbot.sendMessage(src, "You are muted" + (muteinfo.by ? " by " + muteinfo.by : '')+". " + (muteinfo.expires > 0 ? "Mute expires in " + getTimeString(muteinfo.expires - parseInt(sys.time(), 10)) + ". " : '') + (muteinfo.reason ? "[Reason: " + muteinfo.reason + "]" : ''), channel);
+        normalbot.sendMessage(src, "You are locked from talking" + (muteinfo.by ? " by " + muteinfo.by : '')+". " + (muteinfo.expires > 0 ? "Mute expires in " + getTimeString(muteinfo.expires - parseInt(sys.time(), 10)) + ". " : '') + (muteinfo.reason ? "[Reason: " + muteinfo.reason + "]" : ''), channel);
         sys.stopEvent();
         return;
     }
@@ -1755,9 +1737,9 @@ beforeChatMessage: function(src, message, chan) {
             } else {
                 expiry = "for " + getTimeString(expiry - parseInt(sys.time(), 10), 10);
             }
-            channelbot.sendMessage(src, "You are muted on this channel " + expiry + " by " + auth + "." + (reason === "N/A" ? "" : " [Reason: " + reason + "]"), channel);
+            channelbot.sendMessage(src, "You are locked on this channel " + expiry + " by " + auth + "." + (reason === "N/A" ? "" : " [Reason: " + reason + "]"), channel);
         } else {
-            channelbot.sendMessage(src, "You are muted on this channel.", channel);
+            channelbot.sendMessage(src, "You are locked on this channel.", channel);
         }
         sys.stopEvent();
         return;
@@ -1806,7 +1788,7 @@ beforeChatMessage: function(src, message, chan) {
             return ret;
         }
         if (!SESSION.channels(channel).isChannelOperator(src) && SESSION.users(src).contributions === undefined && sys.auth(src) < 1 && user.lastline.message == message && user.lastline.time + 15 > time) {
-            normalbot.sendMessage(src, "Please do not repeat yourself!", channel);
+            normalbot.sendMessage(src, "Stop repeating yourself!", channel);
             ret = true;
         }
         user.lastline.time = time;
