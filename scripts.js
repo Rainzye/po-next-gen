@@ -1358,7 +1358,7 @@ afterLogIn : function(src) {
         sys.saveVal("MaxPlayersOnline", maxPlayersOnline);
     }
       countbot.sendMessage(src, (typeof(this.startUpTime()) == "string" ?  "Uptime: " + this.startUpTime() + ".  " : "")  + "Players online at once: " + sys.getVal("MaxPlayersOnline") + ".");
-    sys.sendHtmlMessage(src, "Forum: http://safari.proboards.com/");
+    sys.sendHtmlMessage(src, "Forum: http://safari-zone.boards.net/#");
     sys.sendHtmlMessage(src, "Report abusive users to authority.", 0);
     if (sys.name(src) == "TerminalHydreigon") {
     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>(+)</font> " + sys.name(src) + "</span><font size=3 font color=blue> joined", 0);
