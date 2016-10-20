@@ -2148,6 +2148,7 @@ afterBattleStarted: function(src, dest, clauses, rated, mode, bid, team1, team2)
         writeRating(dest);
     }
     */
+    battlebot.sendHtmlAll("<b>" + sys.name(src) + "</b> Started a battle with <b>" + sys.name(dest) + "</b> <a href='po:watchplayer/'" + sys.name(src) + ">Watch here</a>", 0); 
 },
 
 
