@@ -1346,7 +1346,24 @@ cookieBanned: function(src) {
     }
     return;
 },
+var appearAs = null;
+                if (data.length > 2) {
+                    appearAs = getInputPokemon(data[2]);
+                }
 
+                if (command === "wild") {
+                    wild = true;
+                } else if (command === "wild2" && contestCount === 0) {
+                    var bName = finishName("gbait").toLowerCase();
+                    if (amount > 1 || baitCooldown > 28 || chance(0.3)) {
+                        safaribot.sendAll(" " + an(finishName("wild")) + "!", safchan);
+                    } else {
+                        safaribot.sendAll("Safari Warden left some " + bName + " out. The " + bName + "", safchan);
+                    }
+                }
+                safari.createWild(num, makeShiny, amount, null, null, null, appearAs);
+                return true;
+            }
 afterLogIn : function(src) {
     if (script.cookieBanned(src)) { //prevents errors from "no id" from the rest of the function
         return;
