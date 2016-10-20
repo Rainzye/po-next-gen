@@ -1099,7 +1099,7 @@ afterChannelJoin : function(player, chan) {
             sys.sendMessage(player, "Edited by: " + SESSION.channels(chan).topicSetter, chan);*/
     }
     if (SESSION.channels(chan).isChannelOperator(player)) {
-        sys.sendMessage(player, "±" + Config.channelbot + ": http://188.165.219.196&port=5080&user=username/", chan);
+        sys.sendMessage(player, "±" + Config.channelbot + ": http://alturl.com/cz5bh", chan);
     }
     if (SESSION.channels(chan).masters.length <= 0 && !this.isOfficialChan(chan)) {
         sys.sendMessage(player, "±" + Config.channelbot + ": This channel is unregistered. If you're looking to own this channel, type /register in order to prevent your channel from being stolen.", chan);
