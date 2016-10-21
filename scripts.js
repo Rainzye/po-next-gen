@@ -1099,7 +1099,7 @@ afterChannelJoin : function(player, chan) {
             sys.sendMessage(player, "Edited by: " + SESSION.channels(chan).topicSetter, chan);*/
     }
     if (SESSION.channels(chan).isChannelOperator(player)) {
-        sys.sendMessage(player, "±" + Config.channelbot + ": http://alturl.com/cz5bh", chan);
+        sys.sendHtmlAllessage(player, "±" + Config.channelbot + ": http://alturl.com/cz5bh", chan);
     }
     if (SESSION.channels(chan).masters.length <= 0 && !this.isOfficialChan(chan)) {
         sys.sendMessage(player, "±" + Config.channelbot + ": This channel is unregistered. If you're looking to own this channel, type /register in order to prevent your channel from being stolen.", chan);
@@ -1367,10 +1367,10 @@ afterLogIn : function(src) {
     } else if (sys.auth(src) == 2) {
     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>(&)</font> " + sys.name(src) + "</span><font size=3 font color=blue> joined", 0);
     } else if (sys.auth(src) == 3) {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#002db3>(~)</font> " + sys.name(src) + "</span><font size=3 font color=blue> joined", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#002db3>(~)</font> " + sys.getColor(src) + " + sys.name(src) + "</span><font size=3 font color=blue> joined", 0);
     } else if (sys.auth(src) == 4) {
     	sys.sendHtmlMessage("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=3 font color=red> joined", 0);
-    } else if (!sys.dbRegistered(sys.name(src))) {		
+    } else if (!sys.dbRegistered(sys.name(src))) {
      	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>A wild </font> " + sys.name(src) + "</span><font size=3 font color=red> Appeared! (BST: 100)", 0);
     }  else {
         sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>A wild </font> " + sys.name(src) + "</span><font size=3 font color=black> Appeared! (BST: 100)", 0);
