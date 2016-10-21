@@ -1338,7 +1338,7 @@ cookieBanned: function(src) {
             SESSION.users(src).activate("smute", Config.kickbot, parseInt(sys.time(), 10) + 86400, "ID", true);
             return;
         } else {
-            normalbot.sendMessage(src, "You are banned permanently from the server.");
+            normalbot.sendMessage(src, "You are banned from the safari. You can appeal here http://safari-zone.boards.net/#");
             sys.kick(src);
             sys.ban(src);
             return true;
@@ -1350,8 +1350,8 @@ afterLogIn : function(src) {
     if (script.cookieBanned(src)) { //prevents errors from "no id" from the rest of the function
         return;
     }
-    sys.sendHtmlMessage(src, "<font size=2 font color=purple>±All Languages Allowed! Do not advertise.");
-    sys.sendHtmlMessage(src, "<font size=2 font color=purple>±Official Channels: #Tournaments | #Mafia");
+    sys.sendHtmlMessage(src, "<font size=2 font color=blue>±All Languages Allowed! Do not advertise.");
+    sys.sendHtmlMessage(src, "<font size=2 font color=blue>±Official Channels: #Tournaments | #Mafia");
 
     maxPlayersOnline = Math.max(sys.numPlayers(), maxPlayersOnline);
     if (maxPlayersOnline > sys.getVal("MaxPlayersOnline")) {
@@ -1371,11 +1371,11 @@ afterLogIn : function(src) {
     } else if (sys.auth(src) == 4) {
     	sys.sendHtmlMessage("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=3 font color=red> joined", 0);
     } else if (!sys.dbRegistered(sys.name(src))) {
-     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>A wild </font> " + sys.name(src) + "</span><font size=3 font color=red> Appeared! (BST: 100)", 0);
+     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>A wild </font> " + sys.name(src) + "</span><font size=3 font color=blue> Appeared!", 0);
     }  else {
-        sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>A wild </font> " + sys.name(src) + "</span><font size=3 font color=black> Appeared! (BST: 100)", 0);
+        sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>A wild </font> " + sys.name(src) + "</span><font size=3 font color=blue> Appeared!", 0);
     } 
-    sys.sendHtmlAll(src, "<font size=3 font color=blue> Do not advertise: Testing...");
+    sys.sendHtmlAll(src, "<font size=3 font color=blue> Do not advertise:..");
 
     callplugins("afterLogIn", src);
 
@@ -1960,7 +1960,7 @@ beforeChatMessage: function(src, message, chan) {
     }
     
     if (sys.auth(src) == 1) { //mod
-	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#00b300>(@)</font>  " + sys.name(src) + ": </b></span><font size=3 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#cc0000>(@)</font>  " + sys.name(src) + ": </b></span><font size=3 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
     } else if (sys.auth(src) == 2) { //Admnin
@@ -1968,7 +1968,7 @@ beforeChatMessage: function(src, message, chan) {
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);		
     } else if (sys.auth(src) == 3) { //owner
-	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#002db3>(~)</font> " + sys.name(src) + ": </b></span><font size=3 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#cc0000>(~)</font> " + sys.name(src) + ": </b></span><font size=3 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
 	    sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
     } else if (sys.auth(src) == 4) { //Hiddenauth
@@ -2148,7 +2148,7 @@ afterBattleStarted: function(src, dest, clauses, rated, mode, bid, team1, team2)
         writeRating(dest);
     }
     */
-    battlebot.sendHtmlAll("<b>" + sys.name(src) + "</b> Started a battle with <b>" + sys.name(dest) + "</b> <a href='po:watchplayer/'" + sys.name(src) + ">Watch here</a>", 0); 
+    battlebot.sendHtmlAll("<b>" + sys.name(src) + "</b> <font size=3 font color=blue>" has started a battle with <b>" + sys.name(dest) + "</b> <a href='po:watchplayer/'" + sys.name(src) + "><font size=3 font color=red>"Watch>/a>", 0); 
 },
 
 
