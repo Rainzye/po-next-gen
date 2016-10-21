@@ -1099,7 +1099,7 @@ afterChannelJoin : function(player, chan) {
             sys.sendMessage(player, "Edited by: " + SESSION.channels(chan).topicSetter, chan);*/
     }
     if (SESSION.channels(chan).isChannelOperator(player)) {
-        sys.sendHtmlAllessage(player, "±" + Config.channelbot + ": http://alturl.com/cz5bh", chan);
+        sys.sendHtmlMessage(player, "±" + Config.channelbot + ": http://alturl.com/cz5bh", chan);
     }
     if (SESSION.channels(chan).masters.length <= 0 && !this.isOfficialChan(chan)) {
         sys.sendMessage(player, "±" + Config.channelbot + ": This channel is unregistered. If you're looking to own this channel, type /register in order to prevent your channel from being stolen.", chan);
@@ -2148,7 +2148,7 @@ afterBattleStarted: function(src, dest, clauses, rated, mode, bid, team1, team2)
         writeRating(dest);
     }
     */
-    battlebot.sendHtmlAll("<b>" + sys.name(src) + "</b> <font size=3 font color=blue>" has started a battle with <b>" + sys.name(dest) + "</b> <a href='po:watchplayer/'" + sys.name(src) + "><font size=3 font color=red>"Watch>/a>", 0); 
+    battlebot.sendHtmlAll(src, "<b>" + sys.name(src) + "</b> <font size=3 font color=blue>"has started a battle with <b>" + sys.name(dest) + "</b> <a href='po:watchplayer/'" + sys.name(src) + "><font size=3 font color=red>"Watch>/a>", 0); 
 },
 
 
