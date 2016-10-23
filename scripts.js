@@ -22,7 +22,7 @@ var Config = {
     safaribot: "Tauros",
     youtubebot: "Rotom",
     // suspectvoting.js available, but not in use
-    Plugins: ["mafia.js", "amoebagame.js", "tourstats.js", "trivia.js", "tours.js", "newtourstats.js", "auto_smute.js", "battlefactory.js", "hangman.js", "blackjack.js", "mafiastats.js", "mafiachecker.js", "safari.js", "youtube.js"],
+    Plugins: ["mafia.js", "amoebjagame.js", "tourstats.js", "trivia.js", "tours.js", "newtourstats.js", "auto_smute.js", "battlefactory.js", "hangman.js", "blackjack.js", "mafiastats.js", "mafiachecker.js", "safari.js", "youtube.js"],
     Mafia: {
         bot: "Charizard",
         norepeat: 5,
@@ -2148,7 +2148,7 @@ afterBattleStarted: function(src, dest, clauses, rated, mode, bid, team1, team2)
         writeRating(dest);
     }
     */
-    battlebot.sendHtmlAll("<b>" + sys.name(src) + "</b><font color = blue>started a battle with <b>" + sys.name(dest) + "</b> <a href='po:watchplayer/'" + sys.name(src) + ">", 0); 
+    battlebot.sendHtmlAll("<b>" + sys.name(src) + "</b><font color = blue> started a battle with <b>" + sys.name(dest) + "</b> <a href='po:watchplayer/'" + sys.name(src) + ">", 0); 
 },
 
 
