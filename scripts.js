@@ -8,7 +8,7 @@ var Config = {
     bot: "Safari",
     kickbot: "Kickbot",
     capsbot: "Capsbot",
-    channelbot: "Webclient",
+    channelbot: "</b><font color = blue>Webclient<b>",
     checkbot: "Pikachu",
     coinbot: "Meowth",
     countbot: "Johto",
