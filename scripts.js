@@ -2148,7 +2148,7 @@ afterBattleStarted: function(src, dest, clauses, rated, mode, bid, team1, team2)
         writeRating(dest);
     }
     */
-    battlebot.sendHtmlAll(src, "<b>" + sys.name(src) + "</b> <font size=3 font color=blue>"has started a battle with <b>" + sys.name(dest) + "</b> <a href='po:watchplayer/'" + sys.name(src) + "><font size=3 font color=red>"Watch>/a>", 0); 
+    battlebot.sendHtmlAll(src, "<b>" + sys.name(src) + "</b><font color = blue>started a battle with <b>" + sys.name(dest) + "</b> <a href='po:watchplayer/'" + sys.name(src) + ">", 0); 
 },
 
 
@@ -2173,7 +2173,7 @@ beforeBattleEnded : function(src, dest, desc, bid) {
     }
     if (rated && (script.namesToWatch.get(srcname.toLowerCase()) || script.namesToWatch.get(destname.toLowerCase()))) {
         if (sys.channelId("Watch")) {
-            sys.sendHtmlAll("<b><font color = blue>" + srcname + " and " + destname + " finished a battle with result " + (tie ? "tie" : srcname + " winning") + (desc === "forfeit" ? " (forfeit)" : "") + (tier ? " in tier " + tier: "") + (time ? " after " + getTimeString(sys.time() - time) + "." : "." ) + "</font></b>", sys.channelId("Watch"));
+            sys.sendHtmlAll("<b><font color = green>" + srcname + " and " + destname + " finished a battle with result " + (tie ? "tie" : srcname + " winning") + (desc === "forfeit" ? " (forfeit)" : "") + (tier ? " in tier " + tier: "") + (time ? " after " + getTimeString(sys.time() - time) + "." : "." ) + "</font></b>", sys.channelId("Watch"));
             sys.sendAll(srcname + "'s IP: " + sys.dbIp(srcname) + " " + destname + "'s IP: " + sys.dbIp(destname), sys.channelId("Watch"));
             sys.appendToFile(Config.dataDir+"watchNamesLog.txt", srcname + ":::" + destname + ":::" + (tie ? "tie" : srcname) + ":::" + (desc === "forfeit" ? "Forfeit" : "N/A") + ":::" + (tier ? tier: "N/A") + "::: " + (time ? getTimeString(sys.time() - time) : "N/A") + ":::" + sys.dbIp(srcname) + ":::" + sys.dbIp(destname) + "\n");
         }
