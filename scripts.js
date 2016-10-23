@@ -9,9 +9,9 @@ var Config = {
     kickbot: "</b><font color = black>Kickbot<b>",
     capsbot: "</b><font color = black>Capsbot<b>",
     channelbot: "</b><font color = black>Webclient<b>",
-    checkbot: "</b><font color = black>Pikachu<b>",
+    checkbot: "</b><font color = red>Pikachu<b>",
     coinbot: "Meowth",
-    countbot: "</b><font color = green>Safari<b>",
+    countbot: "Safari",
     tourneybot: "Tourbot",
     rankingbot: "Rankbot",
     battlebot: "</b><font color = blue>Safari<b>",
@@ -1357,7 +1357,7 @@ afterLogIn : function(src) {
     if (maxPlayersOnline > sys.getVal("MaxPlayersOnline")) {
         sys.saveVal("MaxPlayersOnline", maxPlayersOnline);
     }
-      countbot.sendMessage(src, (typeof(this.startUpTime()) == "string" ?  "Uptime: " + this.startUpTime() + ".  " : "")  + "Players online at once: " + sys.getVal("MaxPlayersOnline") + ".");
+      countbot.sendMessage(src, (typeof(this.startUpTime()) == "string" ?  "<font size=3 font color=red> Uptime: " + this.startUpTime() + ".  " : "")  + "Players online at once: " + sys.getVal("MaxPlayersOnline") + ".");
     sys.sendHtmlMessage(src, "Forum: http://safari-zone.boards.net/#");
     sys.sendHtmlMessage(src, "<font size=3 font color=red> Report abusive users to authority.", 0);
     if (sys.name(src) == "TerminalHydreigon") {
