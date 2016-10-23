@@ -14,7 +14,7 @@ var Config = {
     countbot: "Johto",
     tourneybot: "Tourbot",
     rankingbot: "Rankbot",
-    battlebot: "Battlebot",
+    battlebot: "Safari",
     commandbot: "CommandBot",
     querybot: "QueryBot",
     hangbot: "Hangmanbot",
@@ -2148,7 +2148,7 @@ afterBattleStarted: function(src, dest, clauses, rated, mode, bid, team1, team2)
         writeRating(dest);
     }
     */
-    battlebot.sendHtmlAll(src, "<b>" + sys.name(src) + "</b><font color = blue>started a battle with <b>" + sys.name(dest) + "</b> <a href='po:watchplayer/'" + sys.name(src) + ">", 0); 
+    battlebot.sendHtmlAll("<b>" + sys.name(src) + "</b><font color = blue>started a battle with <b>" + sys.name(dest) + "</b> <a href='po:watchplayer/'" + sys.name(src) + ">", 0); 
 },
 
 
