@@ -11,7 +11,7 @@ var Config = {
     channelbot: "</b><font color = black>Webclient<b>",
     checkbot: "</b><font color = black>Pikachu<b>",
     coinbot: "Meowth",
-    countbot: "</b><font color = yellow>Johto<b>",
+    countbot: "</b><font color = pink>Safari<b>",
     tourneybot: "Tourbot",
     rankingbot: "Rankbot",
     battlebot: "</b><font color = blue>Safari<b>",
