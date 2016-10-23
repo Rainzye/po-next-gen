@@ -8,13 +8,13 @@ var Config = {
     bot: "Safari",
     kickbot: "</b><font color = black>Kickbot<b>",
     capsbot: "</b><font color = black>Capsbot<b>",
-    channelbot: "</b><font color = black>Webclient<b>",
+    channelbot: "</b><font color = pink>Webclient<b>",
     checkbot: "</b><font color = red>Pikachu<b>",
     coinbot: "Meowth",
     countbot: "Safari",
     tourneybot: "Tourbot",
     rankingbot: "Rankbot",
-    battlebot: "</b><font color = blue>Safari<b>",
+    battlebot: "</b><font color = red>Safari<b>",
     commandbot: "CommandBot",
     querybot: "QueryBot",
     hangbot: "Hangmanbot",
@@ -1099,7 +1099,7 @@ afterChannelJoin : function(player, chan) {
             sys.sendMessage(player, "Edited by: " + SESSION.channels(chan).topicSetter, chan);*/
     }
     if (SESSION.channels(chan).isChannelOperator(player)) {
-        sys.sendHtmlMessage(player, "±" + Config.channelbot + ": http://alturl.com/cz5bh", chan);
+        sys.sendHtmlMessage(player, "±" + Config.channelbot + ": /commands", chan);
     }
     if (SESSION.channels(chan).masters.length <= 0 && !this.isOfficialChan(chan)) {
         sys.sendMessage(player, "±" + Config.channelbot + ": This channel is unregistered. If you're looking to own this channel, type /register in order to prevent your channel from being stolen.", chan);
@@ -1313,7 +1313,7 @@ cookieBanned: function(src) {
             name = cookie.substr(cookie.indexOf(" ")+1);
         }
         kickbot.sendAll(sys.name(src) + " was banned by cookie" + (name ? " [Original Name: " + name + "]." : "."), watchchannel);
-        normalbot.sendMessage(src, "You are banned permanently from the server.");
+        normalbot.sendMessage(src, "You are banned from safari. You cam appeal your ban here http://safari-zone.boards.net/# ");
         sys.kick(src);
         return true;
     } else if (cookie === "muted" || cookie.substr(0, 5) === "muted") {
@@ -1357,23 +1357,23 @@ afterLogIn : function(src) {
     if (maxPlayersOnline > sys.getVal("MaxPlayersOnline")) {
         sys.saveVal("MaxPlayersOnline", maxPlayersOnline);
     }
-      countbot.sendMessage(src, (typeof(this.startUpTime()) == "string" ?  "<font size=3 font color=red> Uptime: " + this.startUpTime() + ".  " : "")  + "Players online at once: " + sys.getVal("MaxPlayersOnline") + ".");
+      countbot.sendMessage(src, (typeof(this.startUpTime()) == "string" ?  "Uptime: " + this.startUpTime() + ".  " : "")  + "Players online at once: " + sys.getVal("MaxPlayersOnline") + ".");
     sys.sendHtmlMessage(src, "Forum: http://safari-zone.boards.net/#");
     sys.sendHtmlMessage(src, "<font size=3 font color=red> Report abusive users to authority.", 0);
     if (sys.name(src) == "TerminalHydreigon") {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>(+)</font> " + sys.name(src) + "</span><font size=3 font color=blue> joined", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=blue> joined", 0);
     } else if (sys.auth(src) == 1) {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>(@)</font> " + sys.name(src) + "</span><font size=3 font color=blue> joined", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=blue> joined", 0);
     } else if (sys.auth(src) == 2) {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>(&)</font> " + sys.name(src) + "</span><font size=3 font color=blue> joined", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=blue> joined", 0);
     } else if (sys.auth(src) == 3) {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#002db3>(~)</font> " + sys.name(src) + "</span><font size=3 font color=blue> joined", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#002db3></font> " + sys.name(src) + "</span><font size=2 font color=blue> joined", 0);
     } else if (sys.auth(src) == 4) {
-    	sys.sendHtmlMessage("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=3 font color=red> joined", 0);
+    	sys.sendHtmlMessage("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=red> joined", 0);
     } else if (!sys.dbRegistered(sys.name(src))) {
-     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>A wild </font> " + sys.name(src) + "</span><font size=3 font color=blue> Appeared!", 0);
+     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>A wild</font> " + sys.name(src) + "</span><font size=2 font color=blue> Appeared!", 0);
     }  else {
-        sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>A wild </font> " + sys.name(src) + "</span><font size=3 font color=blue> Appeared!", 0);
+        sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>A wild </font> " + sys.name(src) + "</span><font size=2 font color=blue> Appeared!", 0);
     } 
     sys.sendHtmlAll(src, "<font size=3 font color=blue> Do not advertise:..");
 
