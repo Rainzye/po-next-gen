@@ -5,7 +5,7 @@
 var Config = {
     base_url: "https://raw.githubusercontent.com/Rainzye/po-next-gen/master/scripts.js",
     dataDir: "scriptdata/",
-    bot: "Kanto",
+    bot: "Safari",
     kickbot: "Kickbot",
     capsbot: "Capsbot",
     channelbot: "Webclient",
