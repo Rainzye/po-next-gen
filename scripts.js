@@ -6,10 +6,10 @@ var Config = {
     base_url: "https://raw.githubusercontent.com/Rainzye/po-next-gen/master/scripts.js",
     dataDir: "scriptdata/",
     bot: "Safari",
-    kickbot: "GoodBye",
-    capsbot: "lmfao",
-    channelbot: "</b><font color = pink>Webclient<b>",
-    checkbot: "</b><font color = red>Pikachu<b>",
+    kickbot: "KICKBOT",
+    capsbot: "CAPSBOT",
+    channelbot: "</b><font color = red> (Author Help) /commands channel<b>",
+    checkbot: "Pikachu",
     coinbot: "Meowth",
     countbot: "Safari",
     tourneybot: "Tourbot",
@@ -19,7 +19,7 @@ var Config = {
     querybot: "QueryBot",
     hangbot: "Hangmanbot",
     bfbot: "BF-bot",
-    safaribot: "</b><font color = red>Tauros<b>",
+    safaribot: "Contests",
     youtubebot: "Rotom",
     // suspectvoting.js available, but not in use
     Plugins: ["mafia.js", "amoebjagame.js", "tourstats.js", "trivia.js", "tours.js", "newtourstats.js", "auto_smute.js", "battlefactory.js", "hangman.js", "blackjack.js", "mafiastats.js", "mafiachecker.js", "safari.js", "youtube.js"],
@@ -1216,7 +1216,7 @@ nameIsInappropriate: function(src)
     for (var i = 0; i < nameBans.length; ++i) {
         var regexp = nameBans[i];
         if (regexp.test(lname)) {
-            reply('This kind of name is banned from the server. (Matching regexp: ' + regexp + ')');
+            reply('This kind of name is banned from the server. You can appeal namebans at http://safari-zone.boards.net/# (Matching regexp: ' + regexp + ')');
             return true;
         }
     }
@@ -1360,7 +1360,7 @@ afterLogIn : function(src) {
       countbot.sendMessage(src, (typeof(this.startUpTime()) == "string" ?  "Uptime: " + this.startUpTime() + ".  " : "")  + "Players online at once: " + sys.getVal("MaxPlayersOnline") + ".");
     sys.sendHtmlMessage(src, "Forum: http://safari-zone.boards.net/#");
     sys.sendHtmlMessage(src, "<font size=3 font color=red> Report abusive users to authority.", 0);
-    if (sys.name(src) == "TerminalHydreigon") {
+    if (sys.name(src) == 0) {
     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=blue> joined", 0);
     } else if (sys.auth(src) == 1) {
     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=blue> joined", 0);
@@ -1383,7 +1383,7 @@ afterLogIn : function(src) {
         sys.changeTier(src, "Challenge Cup");
         if (sys.existChannel("PO Android")) {
             var androidChan = sys.channelId("PO Android");
-            sys.putInChannel(src, androidChan);
+            sys.putInChannel(src, );
             sys.kick(src, 0);
             sys.sendMessage(src, "*********", androidChan);
             sys.sendMessage(src, "Message: Hello " + sys.name(src) + "! You seem to be using Pokemon Online for Android. With it you are able to battle with random pokemon. If you want to battle with your own made team, please surf to http://pokemon-online.eu/download with your computer and download the desktop application to your desktop. With it you can export full teams to your Android device! If your using the version with ads from Android Market, download adfree version from http://code.google.com/p/pokemon-online-android/downloads/list", androidChan);
