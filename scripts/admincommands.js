@@ -173,7 +173,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             serialized.nameBans.push(nameBans[i].source);
         }
         sys.writeToFile(Config.dataDir+"nameBans.json", JSON.stringify(serialized));
-        normalbot.sendMessage(src, "You banned: " + regex.toString(), channel);
+        normalbot.sendMessage(src, "You blocked: " + regex.toString(), channel);
         script.refreshNamebans();
         return;
     }
@@ -182,7 +182,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         nameBans = nameBans.filter(function(name) {
             if (name.toString() == commandData) {
                 var toDelete = nameBans.indexOf(name.toString());
-                normalbot.sendMessage(src, "You unbanned: " + name.toString(), channel);
+                normalbot.sendMessage(src, "You unblocked: " + name.toString(), channel);
                 unban = true;
                 return false;
             }
@@ -217,7 +217,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             serialized.chanNameBans.push(script.chanNameBans[i].source);
         }
         sys.writeToFile(Config.dataDir+"chanNameBans.json", JSON.stringify(serialized));
-        normalbot.sendMessage(src, "You banned: " + regex.toString(), channel);
+        normalbot.sendMessage(src, "You blocked: " + regex.toString(), channel);
         return;
     }
     if (command === "channameunban" || command === "channelnameunban") {
@@ -225,7 +225,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         script.chanNameBans = script.chanNameBans.filter(function(name) {
             if (name.toString() == commandData) {
                 var toDelete = script.chanNameBans.indexOf(name.toString());
-                normalbot.sendMessage(src, "You unbanned: " + name.toString(), channel);
+                normalbot.sendMessage(src, "You unblocked: " + name.toString(), channel);
                 unban = true;
                 return false;
             }
@@ -508,7 +508,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             normalbot.sendAll("Target: " + name + ", IP: " + ip.replace("::ffff:", "") + ", OS: " + os + ", Version: " + version, staffchannel);
             normalbot.sendAll(nonFlashing(banner) + " applied the following " +  (command === "ultramute" ? "mutes" : "bans") + ": " + bansApplied.join(", "), staffchannel);
             if (command === "ultraban") {
-                sendChanHtmlAll("<b><font color=red>" + name + " was banned by " + nonFlashing(banner) + "!</font></b>", -1);
+                sendChanHtmlAll("<b><font color=blue>" + name + " was banned by " + nonFlashing(banner) + "!</font></b>", -1);
             }
         } else {
             normalbot.sendMessage(src, "You used " + command + "! But nothing happened!", channel);
@@ -527,6 +527,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
     return "no command";
 };
 exports.help = [
+    "/warn warns a user for breaking rules.",
     "/ban [ip/name]: Bans a user. /unban to unban.",
     "/cookieban [name]: Bans an online target by cookie. /cookieunban to unban.",
     "/cookiemute [name]: Puts an online target on an autosmute list by cookie. /cookieunmute to unmute.",
