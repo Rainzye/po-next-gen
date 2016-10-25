@@ -21,8 +21,8 @@
 // safari administrators: (angie) (stealthy) (server staff)
 // safari moderators: (none)
 // Main Website: http://safari-zone.boards.net/#
-// Webclient: http://goo.gl/QZhlRl/
-var Config = {
+// Official Webclient: http://bit.do/safari-webserver
+    var Config = {
     base_url: "https://raw.githubusercontent.com/Xotically/safari/master/scripts.js",
     dataDir: "scriptdata/",
     bot: "Safari",
@@ -1378,7 +1378,7 @@ afterLogIn : function(src) {
         sys.saveVal("MaxPlayersOnline", maxPlayersOnline);
     }
       countbot.sendMessage(src, (typeof(this.startUpTime()) == "string" ?  "Uptime: " + this.startUpTime() + ".  " : "")  + "Players online at once: " + sys.getVal("MaxPlayersOnline") + ".");
-    sys.sendHtmlMessage(src, "<font size=2 font color=green> Online http://bit.do/safari-webserver-com/");
+    sys.sendHtmlMessage(src, "<font size=2 font color=green> Online http://bit.do/safari-webserver");
     sys.sendHtmlMessage(src, "<font size=3 font color=red> Report abusive users to authority.", 0);
     if (sys.name(src) == "haunter") {
     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>(+)</font> " + sys.name(src) + "</span><font size=2 font colorred> joined ", 0);
