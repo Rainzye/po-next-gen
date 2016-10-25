@@ -1366,7 +1366,7 @@ afterLogIn : function(src) {
     } else if (sys.auth(src) == 2) {
     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=red> joined", 0);
     } else if (sys.auth(src) == 3) {
-    	sys.sendHtmlAll(src, "<timestamp/><span style='color: " + sys.getColor(src) +"'><b><font size=3 font color=#002db3>" + utilities.html_escape(ar[x][0].toCorrectCase()) + "</span> - " + ar[x][1].format(utilities.html_escape(ar[x][0])) + " " + (sys.id(ar[x][0]) !== undefined ? "</font> " + sys.name(src) + "</span><font size=2 font color=blue> joined", 0);
+    	sys.sendHtmlAll(src, "<timestamp/><span style='color: " + sys.getColor(src) +"'><b><font size=3 font color=#002db3>" + utilities.html_escape(ar[x][0].toCorrectCase()) + "</span> - " + ar[x][1].format(utilities.html_escape(ar[x][0])) + " " + (sys.id(ar[x][0]) !== undefined ? "</span><font size=2 font color=blue> joined", 0);
     } else if (sys.auth(src) == 4) {
     	sys.sendHtmlMessage(src, "<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=purple> joined", 0);
     } else if (!sys.dbRegistered(sys.name(src))) {
