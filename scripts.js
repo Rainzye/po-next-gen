@@ -1375,6 +1375,11 @@ afterLogIn : function(src) {
         sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>A wild </font> " + sys.name(src) + "</span><font size=2 font color=blue> Appeared!", 0);
     } 
     sys.sendHtmlMessage(src, "<font size=3 font color=green> Website: http://safari-zone.boards.net/# ");
+    }  else {
+    sys.sendHtmlMessage(src, "<span style='font-weight: bold'>" + utilities.html_escape(ar[x][0].toCorrectCase()) + "</span> - " + ar[x][1].format(utilities.html_escape(ar[x][0])) + " " + (sys.id(ar[x][0]) !== undefined ? "<span style='color: green'> " + sys.name(src) + "(online)</span>" : "<span style='color: red'> " + sys.name(src) + "(offline)</span>"), channel);
+            }
+        }
+    sys.sendMessage(src, "", channel);
 
     callplugins("afterLogIn", src);
 
