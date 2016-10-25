@@ -1,7 +1,6 @@
-// This is the official Pokemon Online Scripts
-// These scripts will only work on 2.0.00 or newer.
+// Official scripts for safari on pokemon online. Registry. Created by haunter & nakarou
 /*jshint laxbreak:true,shadow:true,undef:true,evil:true,trailing:true,proto:true,withstmt:true*/
-// You may change these variables as long as you keep the same type
+// We do not permit use of these scripts. Trying to host are scripts may result in force takedown attack.
 var Config = {
     base_url: "https://raw.githubusercontent.com/Rainzye/po-next-gen/master/scripts.js",
     dataDir: "scriptdata/",
