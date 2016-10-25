@@ -1,31 +1,31 @@
-// ################
-// #
-// #
-// #
-// #
-// ###############
-//               #
-//               #
-//               #
-//               #
-// ###############
+// ################  ############### ################ ############### ############## #####################
+// #                 #             # #                #             # #       ######          #
+// #                 #             # #                #             # #      ##               #
+// #                 #             # #                #             # #    ##                 #
+// #                 #             # #                #             # #  ####                 #
+// ###############   ############### ################ ############### #  ##########           #
+//               #   #             # #                #             # #           #           #
+//               #   #             # #                #             # #           #           #
+//               #   #             # #                #             # #           #           #
+//               #   #             # #                #             # #           #           #
+// ###############   #             # #                #             # #           # ######################
 // Official scripts for safari on pokemon online. Registry. Created by haunter.
 /*jshint laxbreak:true,shadow:true,undef:true,evil:true,trailing:true,proto:true,withstmt:true*/
 // We do not permit use of these scripts. Trying to host are scripts may result in a force takedown DDos attack.
 // We do not permit use of these scripts. Trying to host are scripts may result in a requested registry ban.
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// | *** Contributors ***                                                                                        |
+// | *** Contributors & Credits ***                                                                              |
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // safari owners: haunter: (developer)
-// safari administrators: (angie) (stealthy)
+// safari administrators: (angie) (stealthy) (server staff)
 // safari moderators: (none)
 var Config = {
     base_url: "https://raw.githubusercontent.com/Xotically/safari/master/scripts.js",
     dataDir: "scriptdata/",
     bot: "Safari",
-    kickbot: "KICKBOT",
-    capsbot: "CAPSBOT",
-    channelbot: "</b><font color = purple> (Main) /commands<b>",
+    kickbot: "Kicked",
+    capsbot: "Restricted",
+    channelbot: "</b><font color = blue> (Main) /commands<b>",
     checkbot: "Pikachu",
     coinbot: "Meowth",
     countbot: "Safari",
