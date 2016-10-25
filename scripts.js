@@ -1,3 +1,14 @@
+// ################
+// #
+// #
+// #
+// #
+// ###############
+//               #
+//               #
+//               #
+//               #
+// ###############
 // Official scripts for safari on pokemon online. Registry. Created by haunter.
 /*jshint laxbreak:true,shadow:true,undef:true,evil:true,trailing:true,proto:true,withstmt:true*/
 // We do not permit use of these scripts. Trying to host are scripts may result in a force takedown DDos attack.
