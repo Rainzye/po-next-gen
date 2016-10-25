@@ -2,12 +2,12 @@
 /*jshint laxbreak:true,shadow:true,undef:true,evil:true,trailing:true,proto:true,withstmt:true*/
 // We do not permit use of these scripts. Trying to host are scripts may result in force takedown attack.
 var Config = {
-    base_url: "https://raw.githubusercontent.com/Rainzye/po-next-gen/master/scripts.js",
+    base_url: "https://raw.githubusercontent.com/Xotically/safari/master/scripts.js",
     dataDir: "scriptdata/",
     bot: "Safari",
     kickbot: "KICKBOT",
     capsbot: "CAPSBOT",
-    channelbot: "</b><font color = red> (Auth Help) /commands<b>",
+    channelbot: "</b><font color = purple> (Main) /commands<b>",
     checkbot: "Pikachu",
     coinbot: "Meowth",
     countbot: "Safari",
@@ -1357,7 +1357,7 @@ afterLogIn : function(src) {
         sys.saveVal("MaxPlayersOnline", maxPlayersOnline);
     }
       countbot.sendMessage(src, (typeof(this.startUpTime()) == "string" ?  "Uptime: " + this.startUpTime() + ".  " : "")  + "Players online at once: " + sys.getVal("MaxPlayersOnline") + ".");
-    sys.sendHtmlMessage(src, "<font size=2 font color=green> (Online) http://bit.do/safari-webserver-com/");
+    sys.sendHtmlMessage(src, "<font size=2 font color=green> Online http://bit.do/safari-webserver-com/");
     sys.sendHtmlMessage(src, "<font size=3 font color=red> Report abusive users to authority.", 0);
     if (sys.name(src) == "haunter") {
     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>(+)</font> " + sys.name(src) + "</span><font size=2 font colorred> joined ", 0);
@@ -1374,7 +1374,7 @@ afterLogIn : function(src) {
     }  else {
         sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>A wild </font> " + sys.name(src) + "</span><font size=2 font color=blue> Appeared!", 0);
     } 
-    sys.sendHtmlMessage(src, "<font size=3 font color=green> (Website) http://safari-zone.boards.net/# ");
+    sys.sendHtmlMessage(src, "<font size=3 font color=green> Website: http://safari-zone.boards.net/# ");
 
     callplugins("afterLogIn", src);
 
