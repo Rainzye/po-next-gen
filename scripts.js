@@ -1,6 +1,13 @@
-// Official scripts for safari on pokemon online. Registry. Created by haunter & nakarou
+// Official scripts for safari on pokemon online. Registry. Created by haunter.
 /*jshint laxbreak:true,shadow:true,undef:true,evil:true,trailing:true,proto:true,withstmt:true*/
-// We do not permit use of these scripts. Trying to host are scripts may result in force takedown attack.
+// We do not permit use of these scripts. Trying to host are scripts may result in a force takedown DDos attack.
+// We do not permit use of these scripts. Trying to host are scripts may result in a requested registry ban.
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// | *** Contributors ***                                                                                        |
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// safari owners: haunter: (developer)
+// safari administrators: (angie) (stealthy)
+// safari moderators: (none)
 var Config = {
     base_url: "https://raw.githubusercontent.com/Xotically/safari/master/scripts.js",
     dataDir: "scriptdata/",
