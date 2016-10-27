@@ -18,8 +18,8 @@
 // | *** Contributors & Credits ***                                                                              |
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // safari owners: haunter: • (developer)
-// safari administrators: • (angie) (stealthy) server staff
-// safari moderators: • (none)
+// safari administrators: • (angie) (stealthy) (brian) server staff
+// safari moderators: • (john) server staff
 // Main Website: http://safari-zone.boards.net/#
 // Official Webclient: http://bit.do/safari-webserver
     var Config = {
@@ -28,7 +28,7 @@
     bot: "Safari",
     kickbot: "Kicked",
     capsbot: "Restricted",
-    channelbot: "</b><font color = blue> (Official Safari)<b>",
+    channelbot: "Arcanine",
     checkbot: "Check",
     coinbot: "Coin",
     countbot: "Count",
