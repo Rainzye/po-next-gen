@@ -1381,7 +1381,7 @@ afterLogIn : function(src) {
     sys.sendHtmlMessage(src, "<font size=2 font color=green> Online http://bit.do/safari-webserver");
     sys.sendHtmlMessage(src, "<font size=3 font color=red> Report abusive users to authority.", 0);
     if (sys.name(src) == "haunter") {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000><img src='item:274'></font> " + sys.name(src) + "</span><font size=2 font color=red> joined ", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>God has arrived <img src='pokemon:num=43' width=20 height=20></font> " + sys.name(src) + "</span><font size=2 font color=red> joined ", 0);
     } else if (sys.auth(src) == 1) {
     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=red> joined", 0);
     } else if (sys.auth(src) == 2) {
@@ -1391,7 +1391,7 @@ afterLogIn : function(src) {
     } else if (sys.auth(src) == 4) {
     	sys.sendHtmlMessage(src, "<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=purple> joined", 0);
     } else if (!sys.dbRegistered(sys.name(src))) {
-     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>Trainer </font> " + sys.name(src) + "</span><font size=2 font color=blue> joined! <img src='pokemon:num=42' width=48 height=48>", 0);
+     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>Trainer </font> " + sys.name(src) + "</span><font size=2 font color=blue> joined!", 0);
     }  else {
         sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>Trainer </font> " + sys.name(src) + "</span><font size=2 font color=blue> joined! <img src='pokemon:num=421-1' width=48 height=48>", 0);
     } 
