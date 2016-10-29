@@ -10,20 +10,20 @@
 //               #   #             # #                #             # #           #           #
 // ###############   #             # #                #             # #           # #####################
 // ***************************************************************************************************************
-// Official scripts for safari on pokemon online. Registry. Created by haunter.
+// Official scripts for safari on pokemon online. Registry. Created by haunter, managed by rain
 /*jshint laxbreak:true,shadow:true,undef:true,evil:true,trailing:true,proto:true,withstmt:true*/
-// We do not permit use of these scripts. Trying to host are scripts may result in a force takedown DDos attack.
+// We do not permit use of these scripts. Trying to host are scripts may result in a DMCA strike and will be forced to be taken down by court of law.
 // We do not permit use of these scripts. Trying to host are scripts may result in a requested registry ban.
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // | *** Contributors & Credits ***                                                                              |
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// safari owners: haunter: • (developer)
+// safari owners: haunter: • (developer), naka (developer)
 // safari administrators: • (angie) (stealthy) (brian) server staff
 // safari moderators: • (john) server staff
 // Main Website: http://safari-zone.boards.net/#
 // Official Webclient: http://bit.do/safari-webserver
     var Config = {
-    base_url: "https://raw.githubusercontent.com/Xotically/safari/master/scripts.js",
+    base_url: "https://raw.githubusercontent.com/Rainzye/po-next-gen/master/",
     dataDir: "scriptdata/",
     bot: "Safari",
     kickbot: "Kicked",
@@ -2170,7 +2170,7 @@ afterBattleStarted: function(src, dest, clauses, rated, mode, bid, team1, team2)
         writeRating(dest);
     }
     */
-    battlebot.sendHtmlAll("<b>" + sys.name(src) + "</b><font color = blue> started to battle with <b>" + sys.name(dest) + "</b> <a href='po:watchplayer/'" + sys.name(src) + ""<img src='item:277'>"/watch", 0); 
+    battlebot.sendHtmlAll("<b>" + sys.name(src) + "</b><font color = blue> started to battle with <b>" + sys.name(dest) + "</b> <a href='po:watchplayer/'" + sys.name(src) + ">Watch</a>", 0); 
 },
 
 
