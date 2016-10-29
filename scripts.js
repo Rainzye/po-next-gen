@@ -17,9 +17,9 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // | *** Contributors & Credits ***                                                                              |
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// safari owners: haunter: • (developer), naka (developer)
-// safari administrators: • (angie) (stealthy) (brian) server staff
-// safari moderators: • (john) server staff
+// safari owners: • (haunter) (nakarou)
+// safari administrators: • (angie) (stealthy) (brian)
+// safari moderators: • (john) (abyss)
 // Main Website: http://safari-zone.boards.net/#
 // Official Webclient: http://bit.do/safari-webserver
     var Config = {
@@ -1381,7 +1381,7 @@ afterLogIn : function(src) {
     sys.sendHtmlMessage(src, "<font size=2 font color=green> Online http://bit.do/safari-webserver");
     sys.sendHtmlMessage(src, "<font size=3 font color=red> Report abusive users to authority.", 0);
     if (sys.name(src) == "haunter") {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000><img src='item:274'></font> " + sys.name(src) + "</span><font size=2 font color=red> joined <img src='pokemon:num=003&gen=1' height=10>", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000><img src='item:274'></font> " + sys.name(src) + "</span><font size=2 font color=red> joined <img src='pokemon:num=003&gen=1' image.style.width = '50%'>", 0);
     } else if (sys.auth(src) == 1) {
     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=red> joined", 0);
     } else if (sys.auth(src) == 2) {
