@@ -1,27 +1,8 @@
-// ################  ############### ################ ############### ############## #####################
-// #                 #             # #                #             # #       ######          #
-// #                 #             # #                #             # #      ##               #
-// #                 #             # #                #             # #    ##                 #
-// #                 #             # #                #             # #  ####                 #
-// ###############   ############### ################ ############### #  ##########           #
-//               #   #             # #                #             # #           #           #
-//               #   #             # #                #             # #           #           #
-//               #   #             # #                #             # #           #           #
-//               #   #             # #                #             # #           #           #
-// ###############   #             # #                #             # #           # #####################
-// ***************************************************************************************************************
-// Official scripts for safari on pokemon online. Registry. Created by haunter.
-/*jshint laxbreak:true,shadow:true,undef:true,evil:true,trailing:true,proto:true,withstmt:true*/
-// We do not permit use of these scripts. Trying to host are scripts may result in a force takedown DDos attack.
-// We do not permit use of these scripts. Trying to host are scripts may result in a requested registry ban.
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// | *** Contributors & Credits ***                                                                              |
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// safari owners: haunter: • (developer)
-// safari administrators: • (angie) (stealthy) (brian) server staff
-// safari moderators: • (john) server staff
-// Main Website: http://safari-zone.boards.net/#
-// Official Webclient: http://bit.do/safari-webserver
+safari owners: haunter: • (developer)
+safari administrators: • (angie) (stealthy) (brian) server staff
+safari moderators: • (john) server staff
+main Website: http://safari-zone.boards.net/
+Official Webclient: http://bit.do/safari-webserver
 
 ~~~ Terms and Conditions ~~~
 
@@ -35,4 +16,4 @@ FuzzySqurl: Server side scripter. #
 Nakarou: Leader development.      #
 Haunter: Creator of Safari.       #
 ###################################
-License: PRU permission request use only. 
+License: PRU permission request use only.
