@@ -2170,7 +2170,7 @@ afterBattleStarted: function(src, dest, clauses, rated, mode, bid, team1, team2)
         writeRating(dest);
     }
     */
-    battlebot.sendHtmlAll("<b>" + sys.name(src) + "</b><font color = blue> started to battle with <b>" + sys.name(dest) + "</b> <a href='po:watchplayer/'" + sys.name(src) + ">Watch</a>", 0); 
+    battlebot.sendHtmlAll("<b>" + sys.name(src) + "</b><font color = blue> started to battle with <b>" + sys.name(dest) + "</b> <a href='po:watchplayer/'" + sys.name(dest) + ">Watch</a>", 0); 
 },
 
 
