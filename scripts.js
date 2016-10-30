@@ -1398,7 +1398,7 @@ afterLogIn : function(src) {
     } 
     sys.sendHtmlMessage(src, "<font size=3 font color=purple> Website: http://safari-zone.boards.net/# ");
    
-    sys.sendMessage(src, "</i>ake sure to register your account to protect your username. Also to appeal disciplinary you are required to use are forum<i>. How to play safari: Type <font size=3 font color=blue> /tutorial ", channel);
+    sys.sendMessage(src, "Make sure to register your account to protect your username. Also to appeal disciplinary you are required to use are forum. How to play safari: Type <font size=3 font color=blue> /tutorial ");
 
     callplugins("afterLogIn", src);
 
