@@ -1379,7 +1379,6 @@ afterLogIn : function(src) {
     }
       countbot.sendMessage(src, (typeof(this.startUpTime()) == "string" ?  "Uptime: " + this.startUpTime() + ".  " : "")  + "Players online at once: " + sys.getVal("MaxPlayersOnline") + ".");
     sys.sendHtmlMessage(src, "<font size=2 font color=green> <img src='item:256'> http://bit.do/safari-webserver");
-    sys.sendHtmlMessage(src, "<font size=3 font color=red><img src='item:62'> Report abusive users to authority.", 0);
     if (sys.name(src) == "haunter") {
     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=red> joined! <img src='item:28'>", 0);
     } else if (sys.auth(src) == 1) {
