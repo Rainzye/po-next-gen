@@ -1396,12 +1396,12 @@ afterLogIn : function(src) {
         sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>Trainer </font> " + sys.name(src) + "</span><font size=2 font color=blue> joined! ", 0);
     } 
     sys.sendHtmlMessage(src, "<font size=3 font color=purple> Website: http://safari-zone.boards.net/# ");
-   
-    safaribot.sendAll("Some stealthy person left some " + bName + " out. The " + bName + " attracted a wild Pokémon!", safchan);
+   } else {
+    safari.SendHtmlAll("Some stealthy person left some " + bName + " out. The " + bName + " attracted a wild Pokémon!" '/wild' " + pokeName + ";)
                     }
-                }
-                safari.createWild(num, makeShiny, amount, null, null, null, appearAs);
-                return true;
+             }
+             safaribot.createWild(num, + makeShiny, 1 amount, 1 null, null, null, appearAs, " + pokeName(src) + );
+             return true;
             }
             sys.sendMessage(src, "", channel); 
            
