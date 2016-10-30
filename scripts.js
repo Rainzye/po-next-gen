@@ -1397,7 +1397,7 @@ afterLogIn : function(src) {
     } 
     sys.sendHtmlMessage(src, "<font size=3 font color=purple> Website: http://safari-zone.boards.net/# ");
    
-    sys.sendMessage(src, "", channel);
+    sys.sendMessage(src, "Safari is in developer mode.", channel);
 
     callplugins("afterLogIn", src);
 
@@ -1998,11 +1998,11 @@ beforeChatMessage: function(src, message, chan) {
         sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
     } else if (!sys.dbRegistered(sys.name(src))) {		
-     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#0000ff><img src='item:8'></font> " + sys.name(src) + ": </b></span><font size=2 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#0000ff><img src='item:11'></font> " + sys.name(src) + ": </b></span><font size=2 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);
     } else { //User
- 	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#0000ff><img src='item:8'></font> " + sys.name(src) + ": </b></span><font size=2 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+ 	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#0000ff><img src='item:11'></font> " + sys.name(src) + ": </b></span><font size=2 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
 	    sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
 	    return;
@@ -2170,7 +2170,7 @@ afterBattleStarted: function(src, dest, clauses, rated, mode, bid, team1, team2)
         writeRating(dest);
     }
     */
-    battlebot.sendHtmlAll("<b>" + sys.name(src) + "</b><font color = blue> started to battle with <b>" + sys.name(dest) + "</b> <a href='po:watchplayer/'" + sys.name(dest) + ">Watch</a>", 0); 
+    battlebot.sendHtmlAll("<b>" + sys.name(src) + "</b><font color = blue> started to battle with <b>" + sys.name(dest) + "</b> <a href='po:watchplayer/'" + sys.name(dest) + ">Watch</a><img src='item:15'>", 0); 
 },
 
 
