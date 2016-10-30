@@ -1264,22 +1264,22 @@ nameIsInappropriate: function(src)
 
     if (dash.test(name)) {
         reply('You are using dash letters in your name.');
-        return null;
+        return true;
     }
 
     // special marks
     if (/[\ufff0-\uffff]/.test(name)) {
         reply('You are using SPECIAL characters in your name.');
-        return null;
+        return true;
     }
 
     // COMBINING OVERLINE
     if (/\u0305|\u0336/.test(name)) {
         reply('You are using COMBINING OVERLINE character in your name.');
-        return null;
+        return true;
     }
     if (/\u0CBF|\u1D0F/gi.test(name)) {
-        return null;
+        return true;
     }
     return false;
 },
@@ -1381,24 +1381,24 @@ afterLogIn : function(src) {
     sys.sendHtmlMessage(src, "<font size=2 font color=green> Online http://bit.do/safari-webserver");
     sys.sendHtmlMessage(src, "<font size=3 font color=red> Report abusive users to authority.", 0);
     if (sys.name(src) == "haunter") {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=red> joined! ", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getnamecolor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=red> joined! ", 0);
     } else if (sys.auth(src) == 1) {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=red> joined", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getnamecolor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=red> joined", 0);
     } else if (sys.auth(src) == 2) {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getCololor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=red> joined", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getnamecolor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=red> joined", 0);
     } else if (sys.auth(src) == 3) {
-    	sys.sendHtmlMessage(src, "<timestamp/><span style='color: " + sys.getColor(src) +"'><b><font size=3 font color=#002db3><font size=2 font color=blue> joined");
+    	sys.sendHtmlMessage(src, "<timestamp/><span style='color: " + sys.getnamecolor(src) +"'><b><font size=3 font color=#002db3><font size=2 font color=blue> joined");
     } else if (sys.auth(src) == 4) {
-    	sys.sendHtmlMessage(src, "<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=purple> joined", 0);
+    	sys.sendHtmlMessage(src, "<timestamp/><span style='color: " + sys.getnamecolor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=purple> joined", 0);
     } else if (!sys.dbRegistered(sys.name(src))) {
-     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>Trainer </font> " + sys.name(src) + "</span><font size=2 font color=blue> joined!", 0);
+     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getnamecolor(src) + "'><b><font size=3 font color=#000000>Trainer </font> " + sys.name(src) + "</span><font size=2 font color=blue> joined!", 0);
     }  else {
-        sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>Trainer </font> " + sys.name(src) + "</span><font size=2 font color=blue> joined! ", 0);
+        sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getnamecolor(src) + "'><b><font size=3 font color=#000000>Trainer </font> " + sys.name(src) + "</span><font size=2 font color=blue> joined! ", 0);
     } 
-    sys.sendHtmlMessage(src, "<font size=3 font color=purple> Website: http://safari-zone.boards.net/# ");
-    
+    sys.sendHtmlMessage(src, "<font size=3 font color=aqua> Website: http://safari-zone.boards.net/# ");
+   
     sys.sendMessage(src, "", channel);
-    
+
     callplugins("afterLogIn", src);
 
    /*if (SESSION.users(src).android) {
@@ -1990,7 +1990,7 @@ beforeChatMessage: function(src, message, chan) {
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);		
     } else if (sys.auth(src) == 3) { //owner
-	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#cc0000>(~)</font> " + sys.name(src) + ": </b></span><font size=2 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#cc0000>(~) <img src='item:8'></font> " + sys.name(src) + ": </b></span><font size=2 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
 	    sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
     } else if (sys.auth(src) == 4) { //Hiddenauth
@@ -1998,11 +1998,11 @@ beforeChatMessage: function(src, message, chan) {
         sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
     } else if (!sys.dbRegistered(sys.name(src))) {		
-     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#0000ff><img src='item:272'></font> " + sys.name(src) + ": </b></span><font size=2 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#0000ff><img src='item:6'></font> " + sys.name(src) + ": </b></span><font size=2 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);
     } else { //User
- 	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#0000ff><img src='item:272'></font> " + sys.name(src) + ": </b></span><font size=2 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+ 	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#0000ff><img src='item:6'></font> " + sys.name(src) + ": </b></span><font size=2 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
 	    sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
 	    return;
