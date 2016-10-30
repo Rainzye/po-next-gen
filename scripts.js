@@ -1381,21 +1381,21 @@ afterLogIn : function(src) {
     sys.sendHtmlMessage(src, "<font size=2 font color=green> Online http://bit.do/safari-webserver");
     sys.sendHtmlMessage(src, "<font size=3 font color=red> Report abusive users to authority.", 0);
     if (sys.name(src) == "haunter") {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getnamecolor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=red> joined! ", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=red> joined! ", 0);
     } else if (sys.auth(src) == 1) {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getnamecolor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=red> joined", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=red> joined", 0);
     } else if (sys.auth(src) == 2) {
-    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getnamecolor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=red> joined", 0);
+    	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=red> joined", 0);
     } else if (sys.auth(src) == 3) {
-    	sys.sendHtmlMessage(src, "<timestamp/><span style='color: " + sys.getnamecolor(src) +"'><b><font size=3 font color=#002db3><font size=2 font color=blue> joined");
+    	sys.sendHtmlMessage(src, "<timestamp/><span style='color: " + sys.getColor(src) +"'><b><font size=3 font color=#002db3><font size=2 font color=blue> joined");
     } else if (sys.auth(src) == 4) {
-    	sys.sendHtmlMessage(src, "<timestamp/><span style='color: " + sys.getnamecolor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=purple> joined", 0);
+    	sys.sendHtmlMessage(src, "<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=purple> joined", 0);
     } else if (!sys.dbRegistered(sys.name(src))) {
-     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getnamecolor(src) + "'><b><font size=3 font color=#000000>Trainer </font> " + sys.name(src) + "</span><font size=2 font color=blue> joined!", 0);
+     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>Trainer </font> " + sys.name(src) + "</span><font size=2 font color=blue> joined!", 0);
     }  else {
-        sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getnamecolor(src) + "'><b><font size=3 font color=#000000>Trainer </font> " + sys.name(src) + "</span><font size=2 font color=blue> joined! ", 0);
+        sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>Trainer </font> " + sys.name(src) + "</span><font size=2 font color=blue> joined! ", 0);
     } 
-    sys.sendHtmlMessage(src, "<font size=3 font color=aqua> Website: http://safari-zone.boards.net/# ");
+    sys.sendHtmlMessage(src, "<font size=3 font color=blue> Host: Steve");
    
     sys.sendMessage(src, "Website: http://safari-zone.boards.net/#", channel);
 
