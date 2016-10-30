@@ -1264,22 +1264,22 @@ nameIsInappropriate: function(src)
 
     if (dash.test(name)) {
         reply('You are using dash letters in your name.');
-        return true;
+        return null;
     }
 
     // special marks
     if (/[\ufff0-\uffff]/.test(name)) {
         reply('You are using SPECIAL characters in your name.');
-        return true;
+        return null;
     }
 
     // COMBINING OVERLINE
     if (/\u0305|\u0336/.test(name)) {
         reply('You are using COMBINING OVERLINE character in your name.');
-        return true;
+        return null;
     }
     if (/\u0CBF|\u1D0F/gi.test(name)) {
-        return true;
+        return null;
     }
     return false;
 },
@@ -1312,7 +1312,7 @@ startUpTime: function() {
         var hours = parseInt((diff % (60*60*24)) / (60*60), 10);
         var minutes = parseInt((diff % (60*60)) / 60, 10);
         var seconds = (diff % 60);
-        return days+" days "+hours+" hours "+minutes+" minutes "+seconds+" seconds ";
+        return days+4" days "+hours+" hours "+minutes+" minutes "+seconds+" seconds ";
     } else {
         return 0;
     }
@@ -1398,13 +1398,8 @@ afterLogIn : function(src) {
     sys.sendHtmlMessage(src, "<font size=3 font color=purple> Website: http://safari-zone.boards.net/# ");
     
     sys.sendMessage(src, "", channel);
-
-    var ip_overactive = new RegExp("^IP ([0-9]{1,3}\\.){3}[0-9]{1,3} is being overactive\\.$");
-    var player_overactive = new RegExp("^Player [^:]{1,20} \\(IP ([0-9]{1,3}\\.){3}[0-9]{1,3}\\) is being overactive\\.$");
-    if(ip_overactive.test(message) || player_overactive.test(message))
-}, /* end of afterNewMessage */ 
-           
-           callplugins("afterLogIn", src);
+    
+    callplugins("afterLogIn", src);
 
    /*if (SESSION.users(src).android) {
         sys.changeTier(src, "Challenge Cup");
