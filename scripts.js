@@ -1397,29 +1397,15 @@ afterLogIn : function(src) {
     } 
     sys.sendHtmlMessage(src, "<font size=3 font color=purple> Website: http://safari-zone.boards.net/# ");
    
-    sys.sendMessage(src, "", channel);
     safaribot.sendAll("Some stealthy person left some " + bName + " out. The " + bName + " attracted a wild Pokémon!", safchan);
                     }
                 }
                 safari.createWild(num, makeShiny, amount, null, null, null, appearAs);
                 return true;
             }
-            if (command === "contest" || command === "contestsoft") {
-                if (command == "contestsoft") {
-                    contestBroadcast = false;
-                }
-                if (contestCount > 0) {
-                    contestCount = 1;
-                } else {
-                    safari.startContest(commandData);
-                }
-                return true;
-            }
-            if (command === "precontest") {
-                if (contestCount > 0) {
-                    safaribot.sendMessage(src, "You can't use this command during a contest!", safchan);
-
-    callplugins("afterLogIn", src);
+            sys.sendMessage(src, "", channel); 
+           
+           callplugins("afterLogIn", src);
 
    /*if (SESSION.users(src).android) {
         sys.changeTier(src, "Challenge Cup");
