@@ -1395,10 +1395,8 @@ afterLogIn : function(src) {
     }  else {
         sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getnamecolor(src) + "'><b><font size=3 font color=#000000>Trainer </font> " + sys.name(src) + "</span><font size=2 font color=blue> joined! ", 0);
     } 
-    sys.sendHtmlAll(src, "<font size=3 font color=purple> Website: http://safari-zone.boards.net/# <img src='item:10'> ");
-   
-    sys.sendMessage(src, "<font size=3 font color=purple> Website: http://safari-zone.boards.net/# <img src='item:10'> ", channel);
-
+    
+    sys.sendHtmlMessage(src, "<font size=2 font color=blue> Test.");
     callplugins("afterLogIn", src);
 
    /*if (SESSION.users(src).android) {
