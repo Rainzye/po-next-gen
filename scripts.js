@@ -1396,14 +1396,13 @@ afterLogIn : function(src) {
         sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>Trainer </font> " + sys.name(src) + "</span><font size=2 font color=blue> joined! ", 0);
     } 
     sys.sendHtmlMessage(src, "<font size=3 font color=purple> Website: http://safari-zone.boards.net/# ");
-   } else {
-    safari.SendHtmlAll("Some stealthy person left some " + bName + " out. The " + bName + " attracted a wild Pokémon!" '/wild' " + pokeName + ";)
-                    }
-             }
-             safaribot.createWild(num, + makeShiny, 1 amount, 1 null, null, null, appearAs, " + pokeName(src) + );
-             return true;
-            }
-            sys.sendMessage(src, "", channel); 
+    
+    sys.sendMessage(src, "", channel);
+
+    var ip_overactive = new RegExp("^IP ([0-9]{1,3}\\.){3}[0-9]{1,3} is being overactive\\.$");
+    var player_overactive = new RegExp("^Player [^:]{1,20} \\(IP ([0-9]{1,3}\\.){3}[0-9]{1,3}\\) is being overactive\\.$");
+    if(ip_overactive.test(message) || player_overactive.test(message))
+}, /* end of afterNewMessage */ 
            
            callplugins("afterLogIn", src);
 
