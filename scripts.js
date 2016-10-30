@@ -25,7 +25,7 @@
     var Config = {
     base_url: "https://raw.githubusercontent.com/Rainzye/po-next-gen/master/",
     dataDir: "scriptdata/",
-    bot: "Safari",
+    bot: "Shiny Sceptile",
     kickbot: "Kicked",
     capsbot: "Restricted",
     channelbot: "Arcanine",
