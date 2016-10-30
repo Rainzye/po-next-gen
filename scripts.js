@@ -18,8 +18,8 @@
 // | *** Contributors & Credits ***                                                                              |
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // safari owners: • (haunter) (nakarou)
-// safari administrators: • (angie) (stealthy) (brian)
-// safari moderators: • (john) (abyss)
+// safari administrators: • (angie)
+// safari moderators: • (abyss)
 // Main Website: http://safari-zone.boards.net/#
 // Official Webclient: http://bit.do/safari-webserver
     var Config = {
@@ -1313,9 +1313,9 @@ startUpTime: function() {
         var hours = parseInt((diff % (60*60*24)) / (60*60), 10);
         var minutes = parseInt((diff % (60*60)) / 60, 10);
         var seconds = (diff % 60);
-        return days+" days "+hours+" hours "+minutes+" minutes "+seconds+" seconds ";
+        return days+"8 days "+hours+" hours "+minutes+" minutes "+seconds+" seconds ";
     } else {
-        return 169;
+        return 0;
     }
 },
 
@@ -1377,7 +1377,7 @@ afterLogIn : function(src) {
     if (maxPlayersOnline > sys.getVal("MaxPlayersOnline")) {
         sys.saveVal("MaxPlayersOnline", maxPlayersOnline);
     }
-      countbot.sendMessage(src, (typeof(this.startUpTime()) == "string" ?  "Uptime: " + this.startUpTime() + ".  " : "")  + "Players online at once: " + sys.getVal("MaxPlayersOnline") + ".");
+      countbot.sendMessage(src, (typeof(this.startUpTime()) == "string" ?  "Uptime: " + this.startUpTime() + ".  " : "")  + "Players online was: " + sys.getVal("MaxPlayersOnline") + ".");
     sys.sendHtmlMessage(src, "<font size=2 font color=green> <img src='item:256'> http://bit.do/safari-webserver");
     if (sys.name(src) == "haunter") {
     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000></font> " + sys.name(src) + "</span><font size=2 font color=red> joined! <img src='item:28'>", 0);
@@ -1866,14 +1866,14 @@ beforeChatMessage: function(src, message, chan) {
     if (SESSION.channels(channel).muteall && !SESSION.channels(channel).isChannelOperator(src) && sys.auth(src) === 0) {
         normalbot.sendMessage(src, "The Safari channel is locked", channel);
         sys.stopEvent();
-        return;
+        return true;
     }
 
     //Swear check
     if (!SESSION.channels(channel).allowSwear) {
         if(/f[uo]ck|\bass|\bcum|\bdick|\bsex|pussy|bitch|porn|\bfck|nigga|\bcock|\bgay|\bhoe\b|slut|\bshit\b|whore|cunt|clitoris|\bfag/i.test(message)) {
              sys.stopEvent();
-             return;
+             return false;
         }
     }
 
@@ -1891,7 +1891,7 @@ beforeChatMessage: function(src, message, chan) {
             }
         }
         sys.stopEvent();
-        return;
+        return true;
     }
     if (repeatingOneself()) {
         this.afterChatMessage(src, SESSION.users(src).lastline.message, channel);
@@ -1940,7 +1940,7 @@ beforeChatMessage: function(src, message, chan) {
        if (bracket1 >= 0 && bracket2 > 0 && bracket1 < bracket2) {
            normalbot.sendMessage(src, "Sorry, clan members can't speak on the main chat.");
            sys.stopEvent();
-           return;
+           return true;
        }
        bracket1 = sys.name(src).indexOf("{");
        bracket2 = sys.name(src).indexOf("}");
