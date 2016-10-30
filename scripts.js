@@ -1312,7 +1312,7 @@ startUpTime: function() {
         var hours = parseInt((diff % (60*60*24)) / (60*60), 10);
         var minutes = parseInt((diff % (60*60)) / 60, 10);
         var seconds = (diff % 60);
-        return days+4" days "+hours+" hours "+minutes+" minutes "+seconds+" seconds ";
+        return days+"7 days "+hours+" hours "+minutes+" minutes "+seconds+" seconds ";
     } else {
         return 0;
     }
