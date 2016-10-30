@@ -1,6 +1,4 @@
-Official Safari Scripts.
-Creators: Haunter
-Creators: Nakarou
+Creators: Haunter & Nakarou
 
 ~~ Terms and Conditions ~~~
 
