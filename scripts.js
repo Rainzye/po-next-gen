@@ -1205,18 +1205,19 @@ beforeLogIn : function(src) {
     }
     var allowedIps = ["74.115.245.16","74.115.245.26"];
     if (this.isRangeBanned(ip) && allowedIps.indexOf(ip) == -1 && script.allowedRangeNames.indexOf(sys.name(src).toLowerCase()) == -1) {
-        normalbot.sendMessage(src, 'You are banned!');
+        normalbot.sendMessage(src, 'You are blocked!');
         sys.stopEvent();
         return;
     }
     if (proxy_ips.hasOwnProperty(ip)) {
-        normalbot.sendMessage(src, 'You are banned for using proxy!');
+        normalbot.sendMessage(src, 'You cannot use a proxy in safari!');
         sys.stopEvent();
-        return;
+        return true;
 
     }
     if (this.nameIsInappropriate(src)) {
         sys.stopEvent();
+        return true;
     }
 },
 
@@ -1241,7 +1242,7 @@ nameIsInappropriate: function(src)
         }
     }
 
-    var cyrillic = /\u0430|\u0410|\u0412|\u0435|\u0415|\u041c|\u041d|\u043e|\u041e|\u0440|\u0420|\u0441|\u0421|\u0422|\u0443|\u0445|\u0425|\u0456|\u0406/;
+      var cyrillic = /\u0430|\u0410|\u0412|\u0435|\u0415|\u041c|\u041d|\u043e|\u041e|\u0440|\u0420|\u0441|\u0421|\u0422|\u0443|\u0445|\u0425|\u0456|\u0406/;
     if (cyrillic.test(name)) {
         reply('You are using cyrillic letters similar to latin letters in your name.');
         return true;
@@ -1312,9 +1313,9 @@ startUpTime: function() {
         var hours = parseInt((diff % (60*60*24)) / (60*60), 10);
         var minutes = parseInt((diff % (60*60)) / 60, 10);
         var seconds = (diff % 60);
-        return days+"8 days "+hours+" hours "+minutes+" minutes "+seconds+" seconds ";
+        return days+" days "+hours+" hours "+minutes+" minutes "+seconds+" seconds ";
     } else {
-        return 0;
+        return 169;
     }
 },
 
@@ -1397,7 +1398,7 @@ afterLogIn : function(src) {
     } 
     sys.sendHtmlMessage(src, "<font size=3 font color=purple> Website: http://safari-zone.boards.net/# ");
    
-    sys.sendMessage(src, "Safari is in developer mode.", channel);
+    sys.sendMessage(src, "</i>ake sure to register your account to protect your username. Also to appeal disciplinary you are required to use are forum<I>. How to play safari: Type <font size=3 font color=blue> /tutorial ", channel);
 
     callplugins("afterLogIn", src);
 
