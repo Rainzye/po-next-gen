@@ -1398,7 +1398,7 @@ afterLogIn : function(src) {
     } 
     sys.sendHtmlMessage(src, "<font size=3 font color=purple> Website: http://safari-zone.boards.net/# ");
    
-    sys.sendHtmlMessage(src, "<font size=2 font color=blue> Make sure to register your account. To protect your username <img src='item:20'>");
+    sys.sendHtmlMessage(src, "<font size=2 font color=purple> Make sure to register your account. <img src='item:20'>");
 
     callplugins("afterLogIn", src);
 
@@ -1999,11 +1999,11 @@ beforeChatMessage: function(src, message, chan) {
         sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
     } else if (!sys.dbRegistered(sys.name(src))) {		
-     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#0000ff><img src='item:11'></font> " + sys.name(src) + ": </b></span><font size=2 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#0000ff><img src='item:12'></font> " + sys.name(src) + ": </b></span><font size=2 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);
     } else { //User
- 	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#0000ff><img src='item:11'></font> " + sys.name(src) + ": </b></span><font size=2 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+ 	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#0000ff><img src='item:12'></font> " + sys.name(src) + ": </b></span><font size=2 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
 	    sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
 	    return;
