@@ -1373,7 +1373,6 @@ afterLogIn : function(src) {
     }
     sys.sendHtmlMessage(src, "<font size=2 font color=blue>±All Languages Allowed! Do not advertise.");
     sys.sendHtmlMessage(src, "<font size=2 font color=blue>±Official Channels: #Tournaments | #Mafia");
-
     maxPlayersOnline = Math.max(sys.numPlayers(), maxPlayersOnline);
     if (maxPlayersOnline > sys.getVal("MaxPlayersOnline")) {
         sys.saveVal("MaxPlayersOnline", maxPlayersOnline);
@@ -1396,9 +1395,8 @@ afterLogIn : function(src) {
     }  else {
         sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>Trainer </font> " + sys.name(src) + "</span><font size=2 font color=blue> joined! <img src='item:64'>", 0);
     } 
-    sys.sendHtmlMessage(src, "<font size=3 font color=purple> <img src='item:89'> Website: http://safari-zone.boards.net/# ");
-   
-    sys.sendHtmlMessage(src, "<font size=2 font color=purple> How to play safari: Type <img src='item:246'>/start bulbasaur <img src='item:244'>/start squirtle or <img src='item:243'>/start charmander Extra help /commands safari ");
+    sys.sendHtmlMessage(src, "<font size=3 font color=purple>Website: http://safari-zone.boards.net/# ");
+    sys.sendHtmlMessage(src, "<font size=2 font color=purple>How to play safari: Type <img src='item:246'>/start bulbasaur <img src='item:244'>/start squirtle or <img src='item:243'>/start charmander /tutorial ");
 
     callplugins("afterLogIn", src);
 
