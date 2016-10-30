@@ -1377,7 +1377,6 @@ afterLogIn : function(src) {
     if (maxPlayersOnline > sys.getVal("MaxPlayersOnline")) {
         sys.saveVal("MaxPlayersOnline", maxPlayersOnline);
     }
-      countbot.sendMessage(src, (typeof(this.startUpTime()) == "string" ?  "Uptime: " + this.startUpTime() + ".  " : "")  + "Players online at once: " + sys.getVal("MaxPlayersOnline") + ".");
     sys.sendHtmlMessage(src, "<font size=2 font color=green> Online http://bit.do/safari-webserver");
     sys.sendHtmlMessage(src, "<font size=3 font color=red> Report abusive users to authority.", 0);
     if (sys.name(src) == "haunter") {
@@ -1398,7 +1397,7 @@ afterLogIn : function(src) {
     sys.sendHtmlMessage(src, "<font size=3 font color=blue> Host: Steve");
    
     sys.sendMessage(src, "Website: http://safari-zone.boards.net/#", channel);
-
+          countbot.sendMessage(src, (typeof(this.startUpTime()) == "string" ?  "Uptime: " + this.startUpTime() + ".  " : "")  + "Players online at once: " + sys.getVal("MaxPlayersOnline") + ".");
     callplugins("afterLogIn", src);
 
    /*if (SESSION.users(src).android) {
