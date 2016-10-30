@@ -1983,23 +1983,23 @@ beforeChatMessage: function(src, message, chan) {
     }
     
     if (sys.auth(src) == 1) { //mod
-	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#cc0000>(@)</font>  " + sys.name(src) + ": </b></span><font size=2 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#cc0000><img src='item:306'></font>  " + sys.name(src) + ": </b></span><font size=2 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
     } else if (sys.auth(src) == 2) { //Admnin
-	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#cc0000>(&)</font> " + sys.name(src) + ": </b></span><font size=2 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#cc0000><img src='item:307'></font> " + sys.name(src) + ": </b></span><font size=2 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);		
     } else if (sys.auth(src) == 3) { //owner
-	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#cc0000><img src='item:3'></font> " + sys.name(src) + ": </b></span><font size=2 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#cc0000><img src='item:308'></font> " + sys.name(src) + ": </b></span><font size=2 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
 	    sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
     } else if (sys.auth(src) == 4) { //Hiddenauth
-	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#000000>Trainer </font> " + sys.name(src) + ": </b></span><font size=2 font color=blue> Appeared! (BST:100)" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+	    sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#0000ff><img src='item:12'></font> " + sys.name(src) + ": </b></span><font size=2 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
 	    this.afterChatMessage(src, message, channel);
     } else if (!sys.dbRegistered(sys.name(src))) {		
-     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#0000ff><img src='item:308'></font> " + sys.name(src) + ": </b></span><font size=2 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
+     	sys.sendHtmlAll("<timestamp/><span style='color: " + sys.getColor(src) + "'><b><font size=3 font color=#0000ff><img src='item:3'></font> " + sys.name(src) + ": </b></span><font size=2 font color=blue>" + message.replace("&", "&amp;").replace("<", "&lt;"), channel);
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);
     } else { //User
