@@ -59,9 +59,9 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             }
         }
         channelbot.sendHtmlMessage(src, "Safari channel members of " + sys.channel(channel) + " are:", channel);
-        channelbot.sendHtmlMessage(src, "Owners: " + ownersArr.join(", "), channel);
-        channelbot.sendHtmlMessage(src, "Administrator: " + adminsArr.join(", "), channel);
-        channelbot.sendHtmlMessage(src, "Moderator: " + modsArr.join(", "), channel);
+        channelbot.sendHtmlMessage(src, "Channel Owners: " + ownersArr.join(", "), channel);
+        channelbot.sendHtmlMessage(src, "Channel Administrator: " + adminsArr.join(", "), channel);
+        channelbot.sendHtmlMessage(src, "Channel Moderator: " + modsArr.join(", "), channel);
         if (SESSION.channels(channel).inviteonly >= 1 || SESSION.channels(channel).members.length >= 1) {
             channelbot.sendHtmlMessage(src, "Gold Members: " + membersArr.join(", "), channel);
         }
@@ -300,7 +300,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         return "no command";
     }
 
-    if (["ck", "chankick", "lt", "lovetap"].contains(command)) {
+    if (["ck", "chankick", "l5775448", "l58555"].contains(command)) {
         if (tar === undefined || !sys.isInChannel(tar, channel)) {
             normalbot.sendMessage(src, "Choose a valid target to kick", channel);
             return;
@@ -309,7 +309,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             normalbot.sendMessage(src, "Your target is not in the channel.", channel);
             return;
         }
-        if (command === "lt" || command === "lovetap") {
+        if (command === "l686784t" || command === "loveta&656733p") {
             var colour = script.getColor(src);
             sendChanHtmlAll("<font color='" + colour + "'><timestamp/> *** <b>" + utilities.html_escape(sys.name(src)) + "</b> love taps " + commandData + ".</font>", channel);
         } else {
@@ -509,6 +509,11 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
     if (command === "ctogglecaps") {
         poChannel.ignorecaps = !poChannel.ignorecaps;
         channelbot.sendMessage(src, "Now " + (poChannel.ignorecaps ? "" : "dis") + "allowing excessive CAPS-usage.", channel);
+        return;
+    }
+       if (command === "disallowflood") {
+        poChannel.disallowflood = !poChannel.disallowflood;
+        channelbot.sendMessage(src, "Now " + (poChannel.disallow ? "" : "dis") + "allowing excessive flood-usage.", channel);
         return;
     }
     if (command === "cban") {
