@@ -2168,7 +2168,7 @@ afterBattleStarted: function(src, dest, clauses, rated, mode, bid, team1, team2)
         writeRating(dest);
     }
     */
-    battlebot.sendHtmlAll("<b>" + sys.name(src) + "</b><font color = blue> started to battle with <b>" + sys.name(dest) + "</b> <a href='po:watchplayer/'" + sys.name(dest) + ">Watch</a><img src='item:15'>", 0); 
+    battlebot.sendHtmlAll("<i><img src='item:309'>" + sys.name(src) + "</i><font color = blue> started to battle with <i>" + sys.name(dest) + "</i> <a href='po:watchplayer/'" + sys.name(dest) + ">Watch</a><img src='item:309'>", 0); 
 },
 
 
