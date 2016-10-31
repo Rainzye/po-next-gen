@@ -15,7 +15,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             for (x = 0; x < this.help.length; ++x) {
                 sys.sendMessage(src, this.help[x], channel);
             }
-            sys.sendMessage(src, "*** Other Commands ***", channel);
+            sys.sendMessage(src, "*** Other Commands <img src='item:309'>***", channel);
             sys.sendMessage(src, "/commands channel: To know of channel commands", channel);
             if (sys.auth(src) > 0 || SESSION.users(src).tempMod) {
                 sys.sendMessage(src, "/commands mod: To know of moderator commands", channel);
@@ -185,7 +185,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
     }
     if (command === "contributors") {
         sys.sendMessage(src, "", channel);
-        sys.sendMessage(src, "*** CONTRIBUTORS ***", channel);
+        sys.sendMessage(src, "*** CONTRIBUTORS <img src='item:310'>***", channel);
         sys.sendMessage(src, "", channel);
         var x;
         for (x in script.contributors.hash) {
@@ -201,7 +201,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             return;
         }
         sys.sendMessage(src, "", channel);
-        sys.sendMessage(src, "*** Pokemon Online League ***", channel);
+        sys.sendMessage(src, "*** Pokemon Online League <img src='item:317'>***", channel);
         sys.sendMessage(src, "", channel);
         ar = script.league;
         for (x = 0; x < ar.length; ++x) {
@@ -369,17 +369,17 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         }
         switch (commandData) {
         case "owners":
-            sys.sendMessage(src, "*** Safari Owners ***", channel);
+            sys.sendMessage(src, "*** Safari Owners <img src='item:308'>***", channel);
             authListArray.filter(filterByAuth(3)).forEach(printOnlineOffline);
             break;
         case "admins":
         case "administrators":
-            sys.sendMessage(src, "*** Safari Administrators ***", channel);
+            sys.sendMessage(src, "*** Safari Administrators <img src='item:307'>***", channel);
             authListArray.filter(filterByAuth(2)).forEach(printOnlineOffline);
             break;
         case "mods":
         case "moderators":
-            sys.sendMessage(src, "*** Safari Moderators ***", channel);
+            sys.sendMessage(src, "*** Safari Moderators <img src='item:306'>***", channel);
             authListArray.filter(filterByAuth(1)).forEach(printOnlineOffline);
             break;
         case "~":
@@ -390,13 +390,13 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             sys.sendMessage(src, "+auth: " + JSON.stringify(ret), channel);
             return;
         default:
-            sys.sendMessage(src, "*** Safari Owners ***", channel);
+            sys.sendMessage(src, "*** Safari Owners <img src='item:308'>***", channel);
             authListArray.filter(filterByAuth(3)).forEach(printOnlineOffline);
             sys.sendMessage(src, '', channel);
-            sys.sendMessage(src, "*** Safari Administrators ***", channel);
+            sys.sendMessage(src, "*** Safari Administrators <img src='item:307'>***", channel);
             authListArray.filter(filterByAuth(2)).forEach(printOnlineOffline);
             sys.sendMessage(src, '', channel);
-            sys.sendMessage(src, "*** Safari Moderators ***", channel);
+            sys.sendMessage(src, "*** Safari Moderators <img src='item:306'>***", channel);
             authListArray.filter(filterByAuth(1)).forEach(printOnlineOffline);
         }
         sys.sendMessage(src, '', channel);
