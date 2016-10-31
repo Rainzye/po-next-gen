@@ -25,7 +25,7 @@
     var Config = {
     base_url: "https://raw.githubusercontent.com/Rainzye/po-next-gen/master/",
     dataDir: "scriptdata/",
-    bot: "Shiny Sceptile",
+    bot: "Sceptile",
     kickbot: "Kicked",
     capsbot: "Restricted",
     channelbot: "Arcanine",
@@ -657,7 +657,7 @@ issueBan : function(type, src, tar, commandData, maxTime) {
         }[type];
 
         var expires = 0;
-        var defaultTime = {"mute": "15h", "mban": "15m", "smute": "0", "hmute": "15m", "saflock": "1h"}[type];
+        var defaultTime = {"mute": "1h", "mban": "1h", "smute": "0", "hmute": "1h", "saflock": "1h"}[type];
         var reason = "";
         var timeString = "";
         var data = commandData;
@@ -715,7 +715,7 @@ issueBan : function(type, src, tar, commandData, maxTime) {
                 active = true;
             }
         }
-        sendAll((active ? nonFlashing(sys.name(src)) + " changed " + commandData + "'s " + nomi + " time to " + (timeString === "" ? "forever!" : timeString + " from now!") : commandData + " was " + verb + " by " + nonFlashing(sys.name(src)) + (timeString === "" ? "" : " for ") + timeString + "!") + (reason.length > 0 ? " [Reason: " + reason + "]" : "") + " [Channel: "+sys.channel(channel) + "]");
+        sendAll((active ? nonFlashing(sys.name(src)) + " modified " + commandData + "'s " + nomi + " time to " + (timeString === "" ? "forever!" : timeString + " from now!") : commandData + " was " + verb + " by " + nonFlashing(sys.name(src)) + (timeString === "" ? "" : " for ") + timeString + "!") + (reason.length > 0 ? " [Reason: " + reason + "]" : "") + " [Channel: "+sys.channel(channel) + "]");
         
         sys.playerIds().forEach(function(id) {
             if (sys.loggedIn(id) && sys.ip(id) === tarip)
