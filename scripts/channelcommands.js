@@ -512,9 +512,9 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         return;
     }
        if (command === "disallowflood") {
-        poChannel.disallowflood = !poChannel.disallowflood;
-        channelbot.sendMessage(src, "Now " + (poChannel.disallow ? "" : "dis") + "allowing excessive flood-usage.", channel);
-        return;
+        poChannel.ignorelowercase = !poChannel.ignorelowercase;
+        channelbot.sendMessage(src, "Now " + (poChannel.disallowlowercase ? "" : "dis") + "allowing excessive flood-usage.", channel);
+        return false;
     }
     if (command === "cban") {
         if (commandData === undefined) {
@@ -671,7 +671,7 @@ exports.help = function (src, channel) {
         sys.sendMessage(src, "/passcauth [name]: Passes channel authority to a new alt. New name must be registered, online, and have the same IP as the old name. Valid positions are member, mod (or op), admin, and owner.", channel);
     }
     if (poChannel.isChannelOperator(src) || poChannel.isChannelAdmin(src) || poChannel.isChannelOwner(src)) {
-        sys.sendMessage(src, "*** Channel Mod commands ***", channel);
+        sys.sendMessage(src, "*** Channel Mod commands <img src='item:306'> ***", channel);
         sys.sendMessage(src, "/topicadd [message]: Uses the topic message separator and adds your message to the end of the current channel topic.", channel);
         sys.sendMessage(src, "/removepart [number]: Removes the part in the channel topic that is identified by the number. You can remove multiple parts at a time if you seperate with a space.", channel);
         sys.sendMessage(src, "/updatepart [number] [message]: Changes the part in the channel topic that is identified by the number to your message.", channel);
