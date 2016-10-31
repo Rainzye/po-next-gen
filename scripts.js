@@ -1970,8 +1970,8 @@ beforeChatMessage: function(src, message, chan) {
     if (SESSION.global().blockWebLinks && script.isOfficialChan(channel) && sys.auth(src) === 0 && sys.os(src) === "webclient") {
         if (message.toLowerCase().indexOf("http") !== -1) {
             kickbot.sendAll(sys.name(src) + " is attempting to send a link on Webclient in the channel " + sys.channel(channel) + " [(May be NSFW) Message content: " + message + " ]!", staffchannel);            
-            //message = message.replace("http", "ht\u200btp");
-            //sys.sendAll(sys.name(src) + ": " + message, channel);
+              message = message.replace("http", "ht\u200btp");
+            sys.sendAll(sys.name(src) + ": " + message, channel);
             sys.sendMessage(src, sys.name(src) + ": " + message, channel);
             sys.stopEvent();
             this.afterChatMessage(src, message, channel);
@@ -2016,13 +2016,13 @@ afterChatMessage : function(src, message, chan)
     channel = chan;
     lineCount+=1;
 
-   // if (channel == sys.channelId("PO Android")) {
-       // if (/f[uo]ck|\bass|\bcum|\bdick|\bsex|pussy|bitch|porn|\bfck|nigga|\bcock|\bgay|\bhoe\b|slut|whore|cunt|clitoris/i.test(message) && user.android) {
-           // kickbot.sendAll(sys.name(src) + " got kicked for foul language.", channel);
-           // sys.kick(src);
-           // return;
-       // }
-   // }
+      if (channel == sys.channelId("PO Android")) {
+          if (/f[uo]ck|\bass|\bcum|\bdick|\bsex|pussy|bitch|porn|\bfck|nigga|\bcock|\bgay|\bhoe\b|slut|whore|cunt|clitoris/i.test(message) && user.android) {
+               kickbot.sendAll(sys.name(src) + " got kicked for foul language.", channel);
+              sys.kick(src);
+              return true;
+         }
+      }
 
     // hardcoded
     var ignoreChans = [staffchannel, sachannel, sys.channelId("trivreview"), sys.channelId("Watch")];
@@ -2168,7 +2168,7 @@ afterBattleStarted: function(src, dest, clauses, rated, mode, bid, team1, team2)
         writeRating(dest);
     }
     */
-    battlebot.sendHtmlAll("<i><img src='item:309'>" + sys.name(src) + "</i><font color = blue> started to battle with <i>" + sys.name(dest) + "</i> <a href='po:watchplayer/'" + sys.name(dest) + ">Watch</a><img src='item:309'>", 0); 
+    battlebot.sendHtmlAll("<i>" + sys.name(src) + "</i><font color = blue> started to battle with <i>" + sys.name(dest) + "</i> <a href='po:watchplayer/'" + sys.name(dest) + ">Watch</a><img src='item:309'>", 0); 
 },
 
 
