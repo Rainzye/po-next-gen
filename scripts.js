@@ -1057,12 +1057,12 @@ beforeChannelJoin : function(src, channel) {
         return;
     }
     if ((channel == staffchannel || channel == sachannel) && !this.canJoinStaffChannel(src)) {
-        sys.sendMessage(src, "±Guard: Sorry, the access to that place is restricted!");
+        sys.sendMessage(src, "±Safari: Sorry, the access to that place is restricted!");
         sys.stopEvent();
         return;
     }
 	if (channel == echochan) {
-    	sys.sendMessage(src, "±Guard: Access Denied, You require VIP access to this channel.");
+    	sys.sendMessage(src, "±Safari: Access Denied, You require VIP access to this channel.");
     	sys.stopEvent();
     	return;
     }
@@ -1076,14 +1076,14 @@ beforeChannelJoin : function(src, channel) {
                 normalbot.sendMessage(src, "Your ban from " + type[x] + " expired.");
             } else {
                 var info = poUser[bans[x]];
-                sys.sendMessage(src, "±Guard: You are banned from " + type[x] + (info.by ? " by " + info.by : '')+". " + (info.expires > 0 ? "Ban expires in " + getTimeString(info.expires - parseInt(sys.time(), 10)) + ". " : '') + (info.reason ? "[Reason: " + info.reason + "]" : ''));
+                sys.sendMessage(src, "±Safari: You are banned from " + type[x] + (info.by ? " by " + info.by : '')+". " + (info.expires > 0 ? "Ban expires in " + getTimeString(info.expires - parseInt(sys.time(), 10)) + ". " : '') + (info.reason ? "[Reason: " + info.reason + "]" : ''));
                 sys.stopEvent();
                 return;
             }
         }
     }
     if (channel == watchchannel && sys.auth(src) < 1) {
-        sys.sendMessage(src, "±Guard: Sorry, the access to that place is restricted!");
+        sys.sendMessage(src, "±Safari: Sorry, the access to that place is restricted!");
         sys.stopEvent();
         return;
     }
@@ -1100,7 +1100,7 @@ beforeChannelCreated : function(chan, name, src) {
         for (var i = 0; i < script.chanNameBans.length; ++i) {
             var regexp = script.chanNameBans[i];
             if (regexp.test(name)) {
-                sys.sendMessage(src, 'This kind of channel name is banned from the server. (Matching regexp: ' + regexp + ')');
+                sys.sendMessage(src, 'This name is banned from safari. (Matching regexp: ' + regexp + ')');
                 sys.stopEvent();
             }
         }
@@ -1313,7 +1313,7 @@ startUpTime: function() {
         var hours = parseInt((diff % (60*60*24)) / (60*60), 10);
         var minutes = parseInt((diff % (60*60)) / 60, 10);
         var seconds = (diff % 60);
-        return days+"8 days "+hours+" hours "+minutes+" minutes "+seconds+" seconds ";
+        return days+" days "+hours+" hours "+minutes+" minutes "+seconds+" seconds ";
     } else {
         return 0;
     }
