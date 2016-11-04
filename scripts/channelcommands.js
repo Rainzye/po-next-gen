@@ -58,22 +58,22 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
                 membersArr.push(html_escape(SESSION.channels(channel).members[x]));
             }
         }
-        channelbot.sendHtmlMessage(src, "Safari channel members of " + sys.channel(channel) + " are:", channel);
-        channelbot.sendHtmlMessage(src, "Channel Owners: " + ownersArr.join(", "), channel);
-        channelbot.sendHtmlMessage(src, "Channel Administrator: " + adminsArr.join(", "), channel);
-        channelbot.sendHtmlMessage(src, "Channel Moderator: " + modsArr.join(", "), channel);
+        channelbot.sendHtmlMessage(src, "The channel members of " + sys.channel(channel) + " are:", channel);
+        channelbot.sendHtmlMessage(src, "Owners: " + ownersArr.join(", "), channel);
+        channelbot.sendHtmlMessage(src, "Admins: " + adminsArr.join(", "), channel);
+        channelbot.sendHtmlMessage(src, "Mods: " + modsArr.join(", "), channel);
         if (SESSION.channels(channel).inviteonly >= 1 || SESSION.channels(channel).members.length >= 1) {
-            channelbot.sendHtmlMessage(src, "Gold Members: " + membersArr.join(", "), channel);
+            channelbot.sendHtmlMessage(src, "Members: " + membersArr.join(", "), channel);
         }
         return;
     }
     if (command === "register") {
         if (!sys.dbRegistered(sys.name(src))) {
-            channelbot.sendMessage(src, "You need to register on safari before registering a channel to yourself for security reasons!", channel);
+            channelbot.sendMessage(src, "You need to register on the server before registering a channel to yourself for security reasons!", channel);
             return;
         }
         if (sys.auth(src) < 1 && script.isOfficialChan(channel)) {
-            channelbot.sendMessage(src, "Access Denied", channel);
+            channelbot.sendMessage(src, "You don't have sufficient authority to register this channel!", channel);
             return;
         }
         if (poChannel.masters.length === 0) {
@@ -300,7 +300,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         return "no command";
     }
 
-    if (["ck", "chankick", "l5775448", "l58555"].contains(command)) {
+    if (["ck", "chankick", "lt", "lovetap"].contains(command)) {
         if (tar === undefined || !sys.isInChannel(tar, channel)) {
             normalbot.sendMessage(src, "Choose a valid target to kick", channel);
             return;
@@ -309,7 +309,7 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             normalbot.sendMessage(src, "Your target is not in the channel.", channel);
             return;
         }
-        if (command === "l686784t" || command === "loveta&656733p") {
+        if (command === "lt" || command === "lovetap") {
             var colour = script.getColor(src);
             sendChanHtmlAll("<font color='" + colour + "'><timestamp/> *** <b>" + utilities.html_escape(sys.name(src)) + "</b> love taps " + commandData + ".</font>", channel);
         } else {
@@ -511,11 +511,6 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         channelbot.sendMessage(src, "Now " + (poChannel.ignorecaps ? "" : "dis") + "allowing excessive CAPS-usage.", channel);
         return;
     }
-       if (command === "disallowflood") {
-        poChannel.ignorelowercase = !poChannel.ignorelowercase;
-        channelbot.sendMessage(src, "Now " + (poChannel.disallowlowercase ? "" : "dis") + "allowing excessive flood-usage.", channel);
-        return false;
-    }
     if (command === "cban") {
         if (commandData === undefined) {
             channelbot.sendMessage(src, "Please specify a valid target to ban from the channel!", channel);
@@ -671,7 +666,7 @@ exports.help = function (src, channel) {
         sys.sendMessage(src, "/passcauth [name]: Passes channel authority to a new alt. New name must be registered, online, and have the same IP as the old name. Valid positions are member, mod (or op), admin, and owner.", channel);
     }
     if (poChannel.isChannelOperator(src) || poChannel.isChannelAdmin(src) || poChannel.isChannelOwner(src)) {
-        sys.sendMessage(src, "*** Channel Mod commands <img src='item:306'> ***", channel);
+        sys.sendMessage(src, "*** Channel Mod commands ***", channel);
         sys.sendMessage(src, "/topicadd [message]: Uses the topic message separator and adds your message to the end of the current channel topic.", channel);
         sys.sendMessage(src, "/removepart [number]: Removes the part in the channel topic that is identified by the number. You can remove multiple parts at a time if you seperate with a space.", channel);
         sys.sendMessage(src, "/updatepart [number] [message]: Changes the part in the channel topic that is identified by the number to your message.", channel);
