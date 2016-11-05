@@ -369,17 +369,17 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
         }
         switch (commandData) {
         case "owners":
-            sys.sendMessage(src, "*** Safari Owners <img src='item:308'>***", channel);
+            sys.sendHtmlMessage(src, "<font color=#d642d1>*** <img src='item:308'></img> Safari Owners <img src='item:308'></img>***", channel);
             authListArray.filter(filterByAuth(3)).forEach(printOnlineOffline);
             break;
         case "admins":
         case "administrators":
-            sys.sendMessage(src, "*** Safari Administrators <img src='item:307'>***", channel);
+            sys.sendHtmlMessage(src, "<font color=#d642d1>*** <img src='item:307'></img> Safari Administrators <img src='item:307'></img>***", channel);
             authListArray.filter(filterByAuth(2)).forEach(printOnlineOffline);
             break;
         case "mods":
         case "moderators":
-            sys.sendMessage(src, "*** Safari Moderators <img src='item:306'>***", channel);
+            sys.sendHtmlMessage(src, "<font color=#d642d1>*** <img src='item:306'></img> Safari Moderators <img src='item:306'></img>***", channel);
             authListArray.filter(filterByAuth(1)).forEach(printOnlineOffline);
             break;
         case "~":
@@ -390,13 +390,13 @@ exports.handleCommand = function (src, command, commandData, tar, channel) {
             sys.sendMessage(src, "+auth: " + JSON.stringify(ret), channel);
             return;
         default:
-            sys.sendMessage(src, "*** Safari Owners <img src='item:308'>***", channel);
+            sys.sendHtmlMessage(src, "<timestamp/> *** <img src='item:308'></img> Safari Owners <img src='item:308'></img> ***", channel);
             authListArray.filter(filterByAuth(3)).forEach(printOnlineOffline);
             sys.sendMessage(src, '', channel);
-            sys.sendMessage(src, "*** Safari Administrators <img src='item:307'>***", channel);
+            sys.sendHtmlMessage(src, "<timestamp/> *** <img src='item:307'></img> Safari Administrators <img src='item:307'></img> ***", channel);
             authListArray.filter(filterByAuth(2)).forEach(printOnlineOffline);
             sys.sendMessage(src, '', channel);
-            sys.sendMessage(src, "*** Safari Moderators <img src='item:306'>***", channel);
+            sys.sendHtmlMessage(src, "<timestamp/> *** <img src='item:306'></img> Safari Moderators <img src='item:306'></img> ***", channel);
             authListArray.filter(filterByAuth(1)).forEach(printOnlineOffline);
         }
         sys.sendMessage(src, '', channel);
