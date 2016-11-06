@@ -39,7 +39,7 @@
     querybot: "QueryBot",
     hangbot: "Hangmanbot",
     bfbot: "BF-bot",
-    safaribot: "Contests",
+    safaribot: "Game",
     youtubebot: "Rotom",
     // suspectvoting.js available, but not in use
     Plugins: ["mafia.js", "amoebjagame.js", "tourstats.js", "trivia.js", "tours.js", "newtourstats.js", "auto_smute.js", "battlefactory.js", "hangman.js", "blackjack.js", "mafiastats.js", "mafiachecker.js", "safari.js", "youtube.js"],
