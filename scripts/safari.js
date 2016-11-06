@@ -13,11 +13,11 @@ function Safari() {
     var needsUpdating = false;
     var safchan;
     var defaultChannel = "Safari";
-    var safaribot = new Bot("Tauros");
-    var tutorbot = new Bot("Kangaskhan");
-    var closedMessage = "<font color='#3daa68'><timestamp/><b>±PA:</b></font> <b>Ding-dong! The Safari Game is over! Please return to the front counter while an update is applied!</b>";
-    var openedMessage = "<font color='#3daa68'><timestamp/><b>±Attendant:</b></font> <b>Welcome to the Safari Zone! You can catch all the Pokémon you want in the park! We'll call you on the PA when you run out of time or an update is needed!</b>";
-    var separator = "*** *********************************************************** ***";
+    var safaribot = new Bot("Game");
+    var tutorbot = new Bot("Game");
+    var closedMessage = "<font color='#550000'><timestamp/><i>±PBS:</i></font> <i>The Safari Game is over! Please return to chat while an update is applied!</i>";
+    var openedMessage = "<font color='#550000'><timestamp/><i>±Safari Warden:</i></font> <i>Welcome to the Safari Zone! You can catch all the Pokémon you want in the park! We'll call you on the PA when you run out of time or an update is needed!</i>";
+    var separator = "~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~";
 
     var saveFiles = "scriptdata/safarisaves.txt";
     var saveBackupFile1 = "scriptdata/safari/savesBackup1.txt";
@@ -56,7 +56,7 @@ function Safari() {
     var lastIdAssigned;
     var rafflePrizeObj = null;
 
-    var starters = [1, 4, 7];
+    var starters = [025, 1, 4, 7];
     var playerTemplate = {
         id: "",
         casedName: "",
@@ -307,38 +307,38 @@ function Safari() {
     };
     var itemData = {
         //Balls
-        safari: {name: "safari", fullName: "Safari Ball", type: "ball", icon: 309, price: 30, ballBonus: 1, cooldown: 6000, aliases:["safariball", "safari", "safari ball"], tradable: false},
-        great: {name: "great", fullName: "Great Ball", type: "ball", icon: 306, price: 75, ballBonus: 1.5, cooldown: 9000, aliases:["greatball", "great", "great ball"], tradable: false},
-        ultra: {name: "ultra", fullName: "Ultra Ball", type: "ball", icon: 307, price: 180, ballBonus: 2, cooldown: 12000, aliases:["ultraball", "ultra", "ultra ball"], tradable: false},
+        safari: {name: "safari", fullName: "Safari Ball", type: "ball", icon: 309, price: 30, ballBonus: 1, cooldown: 6000, aliases:["safariball", "safari", "safari ball"], tradable: true},
+        great: {name: "great", fullName: "Great Ball", type: "ball", icon: 306, price: 75, ballBonus: 1.5, cooldown: 9000, aliases:["greatball", "great", "great ball"], tradable: true},
+        ultra: {name: "ultra", fullName: "Ultra Ball", type: "ball", icon: 307, price: 180, ballBonus: 2, cooldown: 12000, aliases:["ultraball", "ultra", "ultra ball"], tradable: true},
         master: {name: "master", fullName: "Master Ball", type: "ball", icon: 308, price: 10000, ballBonus: 255, cooldown: 90000, aliases:["masterball", "master", "master ball"], tradable: true, cap: 1},
 
         myth: {name: "myth", fullName: "Myth Ball", type: "ball", icon: 329, price: 500, ballBonus: 1, bonusRate: 2.5, cooldown: 9000, aliases:["mythball", "myth", "myth ball"], tradable: true},
         heavy: {name: "heavy", fullName: "Heavy Ball", type: "ball", icon: 315, price: 500, ballBonus: 1, bonusRate: 0.5, maxBonus: 3, cooldown: 12000, aliases:["heavyball", "heavy", "heavy ball"], tradable: true},
         quick: {name: "quick", fullName: "Quick Ball", type: "ball", icon: 326, price: 500, ballBonus: 1.1, cooldown: 12000, aliases:["quickball", "quick", "quick ball"], tradable: true},
         luxury: {name: "luxury", fullName: "Luxury Ball", type: "ball", icon: 324, price: 500, ballBonus: 1.25, cooldown: 10000, aliases:["luxuryball", "luxury", "luxury ball"], tradable: true},
-        premier: {name: "premier", fullName: "Premier Ball", type: "ball", icon: 318, price: 500, ballBonus: 1.5, bonusRate: 3, cooldown: 10000, aliases:["premierball", "premier", "premier ball"], tradable: false},
+        premier: {name: "premier", fullName: "Premier Ball", type: "ball", icon: 318, price: 500, ballBonus: 1.5, bonusRate: 3, cooldown: 10000, aliases:["premierball", "premier", "premier ball"], tradable: true},
         spy: {name: "spy", fullName: "Spy Ball", type: "ball", icon: 328, price: 500, ballBonus: 1.25, bonusRate: 1.25, cooldown: 9000, aliases:["spyball", "spy", "spy ball"], tradable: true},
         clone: {name: "clone", fullName: "Clone Ball", type: "ball", icon: 327, price: 500, ballBonus: 1, bonusRate: 0.05, cooldown: 11000, aliases:["cloneball", "clone", "clone ball"], tradable: true},
         mono: {name: "mono", fullName: "Mono Ball", type: "ball", icon: 327, price: 321, ballBonus: 1, bonusRate: 2, cooldown: 10000, aliases:["monoball", "mono", "mono ball"], tradable: true},
 
         //Other Items
         //Seasonal change. Rock icon is 206, Snowball is 334
-        rock: {name: "rock", fullName: "Rock", type: "items", icon: 206, price: 50, successRate: 0.65, bounceRate: 0.1, targetCD: 7000, bounceCD: 11000, throwCD: 15000,  aliases:["rock", "rocks", "snow", "snowball", "snowballs"], tradable: false},
-        bait: {name: "bait", fullName: "Bait", type: "items", icon: 8017, price: 129, successRate: 0.4, failCD: 13, successCD: 70, aliases:["bait"], tradable: false},
-        golden: {name: "golden", fullName: "Golden Bait", type: "items", icon: 8016, price: 750, successRate: 0.75, failCD: 20, successCD: 30, minBstBonus: 10, bstBonus: 8, shinyBonus: 0, aliases:["goldenbait", "golden bait", "golden"], tradable: false},
-        gacha: {name: "gacha", fullName: "Gachapon Ticket", type: "items", icon: 132, price: 218, cooldown: 9000, aliases:["gacha", "gachapon", "gachapon ticket", "gachaponticket"], tradable: false},
+        rock: {name: "rock", fullName: "Rock", type: "items", icon: 206, price: 50, successRate: 0.65, bounceRate: 0.1, targetCD: 7000, bounceCD: 11000, throwCD: 15000,  aliases:["rock", "rocks", "snow", "snowball", "snowballs"], tradable: true},
+        bait: {name: "bait", fullName: "Bait", type: "items", icon: 8017, price: 129, successRate: 0.4, failCD: 13, successCD: 70, aliases:["bait"], tradable: true},
+        golden: {name: "golden", fullName: "Golden Bait", type: "items", icon: 8016, price: 750, successRate: 0.75, failCD: 20, successCD: 30, minBstBonus: 10, bstBonus: 8, shinyBonus: 0, aliases:["goldenbait", "golden bait", "golden"], tradable: true},
+        gacha: {name: "gacha", fullName: "Gachapon Ticket", type: "items", icon: 132, price: 218, cooldown: 9000, aliases:["gacha", "gachapon", "gachapon ticket", "gachaponticket"], tradable: true},
         spray: {name: "spray", fullName: "Devolution Spray", type: "items", icon: 137, price: 5000, aliases:["spray", "devolution", "devolution spray", "devolutionspray"], tradable: true},
         mega: {name: "mega", fullName: "Mega Stone", type: "items", icon: 2001, price: 10000, aliases:["mega", "mega stone", "megastone"], duration: 3, tradable: true},
-        stick: {name: "stick", fullName: "Stick", type: "items", icon: 164, price: 99999, cooldown: 20000, aliases:["stick","sticks"], tradable: false, cap: 1},
-        itemfinder: {name: "itemfinder", fullName: "Itemfinder Charge", type: "items", icon: 69, price: 50, cooldown: 9000, charges: 30, aliases:["itemfinder", "finder", "item finder"], tradable: false},
-        permfinder: {name: "permfinder", fullName: "Itemfinder Bonus Charges", type: "items", icon: 0, price: 50, aliases:["permfinder"], tradable: false},
-        dust: {name: "dust", fullName: "Candy Dust", type: "items", icon: 24, price: 100, aliases:["dust", "candydust", "candy dust"], tradable: false, cap: 1999},
-        salt: {name: "salt", fullName: "Salt", type: "items", icon: 127, price: 1000, aliases: ["salt", "nacl"], tradable: false},
-        burn: {name: "burn", fullName: "Burn Heal", type: "items", icon: 54, price: 5000, cooldown: 3600000, aliases: ["burn", "burnheal", "burn heal"], tradable: false},
+        stick: {name: "stick", fullName: "Stick", type: "items", icon: 164, price: 99999, cooldown: 20000, aliases:["stick","sticks"], tradable: true, cap: 1},
+        itemfinder: {name: "itemfinder", fullName: "Itemfinder Charge", type: "items", icon: 69, price: 50, cooldown: 9000, charges: 30, aliases:["itemfinder", "finder", "item finder"], tradable: true},
+        permfinder: {name: "permfinder", fullName: "Itemfinder Bonus Charges", type: "items", icon: 0, price: 50, aliases:["permfinder"], tradable: true},
+        dust: {name: "dust", fullName: "Candy Dust", type: "items", icon: 24, price: 100, aliases:["dust", "candydust", "candy dust"], tradable: true, cap: 1999},
+        salt: {name: "salt", fullName: "Salt", type: "items", icon: 127, price: 1000, aliases: ["salt", "nacl"], tradable: true},
+        burn: {name: "burn", fullName: "Burn Heal", type: "items", icon: 54, price: 5000, cooldown: 3600000, aliases: ["burn", "burnheal", "burn heal"], tradable: true},
         
-        silver: {name: "silver", fullName: "Silver Coin", type: "items", icon: 273, price: 300, aliases: ["silver", "silver coin", "silvercoin"], tradable: false},
-        entry: {name: "entry", fullName: "Raffle Entry", type: "items", icon: 333, price: 300, aliases: ["entry", "raffle", "raffleentry", "raffle entry"], tradable: false},
-        coupon: {name: "coupon", fullName: "Decor Coupon", type: "items", icon: 132, price: 15000, aliases: ["coupon", "decor coupon", "decorcoupon", "decoupon"], tradable: false},
+        silver: {name: "silver", fullName: "Silver Coin", type: "items", icon: 273, price: 300, aliases: ["silver", "silver coin", "silvercoin"], tradable: true},
+        entry: {name: "entry", fullName: "Raffle Entry", type: "items", icon: 333, price: 300, aliases: ["entry", "raffle", "raffleentry", "raffle entry"], tradable: true},
+        coupon: {name: "coupon", fullName: "Decor Coupon", type: "items", icon: 132, price: 15000, aliases: ["coupon", "decor coupon", "decorcoupon", "decoupon"], tradable: true},
 
         //Consumables (for useItem)
         rare: {name: "rare", fullName: "Rare Candy", type: "consumable", icon: 117, price: 5000, charges: 230, minVar: 0, maxVar: 30, aliases:["rare", "rarecandy", "rare candy", "candy"], tradable: true},
@@ -354,7 +354,7 @@ function Safari() {
         fragment: {name: "fragment", fullName: "Ball Fragment", type: "alchemy", icon: 120, price: 2000, aliases:["fragment", "ball fragment", "ballfragment"], threshold: 5, tradable: true},
         blkapricorn: {name: "blkapricorn", fullName: "Black Apricorn", type: "alchemy", icon: 59, price: 1000, aliases:["blackapricorn", "black apricorn", "blkapricorn"], tradable: true},
         whtapricorn: {name: "whtapricorn", fullName: "White Apricorn", type: "alchemy", icon: 133, price: 1000, aliases:["whiteapricorn", "white apricorn", "whtapricorn"], tradable: true},
-        //philosopher: {name: "philosopher", fullName: "Philosopher's Stone", type: "alchemy", icon: 252, price: 10000, aliases: ["philosopher's stone", "philosopher'sstone", "philosophersstone", "philosopherstone", "philosophers stone", "philosopher stone", "philosopher", "stone", "philosopher's", "philosopher"], tradable: false},
+        //philosopher: {name: "philosopher", fullName: "Philosopher's Stone", type: "alchemy", icon: 252, price: 10000, aliases: ["philosopher's stone", "philosopher'sstone", "philosophersstone", "philosopherstone", "philosophers stone", "philosopher stone", "philosopher", "stone", "philosopher's", "philosopher"], tradable: true},
 
         //Perks
         amulet: {name: "amulet", fullName: "Amulet Coin", type: "perk", icon: 42, price: 5000, bonusRate: 0.03, maxRate: 0.3, aliases:["amulet", "amuletcoin", "amulet coin", "coin"], tradable: true, tradeReq: 10},
@@ -364,7 +364,7 @@ function Safari() {
         scarf: {name: "scarf", fullName: "Silk Scarf", type: "perk", icon: 31, price: 5000, bonusRate: 0.03, maxRate: 0.3, aliases:["scarf", "silkscarf", "silk scarf", "silk"], tradable: true},
         battery: {name: "battery", fullName: "Cell Battery", type: "perk", icon: 241, price: 2000, bonusRate: 2, maxRate: 20, aliases:["battery", "cellbattery", "cell battery", "cell"], tradable: true},
         eviolite: {name: "eviolite", fullName: "Eviolite", type: "perk", icon: 233, price: 2000, bonusRate: 8, maxRate: 80, threshold: 420, aliases:["eviolite"], tradable: true},
-        box: {name: "box", fullName: "Box", type: "perk", icon: 175, price: [0, 0, 0, 0, 100000, 200000, 400000, 600000, 800000, 1000000], bonusRate: 96, aliases:["box", "boxes"], tradable: false},
+        box: {name: "box", fullName: "Box", type: "perk", icon: 175, price: [0, 0, 0, 0, 100000, 200000, 400000, 600000, 800000, 1000000], bonusRate: 96, aliases:["box", "boxes"], tradable: true},
 
         //Valuables
         pearl: {name: "pearl", fullName: "Pearl", type: "valuables", icon: 111, price: 500, aliases:["pearl"], tradable: true},
@@ -578,11 +578,11 @@ function Safari() {
     };
 
     /* Contest Variables */
-    var contestDuration = 300; //Contest lasts for 5 minutes
+    var contestDuration = 170; //Contest lasts for 200 seconds
     var contestCount = 0;
     var contestCatchers = {};
     var contestBroadcast = true; //Determines whether Tohjo gets notified
-    var contestCooldownLength = 1800; //1 contest every 30 minutes
+    var contestCooldownLength = 900; //1 contest every 15 minutes
     var contestCooldown = (SESSION.global() && SESSION.global().safariContestCooldown ? SESSION.global().safariContestCooldown : contestCooldownLength);
     var contestantsCount = {};
     var contestantsWild = [];
@@ -1140,7 +1140,7 @@ function Safari() {
     var currentPyramids = [];
     var currentAuctions = [];
     var lastContests = [];
-    var gachaJackpotAmount = 200; //Jackpot for gacha tickets. Number gets divided by 10 later.
+    var gachaJackpotAmount = 230; //Jackpot for gacha tickets. Number gets divided by 10 later.
     var gachaJackpot = (SESSION.global() && SESSION.global().safariGachaJackpot ? SESSION.global().safariGachaJackpot : gachaJackpotAmount);
     var allTrackers = (SESSION.global() && SESSION.global().allTrackers ? SESSION.global().allTrackers : ["safari warden"]);
     var dailyBoost;
@@ -1330,7 +1330,7 @@ function Safari() {
         }
         if (arr.contains("precontest")) {
             if (contestCooldown <= 181) {
-                safaribot.sendMessage(src, "You can't " + action + " with less than 3 minutes before the next contest starts!", safchan);
+                safaribot.sendMessage(src, "You can't " + action + " with less than a few minutes before the next contest starts!", safchan);
                 return true;
             }
         }
@@ -1379,9 +1379,9 @@ function Safari() {
 
         var rew = [];
         if (complete) {
-            var cash = 300;
+            var cash = 1000;
             player.money = cash;
-            var giftpack = { safari: 30, great: 5, ultra: 1, dust: 100, itemfinder: 30, golden: 5};
+            var giftpack = { safari: 60, great: 15, ultra: 8, dust: 200, itemfinder: 43, bait: 25, golden: 9};
             for (var e in giftpack) {
                 if (giftpack.hasOwnProperty(e)) {
                     player.balls[e] = giftpack[e];
@@ -1403,9 +1403,9 @@ function Safari() {
             //tutorbot.sendHtmlAll("<font color='DarkOrchid'>Congratulations to <b>" + html_escape(sys.name(src)) + "</b> on completing the tutorial!</font>", safchan);
             //sys.sendAll("", safchan);
         } else {
-            var cash = 300;
+            var cash = 1500;
             player.money = cash;
-            var giftpack = { safari: 30, great: 5, itemfinder: 15 };
+            var giftpack = { safari: 70, great: 20, bait: 30, megastone: ultra: 10, itemfinder: 50 };
             for (var e in giftpack) {
                 if (giftpack.hasOwnProperty(e)) {
                     player.balls[e] = giftpack[e];
@@ -1769,9 +1769,9 @@ function Safari() {
         var regex = new RegExp(flashtag+htmlname+flashtag, "gi");
         var newregex1 = "";
         if (sys.os(sys.id(name)) !== "android") {
-            newregex1 = "<font style='BACKGROUND-COLOR: #FCD116'>" + htmlname.toCorrectCase() + "</font><ping/>";
+            newregex1 = "<font style='BACKGROUND-COLOR: #ff0000'>" + htmlname.toCorrectCase() + "</font><ping/>";
         } else {
-            newregex1 = "<background color='#FCD116'>" + htmlname.toCorrectCase() + "</background><ping/>";
+            newregex1 = "<background color='#0000ff'>" + htmlname.toCorrectCase() + "</background><ping/>";
         }
         var flashregex = new RegExp(flashtag,"g");
         newmessage = message.replace(regex,newregex1).replace(flashregex,"");
@@ -1783,7 +1783,7 @@ function Safari() {
         var htmlname = html_escape(name);
         var regex = flashtag+htmlname+flashtag;
         var newregex1 = "";
-        var color = sys.id(name) ? script.getColor(sys.id(name)) : "#000000";
+        var color = sys.id(name) ? script.getColor(sys.id(name)) : "#0000ff";
         if (sys.os(sys.id(name)) !== "android") {
             newregex1 = "<span style='COLOR: " + color + "'>" + htmlname + "</span>";
         } else {
@@ -7301,7 +7301,7 @@ function Safari() {
                     rowData = [];
                 }
             }
-            sys.sendHtmlMessage(src, "1↓ 1→ ______________________", safchan);
+            sys.sendHtmlMessage(src, "1? 1? ______________________", safchan);
             for (e = 0; e < out.length; e++) {
                 sys.sendHtmlMessage(src, out[e], safchan);
             }
@@ -15697,7 +15697,7 @@ function Safari() {
             "/costumes: To view your current costumes. Use /getcostume to check your records to see if you earned any new costumes!",
             "/changecostume [costume]: To change your costume to a new one. Can also use /dressup [costume].",
             "/base: To view another player's Secret Base.",
-            "/editbase [decoration]։[Coordinate X]։[Coordinate Y]: To edit your Secret Base. Use /decorations to check what you can decorate it with.",
+            "/editbase [decoration]:[Coordinate X]:[Coordinate Y]: To edit your Secret Base. Use /decorations to check what you can decorate it with.",
             "/view: To view another player's party. If no player is specified, all of your data will show up. You can also use /view on or /view off to enable/disable others from viewing your party/battles. Use /viewt for a text-only version of your data (excluding party).",
             "/challenge: To challenge another player to a battle.",
             "/watch: To watch someone else's battle.",
@@ -15730,57 +15730,57 @@ function Safari() {
         var help = userHelp;
         var adminHelp = [
             "*** Safari Warden Commands ***",
-            "/startevent [type]։[parameters]: Starts an event. Use /startevent help for more details. To cancel an event, use /abortevent.",
+            "/startevent [type]:[parameters]: Starts an event. Use /startevent help for more details. To cancel an event, use /abortevent.",
             "/sanitize [player]: Removes invalid values from the target's inventory, such as NaN and undefined. Use /sanitizeall to sanitize everyone in the channel at once.",            
-            "/transferalt [name1]։[name2]: Changes Safari data between two players. Make sure they are the same person before using this.",
+            "/transferalt [name1]:[name2]: Changes Safari data between two players. Make sure they are the same person before using this.",
             "/allowname [name]: Allows/disallows a person to start a new Safari save while they share IP with another Safari Player.",
-            "/tradeban [player]։[duration]: Bans a player from trading or using their shop. Use /tradeban [player]:[length]. Use -1 for length to denote permanent, 0 for length to unban. Use /tradebans to view players currently tradebanned.",
-            "/salt [player]։[duration]: Reduces a player's luck to near 0 (unrelated to Salt item/leaderboard). Use /salt [player]:[length]. Use -1 for length to denote permanent, 0 for length to unban. Use /saltbans to view players currently saltbanned.",
-            "/safariban [player]։[duration]: Bans a player from the Safari Channel. Use /safariunban [player] to unban and /safaribans to view players currently banned from Safari.",
+            "/tradeban [player]:[duration]: Bans a player from trading or using their shop. Use /tradeban [player]:[length]. Use -1 for length to denote permanent, 0 for length to unban. Use /tradebans to view players currently tradebanned.",
+            "/salt [player]:[duration]: Reduces a player's luck to near 0 (unrelated to Salt item/leaderboard). Use /salt [player]:[length]. Use -1 for length to denote permanent, 0 for length to unban. Use /saltbans to view players currently saltbanned.",
+            "/safariban [player]:[duration]: Bans a player from the Safari Channel. Use /safariunban [player] to unban and /safaribans to view players currently banned from Safari.",
             "/lock [player]: Locks a player's save, making their save not load until it's unlocked. Use /unlock [player] to unlock them.",
             "/lbban [player]: Removes a player from all leaderboards.",
-            "/analyze [player]։[lookup]: Returns the value of a specified property relating to a person's save. Lookup follows object notation, leave blank to return the entire save's data.",
+            "/analyze [player]:[lookup]: Returns the value of a specified property relating to a person's save. Lookup follows object notation, leave blank to return the entire save's data.",
             "/track [player]: Adds a tracker to a player that sends a message every time they attempt to bait and throw a ball. Useful to catch botters.",
-            "/trick [player]։[pokemon]։[message]: Sends the designated player a fake wild Pokémon. Pokémon is optional, defaults to random. Message is an optional message such as \"Don't throw!\", defaults to nothing.",
-            "/offmsg [players]։[message]: Sets a message that will be sent to these players next time they join the channel.",
+            "/trick [player]:[pokemon]:[message]: Sends the designated player a fake wild Pokémon. Pokémon is optional, defaults to random. Message is an optional message such as \"Don't throw!\", defaults to nothing.",
+            "/offmsg [players]:[message]: Sets a message that will be sent to these players next time they join the channel.",
             
-            "Log Files: Use /command [amount]։[lookup]։[limit] to return a list of logged data. Defaults to 10. Lookup will only return logs with the specified value in the past amount of logs (can use && or || for multiples terms). Limit will restrict the number of results displayed even if more than that is found (defaults to 100).",
+            "Log Files: Use /command [amount]:[lookup]:[limit] to return a list of logged data. Defaults to 10. Lookup will only return logs with the specified value in the past amount of logs (can use && or || for multiples terms). Limit will restrict the number of results displayed even if more than that is found (defaults to 100).",
             "Available logs: ***tradelog (trades), raretrades (trades involving legendaries, shinies or rare forms), shoplog (shop transactions), auctionlog (auctions), lostlog (actions that led to a Pokémon being lost), mythlog (rare spawns and Masterball usage), altlog (save transfers), eventlog (events), giftlog (gifts or values edited), showids (saves created with their idnum), misclog (other stuff)"
         ];
         var ownerHelp = [
             "*** Safari Owner Commands ***",
             "/contest[soft]: Force starts a Safari contest. Use /contestsoft to skip broadcasting to Tohjo Falls.",
             "/precontest: Enter the pre-contest phase. Use /skipcontest to cancel the pre-contest phase and skip the contest.",
-            "/wild[event] [pokemon (optional)]։[amount]։[disguise]: Spawns a random or designated wild Pokémon with no restrictions. Use /wildevent for a spawn that cannot be caught with Master Balls. Amount must be between 1 and 4, else defaults to 1. Disguise is optional and makes the spawned Pokémon appear as something it is not.",
+            "/wild[event] [pokemon (optional)]:[amount]:[disguise]: Spawns a random or designated wild Pokémon with no restrictions. Use /wildevent for a spawn that cannot be caught with Master Balls. Amount must be between 1 and 4, else defaults to 1. Disguise is optional and makes the spawned Pokémon appear as something it is not.",
             // "/horde: Spawns a group of random wild Pokémon with no restrictions. Use a valid dex number to spawn a specific Pokémon.",
             "/checkrate [item]: Displays the rate of obtaining that item from Gachapon, Itemfinder, and Prize Pack.",
-            "/editdata [type]։[item]։[property]։[value]: Changes a property from an item/costume.",
-            "/safaripay [player]։[amount]: Awards a player with the specified amount of money.",
-            "/safarigift [player/player names]։[item]։[amount]: Gifts a player with any amount of an item or ball. You can send to multiple players at once if you separate each name with a comma or a comma and a space.",
-            "/bestow [player]։[pokemon]: Gifts a player a specific Pokémon. Use /bestow [player]։[pokemon]։Remove to confiscate a Pokémon from a player.",
-            "/forgerecord [player]։[record]։[amount]: Alters a specific record of a player.",
+            "/editdata [type]:[item]:[property]:[value]: Changes a property from an item/costume.",
+            "/safaripay [player]:[amount]: Awards a player with the specified amount of money.",
+            "/safarigift [player/player names]:[item]:[amount]: Gifts a player with any amount of an item or ball. You can send to multiple players at once if you separate each name with a comma or a comma and a space.",
+            "/bestow [player]:[pokemon]: Gifts a player a specific Pokémon. Use /bestow [player]:[pokemon]:Remove to confiscate a Pokémon from a player.",
+            "/forgerecord [player]:[record]:[amount]: Alters a specific record of a player.",
             "/wipesafari [player]: Wipes the targeted player's safari. Irreversable-ish.",
             "/loadsafari [JSON]: Creates a safari save with the specified JSON code.",
             "/findsaves: Lists all saves the Safari Game currently has data on.",
             "/checksaves [user1, user2, etc.]: Checks a list of users to see if they have a save file.",
-            "/showids [amount]։[lookup]: Shows all players by their idnum. Use /reloadids to recreate the list if necessary.",
+            "/showids [amount]:[lookup]: Shows all players by their idnum. Use /reloadids to recreate the list if necessary.",
             "/updatelb: Manually updates the leaderboards.",
             "/newmonth: Manually verifies if the month changed to reset monthly leaderboards.",
             "/ongoing: To verify ongoing NPC Battles and Auction (use before updating Safari). Use /stopongoing to cancel all ongoing Battles and Auctions.",
-            "/clearcd [player]։[type]: To clear a player's cooldown on a quest/ball throw/auction.",
+            "/clearcd [player]:[type]: To clear a player's cooldown on a quest/ball throw/auction.",
             "/scare: Scares the wild Pokemon away. Use /glare for a silent action.",
-            "/npc[add/remove] [item/pokemon]։[price]։[limit]: Adds or removes an item to the NPC shop with the provided arguments. Use /npcclose to clear the NPC shop or /npcclean to remove items out of stock.",
+            "/npc[add/remove] [item/pokemon]:[price]:[limit]: Adds or removes an item to the NPC shop with the provided arguments. Use /npcclose to clear the NPC shop or /npcclean to remove items out of stock.",
             "/addrecipe: Adds/edits a recipe for the Alchemist quest. Use /removerecipe [name] to remove a recipe and /showrecipes to view information about current recipes.",
             "/addraffle [pokemon]: Changes the current raffle prize to the specified Pokémon.",
             "/cancelraffle: Clears the current raffle prize. To completely cancel a raffle use /cancelraffle clearfile:[amount], where an optional refund amount can be specified to credit back raffle ticket holders.",
             "/checkraffle: To see the Raffle Tickets sold so far.",
             "/drawraffle confirm: Draws the current raffle.",
-            "/dqraffle [player]։[refund]: Disqualifies a person from the current raffle by removing their name from the raffle players hash and by removing all their current entries. Refund is optional and will refund at the specified rate (Defaults to 0, or no refund).",
+            "/dqraffle [player]:[refund]: Disqualifies a person from the current raffle by removing their name from the raffle players hash and by removing all their current entries. Refund is optional and will refund at the specified rate (Defaults to 0, or no refund).",
             "/disablequest [quest/all/long]: Disables specified quest, or all of them, or just long ones (Pyramid/Tower). Use /enablequest to re-enable. Updating the script will re-enable all quests.",
             "/updateafter [abort/cancel/stop]: Updates Safari at next available opportunity. Use any of the command data listed to cancel the pending update.",
-            "/nextspawn [player]։[pokemon]։[amount]։[disguise]: Makes a player's next spawn equal to [amount] of [pokemon] diguised as [disguise]. Amount and Disguse are optional. Affects Bait and Gacha.",
+            "/nextspawn [player]:[pokemon]:[amount]:[disguise]: Makes a player's next spawn equal to [amount] of [pokemon] diguised as [disguise]. Amount and Disguse are optional. Affects Bait and Gacha.",
             "/loginmercy [number]: Sets a number of days that will not break the player's consecutive login if they miss it (use when server is down for too long).",
-            "/refundLogin [player]։[previousStreak]։[daysToAdd]: Changes a player's consecutive logins streak and give them the appropriate rewards."
+            "/refundLogin [player]:[previousStreak]:[daysToAdd]: Changes a player's consecutive logins streak and give them the appropriate rewards."
             //"/tourgift [1st], [2nd], [3rd]: Distributes current prize grid for Tournaments promotion to event winners. Please check save files and spelling before distributing prizes as undoing this takes a bit of effort!",
             //"/preptour [number, optional]: Checks the saves of the past number of event tours and provides an easy gifting link. If a name is not a valid save, it will be bolded and \"/tourgift\" will print to make substituting easy!"
         ];
