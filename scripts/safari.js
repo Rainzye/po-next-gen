@@ -2649,14 +2649,14 @@ function Safari() {
         if (amount > 1) {
             var ret = [];
             var term = amount === 2 ? "pair" : amount === 3 ? "group" : "horde";
-            ret += "<hr><center>A " + term + " of wild " + currentId + " appeared! <i>(BST: " + bst + ")</i><br/>" + (wildEvent ? "<b>This is an Event Pokémon! No " + es(finishName("master")) + " allowed!</b><br/>" : "");
+            ret += "<hr><center><body style='background-color: qlineargradient(x1:0, x2:1, y1:0, y2:1, stop: 0 red, stop: 0.5 white, stop: 1 black);'>A " + term + " of wild " + currentId + " appeared! <i>(BST: " + bst + ")</i><br/>" + (wildEvent ? "<b>This a special Event Pokémon! No " + es(finishName("master")) + " allowed!</b><br/>" : "");
             for (var i = 0; i < amount; i++) {
                 ret += pokeInfo.sprite(currentPokemonDisplay);
             }
             ret += "</center><hr>";
             sendAll(ret, true, true);
         } else {
-            sendAll("<hr><center>" + (shiny ? "<font color='DarkOrchid'>" : "") + "A wild " + currentId + " appeared! <i>(BST: " + bst + ")</i>" + (shiny ? "</font>" : "") + "<br/>" + (wildEvent ? "<b>This is an Event Pokémon! No " + es(finishName("master")) + " allowed!</b><br/>" : "") + pokeInfo.sprite(currentPokemonDisplay) + "</center><hr>", true, true);
+            sendAll("<hr><center><body style='background-color: qlineargradient(x1:0, x2:1, y1:0, y2:1, stop: 0 red, stop: 0.5 white, stop: 1 black);'>" + (shiny ? "<font color='DarkOrchid'>" : "") + "A wild " + currentId + " appeared! <i>(BST: " + bst + ")</i>" + (shiny ? "</font>" : "") + "<br/>" + (wildEvent ? "<b>This is an Event Pokémon! No " + es(finishName("master")) + " allowed!</b><br/>" : "") + pokeInfo.sprite(currentPokemonDisplay) + "</center><hr>", true, true);
         }
         var onChannel = sys.playersOfChannel(safchan);
         for (var e in onChannel) {
